@@ -1,0 +1,314 @@
+incident_id,district,category,severity,status,incident_date,location,description,officer,latitude,longitude
+INC-001,Tumakuru,Fraud,Medium,Open,2025-01-04,B.H. Road,Investment scam promising high returns to local traders,PSI Divya Hegde,13.3552,77.1736
+INC-002,Yadgir,Assault,High,Under Investigation,2025-01-07,Shahpur,Bar fight escalated into serious assault injuring two persons,ASI Meena Kumari,16.8047,77.1972
+INC-003,Raichur,Domestic Violence,Medium,Under Investigation,2025-01-07,Mantralayam Road,Domestic assault during family dispute — victim hospitalized,ASI Priya Shetty,16.2011,77.4091
+INC-004,Kodagu,Domestic Violence,High,Closed,2025-01-09,Virajpet Road,Domestic violence complaint filed by spouse at police station,PSI Ramesh H.R.,12.481,75.7152
+INC-005,Tumakuru,Theft,Medium,Under Investigation,2025-01-10,Gubbi Cross,Two-wheeler stolen from Gubbi Cross residential parking area during night hours,ASI Sunitha M.,13.3564,77.1645
+INC-006,Kolar,Robbery,Critical,Open,2025-01-12,BEML Layout,Armed robbery at jewellery store during business hours,PI Prakash Babu,13.1146,78.156
+INC-007,Bengaluru Urban,Domestic Violence,High,Under Investigation,2025-01-12,Electronic City,Domestic assault during family dispute — victim hospitalized,PI Nandini Gowda,12.9578,77.6535
+INC-008,Chikkamagaluru,Fraud,Medium,Closed,2025-01-17,Kaimara,Real estate fraud using forged property documents,PSI Harish B.,13.3206,75.7698
+INC-009,Bengaluru Urban,Murder,Critical,Under Investigation,2025-01-18,BTM Layout,Contract killing suspected in business rivalry case,PI Ganesh Murthy,12.9479,77.5547
+INC-010,Dakshina Kannada,Theft,Medium,Under Investigation,2025-01-18,Port Area,Gold chain snatching near Port Area market during peak shopping hours,PI Mohan Gowda,12.8783,74.8833
+INC-011,Bengaluru Urban,Assault,High,Closed,2025-01-20,Hebbal,Physical assault following road rage incident at traffic junction,PSI Harish B.,13.0168,77.5607
+INC-012,Chikkaballapur,Theft,Low,Closed,2025-01-22,Chikkaballapur Town,Agricultural pump motor theft from farm shed overnight,PSI Harish B.,13.396,77.6798
+INC-013,Mysuru,Assault,High,Open,2025-01-23,Vijayanagar,Assault on auto driver over fare disagreement,PSI Anitha Reddy,12.2858,76.6318
+INC-014,Bengaluru Urban,Theft,Medium,Under Investigation,2025-01-24,Yelahanka,Laptop theft from unattended vehicle at parking lot,PSI Vijay Patil,12.9651,77.6502
+INC-015,Haveri,Assault,Medium,Open,2025-01-25,Ranebennur Cross,Bar fight escalated into serious assault injuring two persons,ASI Meena Kumari,14.7575,75.4096
+INC-016,Bengaluru Urban,Assault,High,Under Investigation,2025-02-01,Jayanagar,Assault on auto driver over fare disagreement,PSI Anitha Reddy,12.9886,77.5771
+INC-017,Bengaluru Urban,Cybercrime,High,Under Investigation,2025-02-01,Koramangala,UPI fraud — victim lost money via fake payment request link,PSI Harish B.,12.9453,77.6451
+INC-018,Ballari,Theft,Medium,Under Investigation,2025-02-01,Cowl Bazaar,Two-wheeler stolen from Cowl Bazaar residential parking area during night hours,PI Deepak Joshi,15.1055,76.9587
+INC-019,Yadgir,Fraud,Medium,Closed,2025-02-01,Station Area,Matrimonial fraud extracting money from victim family,PSI Rajesh Kumar,16.744,77.1391
+INC-020,Bengaluru Urban,Theft,Low,Open,2025-02-01,Electronic City,Agricultural pump motor theft from farm shed overnight,PSI Anitha Reddy,13.0306,77.6226
+INC-021,Haveri,Theft,Low,Open,2025-02-02,Ranebennur Cross,Copper wire theft from construction site reported by site supervisor,PI Ganesh Murthy,14.7489,75.3956
+INC-022,Bengaluru Urban,Domestic Violence,Medium,Open,2025-02-04,Electronic City,Domestic violence complaint filed by spouse at police station,PSI Rajesh Kumar,13.0229,77.5849
+INC-023,Tumakuru,Kidnapping,High,Open,2025-02-05,Kyathsandra,Attempted kidnapping foiled by bystanders near school,ASI Kavitha B.N.,13.369,77.1005
+INC-024,Bengaluru Urban,Assault,High,Under Investigation,2025-02-05,Jayanagar,Assault on auto driver over fare disagreement,PSI Harish B.,12.983,77.6149
+INC-025,Ballari,Theft,Medium,Under Investigation,2025-02-05,Toranagallu Road,Bicycle stolen from apartment compound entrance,ASI Priya Shetty,15.1131,76.926
+INC-026,Koppal,Drug Offense,High,Closed,2025-02-07,Karatagi,Synthetic drug distribution network bust in urban area,PSI Divya Hegde,15.4104,76.1115
+INC-027,Bengaluru Urban,Theft,Medium,Under Investigation,2025-02-10,Whitefield,Bicycle stolen from apartment compound entrance,PSI Anitha Reddy,12.9167,77.5729
+INC-028,Ramanagara,Theft,Low,Open,2025-02-11,Magadi Road,Bicycle stolen from apartment compound entrance,PI Ganesh Murthy,12.7345,77.2947
+INC-029,Kalaburagi,Assault,High,Under Investigation,2025-02-15,Malkhed Road,Physical assault following road rage incident at traffic junction,PI Nandini Gowda,17.2886,76.8356
+INC-030,Ramanagara,Domestic Violence,High,Under Investigation,2025-02-17,Channapatna,Domestic violence complaint filed by spouse at police station,PI Nandini Gowda,12.709,77.3189
+INC-031,Mandya,Assault,Medium,Under Investigation,2025-02-19,Srirangapatna,Physical assault following road rage incident at traffic junction,PSI Ramesh H.R.,12.5443,76.8812
+INC-032,Belagavi,Fraud,Medium,Open,2025-02-20,Tilakwadi,Job recruitment scam collecting fees via social media,ASI Kavitha B.N.,15.8279,74.5415
+INC-033,Uttara Kannada,Theft,Low,Under Investigation,2025-02-20,Karwar Port,Agricultural pump motor theft from farm shed overnight,PSI Divya Hegde,14.7913,74.638
+INC-034,Belagavi,Theft,Medium,Open,2025-02-22,Camp Area,Cash theft from shop counter while owner was distracted,PI Suresh Naik,15.9017,74.4617
+INC-035,Vijayanagara,Burglary,Medium,Under Investigation,2025-02-23,Kudligi Road,Attempted burglary foiled by alarm system at warehouse,PI Suresh Naik,15.327,76.5074
+INC-036,Hubballi-Dharwad,Drug Offense,Critical,Open,2025-02-23,Gokul Road,Cross-border drug trafficking interdiction at highway check post,ASI Manjunath S.,15.409,75.116
+INC-037,Chitradurga,Fraud,High,Closed,2025-02-23,NH Bypass,Investment scam promising high returns to local traders,PI Shweta Rao,14.2676,76.376
+INC-038,Mysuru,Assault,Medium,Closed,2025-02-23,Vijayanagar,Assault with blunt object during property dispute altercation,PI Nandini Gowda,12.2528,76.6071
+INC-039,Mandya,Burglary,Medium,Under Investigation,2025-02-25,Pandavapura,Office burglary — computer equipment and documents stolen,PSI Harish B.,12.4694,76.8569
+INC-040,Kolar,Robbery,Critical,Under Investigation,2025-03-02,Tamaka,Highway robbery of cash-carrying courier van,ASI Meena Kumari,13.1277,78.1666
+INC-041,Bengaluru Urban,Cybercrime,Medium,Closed,2025-03-02,Hebbal,UPI fraud — victim lost money via fake payment request link,PI Deepak Joshi,12.9429,77.539
+INC-042,Yadgir,Fraud,High,Closed,2025-03-02,Shahpur,Investment scam promising high returns to local traders,PI Shweta Rao,16.7787,77.1317
+INC-043,Belagavi,Cybercrime,High,Closed,2025-03-04,Shahapur,Ransomware attack on SME server with data encryption,PSI Harish B.,15.893,74.5429
+INC-044,Ballari,Domestic Violence,High,Open,2025-03-04,Cowl Bazaar,Dowry-related harassment complaint registered by victim,PI Deepak Joshi,15.1334,76.9427
+INC-045,Vijayapura,Robbery,Critical,Open,2025-03-04,Almel,ATM customer robbed at knifepoint after withdrawal,PI Shweta Rao,16.8196,75.6715
+INC-046,Ballari,Burglary,High,Open,2025-03-05,Cowl Bazaar,Office burglary — computer equipment and documents stolen,PSI Vijay Patil,15.1436,76.8744
+INC-047,Bengaluru Urban,Assault,High,Under Investigation,2025-03-08,Yelahanka,Physical assault following road rage incident at traffic junction,PSI Ramesh H.R.,12.9624,77.5547
+INC-048,Chitradurga,Fraud,Medium,Closed,2025-03-09,Medehalli,Investment scam promising high returns to local traders,ASI Priya Shetty,14.2662,76.4415
+INC-049,Vijayapura,Robbery,High,Closed,2025-03-11,Almel,Armed robbery at jewellery store during business hours,PI Prakash Babu,16.8631,75.7362
+INC-050,Bidar,Domestic Violence,Medium,Closed,2025-03-13,Manna Ekhelli,Domestic assault during family dispute — victim hospitalized,PSI Anitha Reddy,17.8643,77.4733
+INC-051,Mysuru,Robbery,High,Open,2025-03-19,Gokulam,Highway robbery of cash-carrying courier van,ASI Kavitha B.N.,12.3018,76.6223
+INC-052,Mysuru,Cybercrime,Critical,Open,2025-03-20,Bannimantap,OTP fraud targeting elderly citizen through impersonation call,ASI Lakshmi Devi,12.2389,76.6481
+INC-053,Bengaluru Urban,Robbery,High,Open,2025-03-20,Jayanagar,Highway robbery of cash-carrying courier van,PSI Anitha Reddy,12.9443,77.648
+INC-054,Kolar,Domestic Violence,Medium,Closed,2025-03-25,Andersonpet,Protection order sought following repeated harassment at home,PI Ganesh Murthy,13.1159,78.1344
+INC-055,Hubballi-Dharwad,Cybercrime,Critical,Open,2025-03-29,Deshpande Nagar,Ransomware attack on SME server with data encryption,PSI Arun Kulkarni,15.3264,75.1483
+INC-056,Gadag,Robbery,Critical,Under Investigation,2025-03-30,Betageri,Snatch-and-run robbery of business cash collection,ASI Sunitha M.,15.418,75.6475
+INC-057,Dakshina Kannada,Robbery,Critical,Closed,2025-04-02,Kadri,ATM customer robbed at knifepoint after withdrawal,ASI Priya Shetty,12.9341,74.8187
+INC-058,Bengaluru Urban,Kidnapping,Critical,Closed,2025-04-03,Marathahalli,Kidnapping for ransom — victim abducted from workplace,PI Prakash Babu,13.0071,77.6269
+INC-059,Raichur,Drug Offense,Critical,Open,2025-04-05,Sindhanur Road,Cross-border drug trafficking interdiction at highway check post,PSI Anitha Reddy,16.1567,77.3033
+INC-060,Chitradurga,Cybercrime,High,Closed,2025-04-08,NH Bypass,UPI fraud — victim lost money via fake payment request link,PSI Arun Kulkarni,14.2205,76.3935
+INC-061,Bengaluru Urban,Theft,Medium,Under Investigation,2025-04-09,Yelahanka,Cash theft from shop counter while owner was distracted,ASI Meena Kumari,13.019,77.6233
+INC-062,Mandya,Fraud,Medium,Under Investigation,2025-04-11,Srirangapatna,Job recruitment scam collecting fees via social media,PSI Divya Hegde,12.5642,76.8758
+INC-063,Uttara Kannada,Theft,Low,Closed,2025-04-11,Kumta Beach Road,Agricultural pump motor theft from farm shed overnight,PI Prakash Babu,14.7826,74.6811
+INC-064,Hassan,Fraud,Medium,Closed,2025-04-12,BM Road,Loan fraud using forged identity documents,PI Nandini Gowda,13.0211,76.0832
+INC-065,Hassan,Theft,Low,Closed,2025-04-19,Ramanathapura,Two-wheeler stolen from Ramanathapura residential parking area during night hours,PI Prakash Babu,12.972,76.0619
+INC-066,Bengaluru Urban,Assault,High,Open,2025-04-20,BTM Layout,Physical assault following road rage incident at traffic junction,PI Mohan Gowda,12.9505,77.6209
+INC-067,Bagalkot,Theft,Medium,Closed,2025-04-20,Navanagar,Bicycle stolen from apartment compound entrance,PI Mohan Gowda,16.1765,75.7164
+INC-068,Bengaluru Urban,Assault,High,Closed,2025-04-22,BTM Layout,Assault with blunt object during property dispute altercation,PSI Arun Kulkarni,12.984,77.5704
+INC-069,Kolar,Assault,Critical,Closed,2025-04-25,Tamaka,Assault with blunt object during property dispute altercation,PSI Anitha Reddy,13.0945,78.1508
+INC-070,Bengaluru Urban,Assault,High,Under Investigation,2025-04-27,MG Road,Physical assault following road rage incident at traffic junction,PI Suresh Naik,12.9873,77.5752
+INC-071,Mysuru,Theft,Low,Under Investigation,2025-04-29,Kuvempunagar,Agricultural pump motor theft from farm shed overnight,PSI Anitha Reddy,12.3247,76.6992
+INC-072,Chamarajanagar,Theft,Medium,Under Investigation,2025-04-29,Kollegal Road,Laptop theft from unattended vehicle at parking lot,PSI Arun Kulkarni,11.9773,76.931
+INC-073,Bagalkot,Theft,Low,Under Investigation,2025-04-30,Vidyagiri,Agricultural pump motor theft from farm shed overnight,PI Mohan Gowda,16.1231,75.6331
+INC-074,Koppal,Cybercrime,High,Open,2025-05-02,Yelburga Road,Online shopping fraud — paid for goods never delivered,PI Mohan Gowda,15.2987,76.2055
+INC-075,Bagalkot,Robbery,High,Under Investigation,2025-05-07,Navanagar,Armed robbery at jewellery store during business hours,PI Shweta Rao,16.1573,75.6727
+INC-076,Bengaluru Urban,Burglary,Medium,Closed,2025-05-07,Indiranagar,Office burglary — computer equipment and documents stolen,PI Prakash Babu,13.0265,77.5715
+INC-077,Bidar,Theft,Low,Closed,2025-05-08,Manna Ekhelli,Laptop theft from unattended vehicle at parking lot,ASI Sunitha M.,17.9604,77.5186
+INC-078,Chamarajanagar,Robbery,Critical,Closed,2025-05-08,Hanur,Highway robbery of cash-carrying courier van,ASI Sunitha M.,11.9803,76.8897
+INC-079,Bengaluru Urban,Theft,Medium,Open,2025-05-08,Koramangala,Gold chain snatching near Koramangala market during peak shopping hours,PI Deepak Joshi,12.944,77.5704
+INC-080,Dakshina Kannada,Cybercrime,High,Under Investigation,2025-05-12,Hampankatta,OTP fraud targeting elderly citizen through impersonation call,ASI Manjunath S.,12.8998,74.8518
+INC-081,Bengaluru Urban,Drug Offense,Critical,Open,2025-05-14,Whitefield,Synthetic drug distribution network bust in urban area,PI Ganesh Murthy,13.0088,77.575
+INC-082,Chamarajanagar,Murder,Critical,Open,2025-05-15,Kollegal Road,Contract killing suspected in business rivalry case,PI Shweta Rao,11.9156,76.9631
+INC-083,Bengaluru Urban,Theft,Low,Open,2025-05-15,Hebbal,Gold chain snatching near Hebbal market during peak shopping hours,ASI Kavitha B.N.,12.9216,77.5805
+INC-084,Bengaluru Urban,Domestic Violence,Medium,Open,2025-05-17,Hebbal,Dowry-related harassment complaint registered by victim,PI Ganesh Murthy,12.9752,77.6163
+INC-085,Shivamogga,Assault,Critical,Closed,2025-05-19,Bhadravathi Road,Assault on auto driver over fare disagreement,PSI Ramesh H.R.,13.9147,75.5875
+INC-086,Bengaluru Urban,Robbery,Critical,Closed,2025-05-20,Whitefield,Highway robbery of cash-carrying courier van,ASI Lakshmi Devi,13.0035,77.6193
+INC-087,Shivamogga,Robbery,High,Closed,2025-05-22,Durgigudi,ATM customer robbed at knifepoint after withdrawal,PI Shweta Rao,13.8862,75.5451
+INC-088,Hubballi-Dharwad,Theft,Low,Under Investigation,2025-05-23,Vidyanagar,Mobile phone snatching near bus stand by motorcycle-borne offenders,PI Ganesh Murthy,15.3853,75.0917
+INC-089,Bengaluru Urban,Fraud,High,Open,2025-05-27,Whitefield,Investment scam promising high returns to local traders,PI Ganesh Murthy,13.0228,77.5906
+INC-090,Vijayanagara,Drug Offense,Critical,Open,2025-05-29,Kottur Cross,Cross-border drug trafficking interdiction at highway check post,PI Suresh Naik,15.3431,76.4868
+INC-091,Udupi,Cybercrime,High,Closed,2025-06-03,Malpe,Ransomware attack on SME server with data encryption,PI Nandini Gowda,13.3896,74.7374
+INC-092,Mysuru,Theft,Low,Closed,2025-06-03,Nazarbad,Laptop theft from unattended vehicle at parking lot,PI Suresh Naik,12.2485,76.5939
+INC-093,Bengaluru Urban,Fraud,Medium,Under Investigation,2025-06-03,Electronic City,Job recruitment scam collecting fees via social media,ASI Kavitha B.N.,12.9832,77.6205
+INC-094,Belagavi,Theft,Medium,Under Investigation,2025-06-05,Tilakwadi,Copper wire theft from construction site reported by site supervisor,PSI Harish B.,15.798,74.4862
+INC-095,Mysuru,Theft,Medium,Open,2025-06-07,Gokulam,Agricultural pump motor theft from farm shed overnight,ASI Meena Kumari,12.2527,76.5915
+INC-096,Mysuru,Cybercrime,High,Closed,2025-06-07,Saraswathipuram,OTP fraud targeting elderly citizen through impersonation call,ASI Meena Kumari,12.3161,76.6202
+INC-097,Ramanagara,Robbery,Critical,Under Investigation,2025-06-09,Channapatna,Highway robbery of cash-carrying courier van,PI Deepak Joshi,12.6963,77.2377
+INC-098,Bengaluru Urban,Robbery,High,Closed,2025-06-10,Yelahanka,Armed robbery at jewellery store during business hours,PSI Ramesh H.R.,13.014,77.5743
+INC-099,Mysuru,Theft,Medium,Closed,2025-06-10,Nazarbad,Copper wire theft from construction site reported by site supervisor,PSI Divya Hegde,12.3166,76.6863
+INC-100,Mysuru,Burglary,High,Open,2025-06-13,Saraswathipuram,House break-in while family was away on vacation,PI Deepak Joshi,12.2619,76.6864
+INC-101,Koppal,Cybercrime,High,Under Investigation,2025-06-13,Karatagi,UPI fraud — victim lost money via fake payment request link,PI Ganesh Murthy,15.4054,76.1061
+INC-102,Dakshina Kannada,Domestic Violence,Medium,Under Investigation,2025-06-13,Bendoor,Protection order sought following repeated harassment at home,PSI Harish B.,12.8692,74.8314
+INC-103,Bengaluru Urban,Assault,High,Under Investigation,2025-06-14,Marathahalli,Physical assault following road rage incident at traffic junction,PSI Divya Hegde,13.0016,77.6119
+INC-104,Yadgir,Domestic Violence,High,Closed,2025-06-15,Saidapur,Domestic violence complaint filed by spouse at police station,ASI Lakshmi Devi,16.8306,77.1064
+INC-105,Gadag,Theft,Low,Under Investigation,2025-06-20,Betageri,Mobile phone snatching near bus stand by motorcycle-borne offenders,PI Nandini Gowda,15.3941,75.5761
+INC-106,Bengaluru Urban,Drug Offense,Critical,Open,2025-06-22,MG Road,Cross-border drug trafficking interdiction at highway check post,ASI Manjunath S.,12.9897,77.5411
+INC-107,Udupi,Cybercrime,Critical,Under Investigation,2025-06-24,Kundapura Road,Online shopping fraud — paid for goods never delivered,PI Prakash Babu,13.3518,74.7567
+INC-108,Vijayapura,Domestic Violence,Medium,Under Investigation,2025-06-24,Almel,Protection order sought following repeated harassment at home,PI Shweta Rao,16.8582,75.7161
+INC-109,Hassan,Drug Offense,Critical,Under Investigation,2025-06-25,Arsikere Road,Synthetic drug distribution network bust in urban area,ASI Lakshmi Devi,13.0213,76.0462
+INC-110,Bidar,Fraud,Medium,Closed,2025-06-25,Gumpa Area,Investment scam promising high returns to local traders,PSI Divya Hegde,17.8598,77.5272
+INC-111,Mysuru,Cybercrime,Critical,Under Investigation,2025-06-26,Kuvempunagar,Ransomware attack on SME server with data encryption,PSI Anitha Reddy,12.3473,76.6573
+INC-112,Hubballi-Dharwad,Robbery,Critical,Closed,2025-06-28,Unkal,ATM customer robbed at knifepoint after withdrawal,PI Suresh Naik,15.3424,75.1065
+INC-113,Hubballi-Dharwad,Theft,Low,Under Investigation,2025-06-28,Unkal,Laptop theft from unattended vehicle at parking lot,ASI Meena Kumari,15.3487,75.0831
+INC-114,Dakshina Kannada,Theft,Low,Closed,2025-06-29,Bendoor,Bicycle stolen from apartment compound entrance,PI Nandini Gowda,12.9283,74.8366
+INC-115,Bengaluru Urban,Robbery,High,Open,2025-06-30,Jayanagar,Snatch-and-run robbery of business cash collection,ASI Sunitha M.,12.9308,77.5547
+INC-116,Haveri,Burglary,Medium,Closed,2025-07-04,Byadgi Road,House break-in while family was away on vacation,PI Suresh Naik,14.8254,75.4572
+INC-117,Hubballi-Dharwad,Burglary,Medium,Open,2025-07-07,Gokul Road,Commercial burglary at electronics shop after closing hours,PI Deepak Joshi,15.3437,75.0962
+INC-118,Bengaluru Urban,Burglary,High,Under Investigation,2025-07-08,Whitefield,Office burglary — computer equipment and documents stolen,PI Prakash Babu,12.9513,77.5384
+INC-119,Bengaluru Urban,Assault,High,Under Investigation,2025-07-09,MG Road,Physical assault following road rage incident at traffic junction,PSI Harish B.,13.0091,77.5445
+INC-120,Bidar,Drug Offense,Critical,Closed,2025-07-11,Gumpa Area,NDPS seizure — contraband recovered during vehicle checkpoint,ASI Lakshmi Devi,17.9399,77.5764
+INC-121,Hubballi-Dharwad,Domestic Violence,Medium,Open,2025-07-12,Gokul Road,Domestic violence complaint filed by spouse at police station,ASI Sunitha M.,15.3106,75.076
+INC-122,Bengaluru Urban,Cybercrime,Critical,Open,2025-07-12,Jayanagar,OTP fraud targeting elderly citizen through impersonation call,ASI Meena Kumari,13.0046,77.5532
+INC-123,Bengaluru Rural,Fraud,High,Under Investigation,2025-07-15,Nelamangala,Investment scam promising high returns to local traders,PI Mohan Gowda,13.2788,77.5537
+INC-124,Vijayapura,Theft,Low,Under Investigation,2025-07-21,Almel,Mobile phone snatching near bus stand by motorcycle-borne offenders,PI Deepak Joshi,16.8571,75.7499
+INC-125,Bengaluru Urban,Burglary,Medium,Under Investigation,2025-07-24,Jayanagar,Commercial burglary at electronics shop after closing hours,PI Suresh Naik,12.991,77.6155
+INC-126,Bengaluru Rural,Theft,Medium,Closed,2025-07-24,Devanahalli,Cash theft from shop counter while owner was distracted,PI Deepak Joshi,13.2138,77.533
+INC-127,Bengaluru Urban,Robbery,Critical,Open,2025-07-24,Yelahanka,Snatch-and-run robbery of business cash collection,PSI Rajesh Kumar,12.9118,77.6386
+INC-128,Hubballi-Dharwad,Assault,High,Open,2025-07-25,Deshpande Nagar,Assault with blunt object during property dispute altercation,PSI Divya Hegde,15.4102,75.1488
+INC-129,Shivamogga,Theft,Low,Open,2025-08-02,Vinoba Nagar,Mobile phone snatching near bus stand by motorcycle-borne offenders,PI Deepak Joshi,13.8716,75.5793
+INC-130,Hubballi-Dharwad,Theft,Low,Open,2025-08-03,Gokul Road,Bicycle stolen from apartment compound entrance,PSI Vijay Patil,15.422,75.1387
+INC-131,Belagavi,Murder,Critical,Closed,2025-08-07,Shahapur,Homicide reported following altercation at Shahapur residential premises,PSI Arun Kulkarni,15.8832,74.5406
+INC-132,Koppal,Kidnapping,Critical,Under Investigation,2025-08-10,Kukanoor Cross,Attempted kidnapping foiled by bystanders near school,PSI Anitha Reddy,15.407,76.2083
+INC-133,Bagalkot,Theft,Low,Under Investigation,2025-08-12,Badami Cross,Mobile phone snatching near bus stand by motorcycle-borne offenders,PSI Arun Kulkarni,16.1383,75.6668
+INC-134,Shivamogga,Theft,Medium,Open,2025-08-15,Vinoba Nagar,Gold chain snatching near Vinoba Nagar market during peak shopping hours,PI Mohan Gowda,13.9362,75.561
+INC-135,Chikkamagaluru,Theft,Low,Under Investigation,2025-08-16,Koppa Road,Bicycle stolen from apartment compound entrance,PSI Rajesh Kumar,13.3126,75.7719
+INC-136,Raichur,Theft,Medium,Under Investigation,2025-08-20,Lingasugur Cross,Mobile phone snatching near bus stand by motorcycle-borne offenders,PSI Arun Kulkarni,16.1939,77.2986
+INC-137,Bengaluru Rural,Theft,Medium,Closed,2025-08-20,Nelamangala,Laptop theft from unattended vehicle at parking lot,PI Ganesh Murthy,13.2105,77.5429
+INC-138,Bengaluru Urban,Burglary,Medium,Closed,2025-08-21,Koramangala,Attempted burglary foiled by alarm system at warehouse,PI Nandini Gowda,12.9666,77.6493
+INC-139,Chitradurga,Cybercrime,Critical,Under Investigation,2025-08-22,Devigiri,UPI fraud — victim lost money via fake payment request link,PI Suresh Naik,14.1822,76.4216
+INC-140,Hubballi-Dharwad,Burglary,Medium,Closed,2025-08-23,Vidyanagar,Attempted burglary foiled by alarm system at warehouse,ASI Sunitha M.,15.3109,75.1149
+INC-141,Kalaburagi,Fraud,High,Under Investigation,2025-08-31,Super Market,Matrimonial fraud extracting money from victim family,PI Shweta Rao,17.3057,76.8802
+INC-142,Raichur,Theft,Medium,Closed,2025-09-03,Sindhanur Road,Gold chain snatching near Sindhanur Road market during peak shopping hours,ASI Priya Shetty,16.2575,77.3145
+INC-143,Mysuru,Burglary,High,Closed,2025-09-03,Nazarbad,Commercial burglary at electronics shop after closing hours,PI Shweta Rao,12.3214,76.6166
+INC-144,Bengaluru Urban,Drug Offense,High,Open,2025-09-04,Hebbal,Drug peddling near college campus — two suspects detained,ASI Meena Kumari,12.9794,77.5726
+INC-145,Mysuru,Assault,Medium,Closed,2025-09-04,Gokulam,Group assault during local festival near temple premises,PI Mohan Gowda,12.2655,76.6901
+INC-146,Dakshina Kannada,Theft,Low,Under Investigation,2025-09-05,Hampankatta,Mobile phone snatching near bus stand by motorcycle-borne offenders,PI Ganesh Murthy,12.8707,74.845
+INC-147,Bengaluru Urban,Theft,Medium,Under Investigation,2025-09-05,MG Road,Two-wheeler stolen from MG Road residential parking area during night hours,PSI Ramesh H.R.,12.9834,77.6368
+INC-148,Bengaluru Urban,Theft,Medium,Under Investigation,2025-09-06,Electronic City,Two-wheeler stolen from Electronic City residential parking area during night hours,PSI Ramesh H.R.,12.9477,77.5538
+INC-149,Mandya,Robbery,Critical,Closed,2025-09-07,Mandya Town,ATM customer robbed at knifepoint after withdrawal,PSI Ramesh H.R.,12.4962,76.8548
+INC-150,Mysuru,Burglary,High,Under Investigation,2025-09-07,Vijayanagar,Attempted burglary foiled by alarm system at warehouse,PI Ganesh Murthy,12.3454,76.6414
+INC-151,Bengaluru Urban,Drug Offense,High,Closed,2025-09-09,Indiranagar,Synthetic drug distribution network bust in urban area,PI Prakash Babu,12.9897,77.5896
+INC-152,Mysuru,Fraud,High,Closed,2025-09-12,Vijayanagar,Real estate fraud using forged property documents,ASI Manjunath S.,12.341,76.6828
+INC-153,Kolar,Theft,Low,Open,2025-09-13,BEML Layout,Copper wire theft from construction site reported by site supervisor,PSI Ramesh H.R.,13.121,78.1835
+INC-154,Hubballi-Dharwad,Theft,Medium,Under Investigation,2025-09-15,Unkal,Laptop theft from unattended vehicle at parking lot,PI Suresh Naik,15.3913,75.1249
+INC-155,Bengaluru Urban,Drug Offense,High,Closed,2025-09-18,BTM Layout,NDPS seizure — contraband recovered during vehicle checkpoint,PSI Harish B.,12.9554,77.6313
+INC-156,Hubballi-Dharwad,Cybercrime,Critical,Closed,2025-09-21,Unkal,UPI fraud — victim lost money via fake payment request link,PI Shweta Rao,15.3164,75.1335
+INC-157,Hubballi-Dharwad,Burglary,Medium,Under Investigation,2025-09-23,Station Road,Office burglary — computer equipment and documents stolen,ASI Sunitha M.,15.3593,75.0827
+INC-158,Kodagu,Theft,Medium,Under Investigation,2025-09-27,Madikeri Town,Copper wire theft from construction site reported by site supervisor,ASI Sunitha M.,12.4493,75.7521
+INC-159,Haveri,Burglary,High,Under Investigation,2025-10-01,Haveri Town,House break-in while family was away on vacation,PSI Anitha Reddy,14.7566,75.4229
+INC-160,Bengaluru Urban,Murder,Critical,Closed,2025-10-05,Koramangala,Contract killing suspected in business rivalry case,PSI Rajesh Kumar,12.9987,77.5845
+INC-161,Hubballi-Dharwad,Cybercrime,Critical,Under Investigation,2025-10-06,Unkal,UPI fraud — victim lost money via fake payment request link,ASI Kavitha B.N.,15.4088,75.1161
+INC-162,Bengaluru Urban,Domestic Violence,Medium,Under Investigation,2025-10-09,MG Road,Domestic assault during family dispute — victim hospitalized,PSI Ramesh H.R.,12.9216,77.6135
+INC-163,Hubballi-Dharwad,Robbery,High,Closed,2025-10-09,Gokul Road,Snatch-and-run robbery of business cash collection,PI Mohan Gowda,15.3684,75.157
+INC-164,Bagalkot,Fraud,High,Open,2025-10-10,Vidyagiri,Matrimonial fraud extracting money from victim family,PSI Vijay Patil,16.1696,75.7187
+INC-165,Mandya,Robbery,High,Open,2025-10-19,Pandavapura,Snatch-and-run robbery of business cash collection,PSI Vijay Patil,12.5717,76.8682
+INC-166,Tumakuru,Cybercrime,High,Open,2025-10-20,B.H. Road,Phishing attack compromised corporate email credentials,PSI Vijay Patil,13.3287,77.1586
+INC-167,Hassan,Robbery,High,Under Investigation,2025-10-23,Campus Area,Highway robbery of cash-carrying courier van,ASI Lakshmi Devi,13.0016,76.0826
+INC-168,Mysuru,Robbery,Critical,Open,2025-10-27,Bannimantap,Highway robbery of cash-carrying courier van,ASI Sunitha M.,12.2931,76.683
+INC-169,Raichur,Domestic Violence,High,Closed,2025-10-28,Mantralayam Road,Domestic violence complaint filed by spouse at police station,ASI Priya Shetty,16.2503,77.2965
+INC-170,Shivamogga,Theft,Low,Closed,2025-10-29,Vinoba Nagar,Mobile phone snatching near bus stand by motorcycle-borne offenders,ASI Manjunath S.,13.9138,75.5777
+INC-171,Mysuru,Theft,Low,Closed,2025-10-31,Vijayanagar,Cash theft from shop counter while owner was distracted,PSI Arun Kulkarni,12.3281,76.6325
+INC-172,Hassan,Domestic Violence,High,Closed,2025-10-31,Arsikere Road,Domestic violence complaint filed by spouse at police station,PSI Ramesh H.R.,13.0485,76.0793
+INC-173,Koppal,Cybercrime,Medium,Open,2025-11-01,Gangavathi Road,UPI fraud — victim lost money via fake payment request link,PI Ganesh Murthy,15.3324,76.1866
+INC-174,Ballari,Drug Offense,High,Under Investigation,2025-11-01,Cowl Bazaar,Synthetic drug distribution network bust in urban area,PI Nandini Gowda,15.1559,76.9175
+INC-175,Bengaluru Urban,Theft,Medium,Under Investigation,2025-11-05,Electronic City,Laptop theft from unattended vehicle at parking lot,PI Nandini Gowda,12.9721,77.646
+INC-176,Kalaburagi,Burglary,High,Closed,2025-11-05,Sedam Road,Office burglary — computer equipment and documents stolen,PSI Vijay Patil,17.2909,76.8066
+INC-177,Bengaluru Urban,Assault,High,Closed,2025-11-06,Yelahanka,Assault with blunt object during property dispute altercation,PI Suresh Naik,12.9757,77.6431
+INC-178,Bengaluru Urban,Theft,Medium,Closed,2025-11-06,Koramangala,Cash theft from shop counter while owner was distracted,PSI Harish B.,12.9981,77.5892
+INC-179,Chitradurga,Domestic Violence,Medium,Under Investigation,2025-11-07,Devigiri,Protection order sought following repeated harassment at home,PI Mohan Gowda,14.2101,76.3671
+INC-180,Chikkaballapur,Theft,Low,Open,2025-11-07,Chikkaballapur Town,Gold chain snatching near Chikkaballapur Town market during peak shopping hours,ASI Manjunath S.,13.3859,77.6889
+INC-181,Bengaluru Urban,Burglary,High,Open,2025-11-09,BTM Layout,House break-in while family was away on vacation,PSI Ramesh H.R.,12.9288,77.5362
+INC-182,Ramanagara,Theft,Low,Under Investigation,2025-11-10,Magadi Road,Mobile phone snatching near bus stand by motorcycle-borne offenders,PI Mohan Gowda,12.7367,77.2349
+INC-183,Mandya,Kidnapping,Critical,Under Investigation,2025-11-14,Mandya Town,Kidnapping for ransom — victim abducted from workplace,ASI Sunitha M.,12.464,76.9521
+INC-184,Mysuru,Drug Offense,High,Open,2025-11-15,Vijayanagar,Cross-border drug trafficking interdiction at highway check post,PSI Anitha Reddy,12.3068,76.6729
+INC-185,Hassan,Robbery,Critical,Closed,2025-11-16,Campus Area,ATM customer robbed at knifepoint after withdrawal,PI Nandini Gowda,12.9921,76.0576
+INC-186,Udupi,Theft,Medium,Closed,2025-11-17,Kundapura Road,Copper wire theft from construction site reported by site supervisor,ASI Priya Shetty,13.394,74.7946
+INC-187,Haveri,Assault,Critical,Under Investigation,2025-11-17,Haveri Town,Bar fight escalated into serious assault injuring two persons,PSI Anitha Reddy,14.8349,75.3862
+INC-188,Kodagu,Cybercrime,Critical,Open,2025-11-17,Madikeri Town,Ransomware attack on SME server with data encryption,ASI Priya Shetty,12.4449,75.7546
+INC-189,Kodagu,Burglary,High,Under Investigation,2025-11-22,Somwarpet,Residential burglary — jewellery and cash stolen from locked house,PI Deepak Joshi,12.4294,75.7119
+INC-190,Chitradurga,Burglary,High,Under Investigation,2025-11-26,Hosadurga Road,House break-in while family was away on vacation,PI Prakash Babu,14.2397,76.4271
+INC-191,Ramanagara,Theft,Medium,Closed,2025-11-27,Channapatna,Copper wire theft from construction site reported by site supervisor,PSI Vijay Patil,12.723,77.3132
+INC-192,Yadgir,Theft,Medium,Closed,2025-11-30,Saidapur,Two-wheeler stolen from Saidapur residential parking area during night hours,PSI Anitha Reddy,16.8036,77.1471
+INC-193,Haveri,Domestic Violence,Medium,Closed,2025-12-01,Haveri Town,Protection order sought following repeated harassment at home,PI Suresh Naik,14.7762,75.4633
+INC-194,Koppal,Burglary,Medium,Open,2025-12-03,Karatagi,Residential burglary — jewellery and cash stolen from locked house,PSI Ramesh H.R.,15.3567,76.1371
+INC-195,Ballari,Assault,High,Under Investigation,2025-12-04,Cantonment,Physical assault following road rage incident at traffic junction,PI Suresh Naik,15.1584,76.8904
+INC-196,Kalaburagi,Domestic Violence,High,Closed,2025-12-04,Jewargi Cross,Domestic violence complaint filed by spouse at police station,PI Suresh Naik,17.323,76.8545
+INC-197,Bengaluru Urban,Fraud,Medium,Open,2025-12-08,Marathahalli,Matrimonial fraud extracting money from victim family,ASI Kavitha B.N.,13.0037,77.5668
+INC-198,Mysuru,Domestic Violence,Medium,Under Investigation,2025-12-08,Gokulam,Protection order sought following repeated harassment at home,PI Mohan Gowda,12.3093,76.6095
+INC-199,Bengaluru Urban,Cybercrime,High,Under Investigation,2025-12-10,BTM Layout,UPI fraud — victim lost money via fake payment request link,PSI Anitha Reddy,12.9648,77.5935
+INC-200,Mysuru,Theft,Low,Under Investigation,2025-12-12,Vijayanagar,Laptop theft from unattended vehicle at parking lot,PSI Vijay Patil,12.2869,76.6843
+INC-201,Chamarajanagar,Kidnapping,Critical,Under Investigation,2025-12-14,Yelandur Cross,Attempted kidnapping foiled by bystanders near school,PSI Ramesh H.R.,11.8684,76.9567
+INC-202,Bengaluru Urban,Domestic Violence,Medium,Closed,2025-12-14,Indiranagar,Domestic violence complaint filed by spouse at police station,PSI Divya Hegde,12.9768,77.6347
+INC-203,Gadag,Theft,Medium,Open,2025-12-14,Mulgund Road,Mobile phone snatching near bus stand by motorcycle-borne offenders,ASI Lakshmi Devi,15.3739,75.6463
+INC-204,Uttara Kannada,Murder,Critical,Open,2025-12-17,Karwar Port,Homicide reported following altercation at Karwar Port residential premises,PI Suresh Naik,14.7894,74.6338
+INC-205,Kalaburagi,Burglary,High,Closed,2025-12-17,Malkhed Road,House break-in while family was away on vacation,PI Deepak Joshi,17.3107,76.8143
+INC-206,Shivamogga,Theft,Low,Closed,2025-12-17,Vinoba Nagar,Cash theft from shop counter while owner was distracted,PSI Divya Hegde,13.915,75.5855
+INC-207,Shivamogga,Theft,Low,Closed,2025-12-18,Durgigudi,Two-wheeler stolen from Durgigudi residential parking area during night hours,PSI Ramesh H.R.,13.9817,75.6176
+INC-208,Bagalkot,Robbery,High,Open,2025-12-19,Vidyagiri,Snatch-and-run robbery of business cash collection,PSI Rajesh Kumar,16.114,75.6172
+INC-209,Bengaluru Urban,Theft,Low,Open,2025-12-19,Hebbal,Two-wheeler stolen from Hebbal residential parking area during night hours,PI Shweta Rao,12.9205,77.6432
+INC-210,Chamarajanagar,Assault,High,Under Investigation,2025-12-23,Hanur,Assault with blunt object during property dispute altercation,ASI Lakshmi Devi,11.8913,76.9459
+INC-211,Hubballi-Dharwad,Domestic Violence,Medium,Under Investigation,2025-12-24,Gokul Road,Protection order sought following repeated harassment at home,PSI Vijay Patil,15.3779,75.0659
+INC-212,Bengaluru Urban,Burglary,High,Open,2025-12-24,Hebbal,Commercial burglary at electronics shop after closing hours,PSI Harish B.,12.9894,77.6332
+INC-213,Vijayanagara,Robbery,High,Open,2025-12-29,Hospete,ATM customer robbed at knifepoint after withdrawal,PI Suresh Naik,15.2899,76.5187
+INC-214,Hubballi-Dharwad,Cybercrime,Critical,Open,2025-12-30,Gokul Road,Ransomware attack on SME server with data encryption,ASI Meena Kumari,15.3258,75.11
+INC-215,Bengaluru Urban,Burglary,Medium,Closed,2026-01-02,MG Road,Residential burglary — jewellery and cash stolen from locked house,PSI Harish B.,12.9631,77.57
+INC-216,Bengaluru Urban,Burglary,High,Under Investigation,2026-01-03,Koramangala,Attempted burglary foiled by alarm system at warehouse,PI Nandini Gowda,12.9187,77.6382
+INC-217,Vijayapura,Drug Offense,Critical,Closed,2026-01-04,Station Road,NDPS seizure — contraband recovered during vehicle checkpoint,ASI Kavitha B.N.,16.8444,75.7548
+INC-218,Vijayanagara,Drug Offense,High,Open,2026-01-07,Hospete,Synthetic drug distribution network bust in urban area,PSI Vijay Patil,15.3654,76.4905
+INC-219,Belagavi,Fraud,High,Open,2026-01-08,Camp Area,Investment scam promising high returns to local traders,PSI Ramesh H.R.,15.867,74.533
+INC-220,Kodagu,Assault,Medium,Under Investigation,2026-01-09,Kushalnagar,Group assault during local festival near temple premises,ASI Lakshmi Devi,12.3826,75.7588
+INC-221,Davangere,Theft,Low,Under Investigation,2026-01-15,Azad Nagar,Bicycle stolen from apartment compound entrance,ASI Priya Shetty,14.4213,75.8633
+INC-222,Davangere,Drug Offense,High,Closed,2026-01-15,Chigateri,Synthetic drug distribution network bust in urban area,PSI Rajesh Kumar,14.4538,75.9407
+INC-223,Chikkaballapur,Theft,Medium,Open,2026-01-16,Chikkaballapur Town,Gold chain snatching near Chikkaballapur Town market during peak shopping hours,PSI Harish B.,13.487,77.674
+INC-224,Gadag,Fraud,Medium,Open,2026-01-16,Station Area,Matrimonial fraud extracting money from victim family,PSI Divya Hegde,15.4305,75.6576
+INC-225,Bengaluru Urban,Drug Offense,Critical,Under Investigation,2026-01-21,Jayanagar,Cross-border drug trafficking interdiction at highway check post,ASI Priya Shetty,12.9624,77.577
+INC-226,Ballari,Drug Offense,High,Closed,2026-01-22,Toranagallu Road,NDPS seizure — contraband recovered during vehicle checkpoint,PSI Ramesh H.R.,15.1495,76.8916
+INC-227,Uttara Kannada,Theft,Low,Open,2026-01-24,Sirsi Road,Gold chain snatching near Sirsi Road market during peak shopping hours,PI Mohan Gowda,14.8138,74.6348
+INC-228,Bengaluru Urban,Domestic Violence,Medium,Open,2026-01-24,Hebbal,Dowry-related harassment complaint registered by victim,PSI Arun Kulkarni,12.9558,77.6092
+INC-229,Bengaluru Urban,Cybercrime,High,Open,2026-01-24,MG Road,Ransomware attack on SME server with data encryption,PSI Rajesh Kumar,13.018,77.5749
+INC-230,Bengaluru Urban,Domestic Violence,High,Open,2026-01-24,Marathahalli,Domestic assault during family dispute — victim hospitalized,PSI Divya Hegde,12.9539,77.6436
+INC-231,Udupi,Theft,Low,Open,2026-01-26,Car Street,Cash theft from shop counter while owner was distracted,PSI Arun Kulkarni,13.3613,74.7347
+INC-232,Bengaluru Urban,Assault,Critical,Closed,2026-01-26,Indiranagar,Assault with blunt object during property dispute altercation,PSI Vijay Patil,13.0036,77.5844
+INC-233,Udupi,Theft,Low,Under Investigation,2026-01-26,Malpe,Laptop theft from unattended vehicle at parking lot,PI Mohan Gowda,13.3202,74.6876
+INC-234,Gadag,Cybercrime,High,Under Investigation,2026-01-30,Mulgund Road,Phishing attack compromised corporate email credentials,PSI Vijay Patil,15.3961,75.586
+INC-235,Bengaluru Urban,Fraud,High,Under Investigation,2026-01-30,BTM Layout,Investment scam promising high returns to local traders,PSI Ramesh H.R.,13.0207,77.601
+INC-236,Chikkamagaluru,Theft,Medium,Closed,2026-01-31,Koppa Road,Bicycle stolen from apartment compound entrance,PSI Vijay Patil,13.2637,75.749
+INC-237,Bengaluru Urban,Theft,Medium,Under Investigation,2026-02-01,Hebbal,Bicycle stolen from apartment compound entrance,ASI Lakshmi Devi,12.9816,77.6081
+INC-238,Bengaluru Urban,Theft,Medium,Closed,2026-02-01,Koramangala,Cash theft from shop counter while owner was distracted,PI Deepak Joshi,12.9619,77.5543
+INC-239,Hubballi-Dharwad,Theft,Medium,Under Investigation,2026-02-04,Vidyanagar,Mobile phone snatching near bus stand by motorcycle-borne offenders,PI Shweta Rao,15.3061,75.1081
+INC-240,Bengaluru Rural,Fraud,Medium,Open,2026-02-08,Doddaballapur,Investment scam promising high returns to local traders,PSI Anitha Reddy,13.2542,77.561
+INC-241,Bengaluru Urban,Theft,Low,Closed,2026-02-09,Yelahanka,Mobile phone snatching near bus stand by motorcycle-borne offenders,PI Suresh Naik,13.0063,77.572
+INC-242,Dakshina Kannada,Murder,Critical,Closed,2026-02-11,Bendoor,Murder case registered — body found in isolated area,PSI Vijay Patil,12.9389,74.8388
+INC-243,Chikkaballapur,Theft,Low,Closed,2026-02-13,Sidlaghatta,Bicycle stolen from apartment compound entrance,PSI Arun Kulkarni,13.3768,77.7871
+INC-244,Bengaluru Urban,Theft,Medium,Closed,2026-02-13,Electronic City,Copper wire theft from construction site reported by site supervisor,PSI Anitha Reddy,12.9337,77.5405
+INC-245,Hubballi-Dharwad,Cybercrime,Medium,Closed,2026-02-14,Vidyanagar,Online shopping fraud — paid for goods never delivered,ASI Manjunath S.,15.3124,75.17
+INC-246,Bengaluru Rural,Drug Offense,High,Closed,2026-02-14,Devanahalli,Synthetic drug distribution network bust in urban area,PI Suresh Naik,13.1668,77.5214
+INC-247,Kalaburagi,Kidnapping,Critical,Under Investigation,2026-02-16,Super Market,Minor kidnapping case — child recovered within 48 hours,ASI Sunitha M.,17.3885,76.8373
+INC-248,Davangere,Drug Offense,High,Under Investigation,2026-02-20,PJ Extension,Cross-border drug trafficking interdiction at highway check post,PSI Arun Kulkarni,14.4246,75.909
+INC-249,Chikkaballapur,Theft,Low,Under Investigation,2026-02-22,Chikkaballapur Town,Agricultural pump motor theft from farm shed overnight,PSI Divya Hegde,13.4317,77.711
+INC-250,Bengaluru Urban,Theft,Medium,Open,2026-02-25,Electronic City,Copper wire theft from construction site reported by site supervisor,ASI Kavitha B.N.,12.9198,77.574
+INC-251,Bengaluru Urban,Assault,Critical,Under Investigation,2026-02-26,Marathahalli,Physical assault following road rage incident at traffic junction,ASI Lakshmi Devi,12.945,77.5981
+INC-252,Bengaluru Urban,Fraud,Medium,Closed,2026-03-01,Hebbal,Job recruitment scam collecting fees via social media,PSI Vijay Patil,13.0304,77.6151
+INC-253,Bengaluru Urban,Theft,Medium,Open,2026-03-04,MG Road,Laptop theft from unattended vehicle at parking lot,PSI Arun Kulkarni,12.9359,77.6325
+INC-254,Hubballi-Dharwad,Domestic Violence,Medium,Open,2026-03-06,Station Road,Domestic assault during family dispute — victim hospitalized,PI Mohan Gowda,15.4163,75.1562
+INC-255,Bengaluru Urban,Theft,Low,Open,2026-03-06,MG Road,Bicycle stolen from apartment compound entrance,PI Prakash Babu,12.9395,77.5899
+INC-256,Hubballi-Dharwad,Fraud,High,Closed,2026-03-06,Gokul Road,Real estate fraud using forged property documents,ASI Priya Shetty,15.3247,75.1214
+INC-257,Mysuru,Theft,Low,Open,2026-03-08,Vijayanagar,Mobile phone snatching near bus stand by motorcycle-borne offenders,PSI Rajesh Kumar,12.3191,76.6355
+INC-258,Tumakuru,Robbery,Critical,Open,2026-03-12,Gubbi Cross,Highway robbery of cash-carrying courier van,ASI Lakshmi Devi,13.28,77.1509
+INC-259,Udupi,Cybercrime,Medium,Under Investigation,2026-03-16,Malpe,Online shopping fraud — paid for goods never delivered,PI Deepak Joshi,13.3026,74.7193
+INC-260,Bidar,Fraud,High,Under Investigation,2026-03-17,Chidri Road,Job recruitment scam collecting fees via social media,PSI Harish B.,17.964,77.4727
+INC-261,Hubballi-Dharwad,Assault,High,Under Investigation,2026-03-18,Gokul Road,Assault on auto driver over fare disagreement,PSI Divya Hegde,15.3156,75.1289
+INC-262,Chikkaballapur,Fraud,Medium,Open,2026-03-20,Gauribidanur Road,Matrimonial fraud extracting money from victim family,ASI Priya Shetty,13.4169,77.7497
+INC-263,Raichur,Burglary,High,Under Investigation,2026-03-21,Sindhanur Road,Residential burglary — jewellery and cash stolen from locked house,PSI Rajesh Kumar,16.2465,77.3277
+INC-264,Uttara Kannada,Fraud,Medium,Open,2026-03-23,Ankola Road,Real estate fraud using forged property documents,PI Deepak Joshi,14.7573,74.6269
+INC-265,Davangere,Cybercrime,Critical,Under Investigation,2026-03-24,Azad Nagar,Ransomware attack on SME server with data encryption,ASI Kavitha B.N.,14.439,75.9451
+INC-266,Bengaluru Urban,Theft,Low,Open,2026-03-24,Jayanagar,Gold chain snatching near Jayanagar market during peak shopping hours,PSI Arun Kulkarni,12.9754,77.6464
+INC-267,Bengaluru Rural,Burglary,High,Closed,2026-03-26,Devanahalli,House break-in while family was away on vacation,ASI Manjunath S.,13.176,77.629
+INC-268,Hubballi-Dharwad,Theft,Low,Open,2026-03-27,Vidyanagar,Laptop theft from unattended vehicle at parking lot,ASI Manjunath S.,15.355,75.1525
+INC-269,Gadag,Theft,Low,Closed,2026-03-28,Mundaragi Road,Mobile phone snatching near bus stand by motorcycle-borne offenders,PSI Anitha Reddy,15.3986,75.6136
+INC-270,Mysuru,Theft,Medium,Closed,2026-03-28,Vijayanagar,Laptop theft from unattended vehicle at parking lot,ASI Meena Kumari,12.3437,76.6663
+INC-271,Kalaburagi,Domestic Violence,Medium,Closed,2026-04-03,Malkhed Road,Domestic violence complaint filed by spouse at police station,PSI Rajesh Kumar,17.3619,76.8542
+INC-272,Uttara Kannada,Cybercrime,Critical,Under Investigation,2026-04-03,Sirsi Road,Online shopping fraud — paid for goods never delivered,ASI Sunitha M.,14.8386,74.6533
+INC-273,Bengaluru Urban,Theft,Low,Closed,2026-04-07,Whitefield,Cash theft from shop counter while owner was distracted,PSI Arun Kulkarni,12.9319,77.5601
+INC-274,Vijayanagara,Burglary,High,Under Investigation,2026-04-09,Kamalapura,Commercial burglary at electronics shop after closing hours,ASI Lakshmi Devi,15.3736,76.4563
+INC-275,Davangere,Burglary,Medium,Open,2026-04-11,MCC B Block,Commercial burglary at electronics shop after closing hours,PI Prakash Babu,14.4992,75.863
+INC-276,Hubballi-Dharwad,Drug Offense,High,Under Investigation,2026-04-13,Gokul Road,Synthetic drug distribution network bust in urban area,PI Prakash Babu,15.3254,75.0733
+INC-277,Tumakuru,Drug Offense,High,Under Investigation,2026-04-15,Gubbi Cross,NDPS seizure — contraband recovered during vehicle checkpoint,PSI Vijay Patil,13.3408,77.1765
+INC-278,Belagavi,Domestic Violence,High,Closed,2026-04-17,Shahapur,Dowry-related harassment complaint registered by victim,ASI Priya Shetty,15.8488,74.521
+INC-279,Bengaluru Urban,Theft,Low,Under Investigation,2026-04-22,Indiranagar,Laptop theft from unattended vehicle at parking lot,ASI Priya Shetty,13.0169,77.5672
+INC-280,Chamarajanagar,Robbery,Critical,Under Investigation,2026-04-23,Gunhouse Road,Highway robbery of cash-carrying courier van,PSI Vijay Patil,11.9258,76.9456
+INC-281,Davangere,Theft,Medium,Open,2026-04-24,Azad Nagar,Gold chain snatching near Azad Nagar market during peak shopping hours,ASI Manjunath S.,14.445,75.939
+INC-282,Kodagu,Theft,Low,Closed,2026-04-27,Somwarpet,Laptop theft from unattended vehicle at parking lot,ASI Kavitha B.N.,12.4443,75.7426
+INC-283,Bengaluru Urban,Drug Offense,High,Closed,2026-04-27,MG Road,NDPS seizure — contraband recovered during vehicle checkpoint,PSI Harish B.,12.9685,77.5967
+INC-284,Raichur,Drug Offense,Critical,Open,2026-04-27,Sindhanur Road,Drug peddling near college campus — two suspects detained,ASI Lakshmi Devi,16.1553,77.3316
+INC-285,Chikkamagaluru,Fraud,Medium,Closed,2026-04-29,Koppa Road,Job recruitment scam collecting fees via social media,ASI Lakshmi Devi,13.3119,75.8193
+INC-286,Hassan,Theft,Low,Closed,2026-05-01,Arsikere Road,Two-wheeler stolen from Arsikere Road residential parking area during night hours,PSI Arun Kulkarni,13.0593,76.0495
+INC-287,Chikkamagaluru,Fraud,High,Under Investigation,2026-05-01,MG Road,Matrimonial fraud extracting money from victim family,ASI Sunitha M.,13.3484,75.7312
+INC-288,Bengaluru Urban,Drug Offense,Critical,Closed,2026-05-08,Jayanagar,Drug peddling near college campus — two suspects detained,PI Deepak Joshi,12.9655,77.5394
+INC-289,Mysuru,Burglary,Medium,Open,2026-05-08,Saraswathipuram,House break-in while family was away on vacation,PI Mohan Gowda,12.2542,76.6711
+INC-290,Bengaluru Urban,Robbery,Critical,Open,2026-05-12,Hebbal,Highway robbery of cash-carrying courier van,PSI Rajesh Kumar,12.9651,77.629
+INC-291,Mysuru,Theft,Medium,Under Investigation,2026-05-13,Bannimantap,Mobile phone snatching near bus stand by motorcycle-borne offenders,PSI Divya Hegde,12.3419,76.6534
+INC-292,Vijayanagara,Cybercrime,High,Under Investigation,2026-05-15,Kudligi Road,Ransomware attack on SME server with data encryption,PSI Anitha Reddy,15.2826,76.4001
+INC-293,Kolar,Theft,Low,Open,2026-05-15,Tamaka,Gold chain snatching near Tamaka market during peak shopping hours,PI Suresh Naik,13.1938,78.109
+INC-294,Tumakuru,Assault,Critical,Closed,2026-05-17,Gubbi Cross,Assault with blunt object during property dispute altercation,PI Mohan Gowda,13.3162,77.1356
+INC-295,Chikkamagaluru,Assault,Medium,Under Investigation,2026-05-21,Koppa Road,Group assault during local festival near temple premises,PSI Rajesh Kumar,13.3337,75.8066
+INC-296,Ramanagara,Drug Offense,High,Under Investigation,2026-05-23,Bidadi,Synthetic drug distribution network bust in urban area,ASI Sunitha M.,12.7407,77.2393
+INC-297,Davangere,Theft,Low,Under Investigation,2026-05-24,MCC B Block,Agricultural pump motor theft from farm shed overnight,PI Deepak Joshi,14.4784,75.8794
+INC-298,Bidar,Theft,Medium,Open,2026-05-27,Halbarga,Two-wheeler stolen from Halbarga residential parking area during night hours,PI Ganesh Murthy,17.8572,77.462
+INC-299,Yadgir,Drug Offense,Critical,Under Investigation,2026-05-31,Saidapur,Drug peddling near college campus — two suspects detained,PI Nandini Gowda,16.8294,77.0971
+INC-300,Bengaluru Urban,Theft,Medium,Closed,2026-06-01,Koramangala,Two-wheeler theft from apartment basement parking in Koramangala,PSI Arun Kulkarni,12.9973,77.5595
+INC-301,Bengaluru Urban,Cybercrime,High,Open,2026-06-02,Indiranagar,"OTP fraud call targeting IT professional — ₹85,000 lost in Indiranagar",ASI Sunitha M.,12.9477,77.631
+INC-302,Mysuru,Burglary,High,Under Investigation,2026-06-02,Gokulam,Residential burglary in Gokulam — jewellery and cash stolen while family away,PI Deepak Joshi,12.2587,76.594
+INC-303,Hubballi-Dharwad,Robbery,Critical,Open,2026-06-03,Station Road,Armed robbery at mobile store on Station Road during evening hours,PI Nandini Gowda,15.3178,75.1282
+INC-304,Belagavi,Fraud,Medium,Closed,2026-06-03,Camp Area,Fake loan approval scam defrauding small business owner in Camp Area,ASI Lakshmi Devi,15.8381,74.4646
+INC-305,Dakshina Kannada,Drug Offense,High,Under Investigation,2026-06-04,Port Area,NDPS seizure near port area — 1.8kg contraband recovered from vehicle,PI Deepak Joshi,12.9406,74.8897
+INC-306,Tumakuru,Assault,Medium,Closed,2026-06-04,B.H. Road,Assault during land dispute altercation on B.H. Road,PI Deepak Joshi,13.3265,77.0615
+INC-307,Vijayapura,Domestic Violence,Medium,Open,2026-06-05,Almel,Dowry-related harassment complaint registered by victim,ASI Priya Shetty,16.786,75.7174
+INC-308,Kolar,Theft,Low,Closed,2026-06-05,Robertsonpet,Gold chain snatching near Robertsonpet bus stand during morning rush,PI Shweta Rao,13.1561,78.1204
+INC-309,Davangere,Burglary,Medium,Open,2026-06-06,PJ Extension,Commercial burglary at hardware shop in PJ Extension after closing,PSI Vijay Patil,14.432,75.9149
+INC-310,Shivamogga,Domestic Violence,High,Open,2026-06-06,Gopala,Domestic violence complaint filed in Gopala — victim admitted to district hospital,PSI Ramesh H.R.,13.9576,75.5613
+INC-311,Raichur,Theft,Medium,Closed,2026-06-07,Station Area,Copper cable theft from railway yard near Station Area,PSI Ramesh H.R.,16.1797,77.3057
+INC-312,Udupi,Cybercrime,Medium,Closed,2026-06-07,Malpe,Online payment fraud targeting tourists at Malpe beach vendors,PI Suresh Naik,13.3317,74.7194
+INC-313,Bengaluru Urban,Fraud,High,Under Investigation,2026-06-08,Whitefield,Real estate advance fraud using forged documents in Whitefield,ASI Priya Shetty,13.0027,77.5426

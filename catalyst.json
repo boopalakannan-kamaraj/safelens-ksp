@@ -1,0 +1,7 @@
+{
+  "functions": {
+    "targets": ["safelens_api"],
+    "ignore": [],
+    "source": "functions"
+  }
+}

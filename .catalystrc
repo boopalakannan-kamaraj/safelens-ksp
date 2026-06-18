@@ -1,0 +1,30 @@
+{
+  "defaults": {
+    "project": 1,
+    "env": 1
+  },
+  "actives": {
+    "project": 1,
+    "env": 1
+  },
+  "projects": [
+    {
+      "idx": 1,
+      "id": "47091000000019001",
+      "name": "SafeLens",
+      "domain": {
+        "id": "50043101152",
+        "name": "safelens-60073566542.development"
+      },
+      "timezone": "Asia/Kolkata",
+      "env": [
+        {
+          "idx": 1,
+          "id": "60073566542",
+          "name": "Development",
+          "type": 3
+        }
+      ]
+    }
+  ]
+}
