@@ -11,7 +11,6 @@ import {
   btnSegmentActive,
   btnSegmentGroup,
   btnSecondary,
-  btnIcon,
   formCheckLabel,
   formCheckbox,
   formToolbar,
@@ -131,6 +130,7 @@ export default function CrimeMap() {
   const location = useLocation()
   const mapRef = useRef<HTMLDivElement>(null)
   const mapInstance = useRef<L.Map | null>(null)
+  const pendingFocusIncidentRef = useRef<CrimeIncident | null>(null)
   const markersLayer = useRef<L.LayerGroup | null>(null)
   const heatmapLayer = useRef<L.LayerGroup | null>(null)
   const pulseLayer = useRef<L.LayerGroup | null>(null)
@@ -169,10 +169,34 @@ export default function CrimeMap() {
   }, [])
 
   const exitDistrictDrill = useCallback(() => {
+    pendingFocusIncidentRef.current = null
     setDrilledDistrictId(null)
     setSelectedIncident(null)
     mapInstance.current?.flyTo(KARNATAKA_CENTER, 7, { duration: 1 })
   }, [])
+
+  const focusIncidentOnMap = useCallback(
+    (incident: CrimeIncident) => {
+      setHighlightedIncidentId(incident.id)
+
+      if (drilledDistrictId === incident.districtId) {
+        openIncidentDetail(incident)
+        mapInstance.current?.flyTo([incident.lat, incident.lng], 15, { duration: 1 })
+        return
+      }
+
+      const district = districts.find((d) => d.id === incident.districtId)
+      if (district) {
+        pendingFocusIncidentRef.current = incident
+        drillIntoDistrict(district)
+        return
+      }
+
+      openIncidentDetail(incident)
+      mapInstance.current?.flyTo([incident.lat, incident.lng], 15, { duration: 1 })
+    },
+    [drilledDistrictId, districts, drillIntoDistrict, openIncidentDetail],
+  )
 
   useEffect(() => {
     if (!mapInstance.current) return
@@ -415,6 +439,14 @@ export default function CrimeMap() {
     const district = districts.find((d) => d.id === drilledDistrictId)
     if (!district) return
 
+    const pendingIncident = pendingFocusIncidentRef.current
+    if (pendingIncident?.districtId === drilledDistrictId) {
+      pendingFocusIncidentRef.current = null
+      mapInstance.current.flyTo([pendingIncident.lat, pendingIncident.lng], 15, { duration: 1 })
+      openIncidentDetail(pendingIncident)
+      return
+    }
+
     const districtIncidents = incidents.filter((inc) => {
       if (inc.districtId !== drilledDistrictId) return false
       if (selectedCategory !== 'All' && inc.category !== selectedCategory) return false
@@ -431,7 +463,7 @@ export default function CrimeMap() {
     }
 
     mapInstance.current.flyTo([district.lat, district.lng], 11, { duration: 1 })
-  }, [drilledDistrictId, districts, incidents, selectedCategory, districtFilter, loading])
+  }, [drilledDistrictId, districts, incidents, selectedCategory, districtFilter, loading, openIncidentDetail])
 
   useEffect(() => {
     if (!mapInstance.current || loading) return
@@ -537,19 +569,6 @@ export default function CrimeMap() {
           </button>
         ))}
       </div>
-      <button
-        type="button"
-        onClick={() => setSidebarOpen((open) => !open)}
-        className={btnIcon}
-        aria-label={sidebarOpen ? 'Hide incident list' : 'Show incident list'}
-        title={sidebarOpen ? 'Hide incident list' : 'Show incident list'}
-      >
-        {sidebarOpen ? (
-          <PanelRightClose className="h-5 w-5" aria-hidden />
-        ) : (
-          <PanelRightOpen className="h-5 w-5" aria-hidden />
-        )}
-      </button>
     </div>
   )
 
@@ -724,6 +743,8 @@ export default function CrimeMap() {
             <CrimeMapIncidentSidebar
               incidents={sidebarIncidents}
               selectedCategory={selectedCategory}
+              selectedIncidentId={selectedIncident?.id}
+              onIncidentSelect={focusIncidentOnMap}
             />
           </div>
         )}

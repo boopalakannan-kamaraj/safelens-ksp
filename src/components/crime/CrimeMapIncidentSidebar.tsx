@@ -5,13 +5,31 @@ import { severityColor, statusBadge } from '../../utils/helpers'
 interface CrimeMapIncidentSidebarProps {
   incidents: CrimeIncident[]
   selectedCategory: string
+  selectedIncidentId?: string | null
+  onIncidentSelect: (incident: CrimeIncident) => void
 }
 
-function IncidentListCard({ incident }: { incident: CrimeIncident }) {
+function IncidentListCard({
+  incident,
+  selected,
+  onSelect,
+}: {
+  incident: CrimeIncident
+  selected: boolean
+  onSelect: (incident: CrimeIncident) => void
+}) {
   const severityBg = severityColor(incident.severity)
 
   return (
-    <article className="flex gap-2.5 rounded-lg border border-border/60 bg-navy-950/40 px-2.5 py-2">
+    <button
+      type="button"
+      onClick={() => onSelect(incident)}
+      className={`flex w-full gap-2.5 rounded-lg border px-2.5 py-2 text-left transition-colors ${
+        selected
+          ? 'border-accent/50 bg-accent/10 ring-1 ring-accent/30'
+          : 'border-border/60 bg-navy-950/40 hover:border-border hover:bg-navy-950/70'
+      }`}
+    >
       <div
         className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full ring-1 ring-white/20"
         style={{ backgroundColor: severityBg }}
@@ -38,13 +56,15 @@ function IncidentListCard({ incident }: { incident: CrimeIncident }) {
           </span>
         </div>
       </div>
-    </article>
+    </button>
   )
 }
 
 export default function CrimeMapIncidentSidebar({
   incidents,
   selectedCategory,
+  selectedIncidentId,
+  onIncidentSelect,
 }: CrimeMapIncidentSidebarProps) {
   return (
     <aside
@@ -68,7 +88,11 @@ export default function CrimeMapIncidentSidebar({
           <ul className="space-y-1.5">
             {incidents.map((incident) => (
               <li key={incident.id}>
-                <IncidentListCard incident={incident} />
+                <IncidentListCard
+                  incident={incident}
+                  selected={incident.id === selectedIncidentId}
+                  onSelect={onIncidentSelect}
+                />
               </li>
             ))}
           </ul>
