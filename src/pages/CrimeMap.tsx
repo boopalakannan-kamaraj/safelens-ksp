@@ -4,8 +4,8 @@ import L from 'leaflet'
 import { PanelRightClose, PanelRightOpen } from 'lucide-react'
 import PageHeader from '../components/ui/PageHeader'
 import NativeSelect from '../components/ui/NativeSelect'
-import IncidentDetailDrawer from '../components/ui/IncidentDetailDrawer'
 import CrimeMapIncidentSidebar from '../components/crime/CrimeMapIncidentSidebar'
+import CrimeMapIncidentCard from '../components/crime/CrimeMapIncidentCard'
 import {
   btnSegment,
   btnSegmentActive,
@@ -159,6 +159,15 @@ export default function CrimeMap() {
     setSelectedIncident(incident)
   }, [])
 
+  const selectIncidentOnMap = useCallback(
+    (incident: CrimeIncident) => {
+      setHighlightedIncidentId(incident.id)
+      openIncidentDetail(incident)
+      mapInstance.current?.flyTo([incident.lat, incident.lng], 15, { duration: 0.8 })
+    },
+    [openIncidentDetail],
+  )
+
   const closeIncidentDetail = useCallback(() => {
     setSelectedIncident(null)
   }, [])
@@ -180,8 +189,7 @@ export default function CrimeMap() {
       setHighlightedIncidentId(incident.id)
 
       if (drilledDistrictId === incident.districtId) {
-        openIncidentDetail(incident)
-        mapInstance.current?.flyTo([incident.lat, incident.lng], 15, { duration: 1 })
+        selectIncidentOnMap(incident)
         return
       }
 
@@ -192,10 +200,9 @@ export default function CrimeMap() {
         return
       }
 
-      openIncidentDetail(incident)
-      mapInstance.current?.flyTo([incident.lat, incident.lng], 15, { duration: 1 })
+      selectIncidentOnMap(incident)
     },
-    [drilledDistrictId, districts, drillIntoDistrict, openIncidentDetail],
+    [drilledDistrictId, districts, drillIntoDistrict, selectIncidentOnMap],
   )
 
   useEffect(() => {
@@ -402,7 +409,7 @@ export default function CrimeMap() {
         })
 
         marker.on('click', () => {
-          openIncidentDetail(inc)
+          selectIncidentOnMap(inc)
         })
 
         marker.addTo(markersLayer.current!)
@@ -430,7 +437,7 @@ export default function CrimeMap() {
     highlightedIncidentId,
     drilledDistrictId,
     drillIntoDistrict,
-    openIncidentDetail,
+    selectIncidentOnMap,
   ])
 
   useEffect(() => {
@@ -443,7 +450,7 @@ export default function CrimeMap() {
     if (pendingIncident?.districtId === drilledDistrictId) {
       pendingFocusIncidentRef.current = null
       mapInstance.current.flyTo([pendingIncident.lat, pendingIncident.lng], 15, { duration: 1 })
-      openIncidentDetail(pendingIncident)
+      selectIncidentOnMap(pendingIncident)
       return
     }
 
@@ -463,7 +470,7 @@ export default function CrimeMap() {
     }
 
     mapInstance.current.flyTo([district.lat, district.lng], 11, { duration: 1 })
-  }, [drilledDistrictId, districts, incidents, selectedCategory, districtFilter, loading, openIncidentDetail])
+  }, [drilledDistrictId, districts, incidents, selectedCategory, districtFilter, loading, selectIncidentOnMap])
 
   useEffect(() => {
     if (!mapInstance.current || loading) return
@@ -487,22 +494,17 @@ export default function CrimeMap() {
 
   const categories = ['All', ...new Set(incidents.map((i) => i.category))]
 
-  const drawerIncidents = useMemo(() => {
-    return incidents.filter((inc) => {
-      if (selectedCategory !== 'All' && inc.category !== selectedCategory) return false
-      if (districtFilter && inc.districtName !== districtFilter) return false
-      if (drilledDistrictId) return inc.districtId === drilledDistrictId
-      if (viewMode === 'incidents') return true
-      return false
-    })
-  }, [incidents, selectedCategory, districtFilter, drilledDistrictId, viewMode])
-
   const sidebarIncidents = useMemo(() => {
     return incidents.filter((inc) => {
       if (selectedCategory !== 'All' && inc.category !== selectedCategory) return false
       return true
     })
   }, [incidents, selectedCategory])
+
+  const cardIncidents = useMemo(() => {
+    if (!selectedIncident) return []
+    return sidebarIncidents.filter((inc) => inc.districtId === selectedIncident.districtId)
+  }, [sidebarIncidents, selectedIncident])
 
   if (error) {
     return <ErrorState message={error} onRetry={() => setReloadKey((k) => k + 1)} />
@@ -729,11 +731,11 @@ export default function CrimeMap() {
           </div>
         </div>
 
-        <IncidentDetailDrawer
+        <CrimeMapIncidentCard
           incident={selectedIncident}
-          incidents={drawerIncidents}
+          incidents={cardIncidents}
           onClose={closeIncidentDetail}
-          onSelect={openIncidentDetail}
+          onSelect={selectIncidentOnMap}
         />
         </div>
 
