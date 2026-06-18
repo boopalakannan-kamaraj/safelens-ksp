@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useLocation, useSearchParams } from 'react-router-dom'
 import L from 'leaflet'
-import { ChevronLeft, ChevronRight, PanelRightClose, PanelRightOpen } from 'lucide-react'
+import { PanelRightClose, PanelRightOpen } from 'lucide-react'
 import PageHeader from '../components/ui/PageHeader'
 import NativeSelect from '../components/ui/NativeSelect'
 import IncidentDetailDrawer from '../components/ui/IncidentDetailDrawer'
@@ -476,6 +476,25 @@ export default function CrimeMap() {
     return <ErrorState message={error} onRetry={() => setReloadKey((k) => k + 1)} />
   }
 
+  const incidentListTabLabel = sidebarOpen ? 'Collapse incidents list' : 'Expand incidents list'
+
+  const incidentListToggle = (positionClass: string) => (
+    <button
+      type="button"
+      onClick={() => setSidebarOpen((open) => !open)}
+      className={`pointer-events-auto absolute top-0 z-[1002] flex flex-col items-center gap-1.5 rounded-l-lg border border-r-0 border-border bg-surface/95 px-1.5 py-3 text-[10px] font-medium leading-snug text-text-muted shadow-lg backdrop-blur-sm transition-colors hover:bg-surface hover:text-white ${positionClass}`}
+      aria-label={incidentListTabLabel}
+      title={incidentListTabLabel}
+    >
+      {sidebarOpen ? (
+        <PanelRightClose className="h-4 w-4 shrink-0" aria-hidden />
+      ) : (
+        <PanelRightOpen className="h-4 w-4 shrink-0" aria-hidden />
+      )}
+      <span className="rotate-180 [writing-mode:vertical-rl]">{incidentListTabLabel}</span>
+    </button>
+  )
+
   const mapToolbar = (
     <div className={formToolbar}>
       <label className={formCheckLabel}>
@@ -586,25 +605,7 @@ export default function CrimeMap() {
             ← Back to all districts
           </button>
         )}
-        <button
-          type="button"
-          onClick={() => setSidebarOpen((open) => !open)}
-          className={`pointer-events-auto absolute right-0 top-4 z-[1002] flex items-center gap-1 rounded-l-lg border border-r-0 border-border bg-surface/95 px-2 py-2 text-xs font-medium text-text-muted shadow-lg backdrop-blur-sm transition-colors hover:bg-surface hover:text-white`}
-          aria-label={sidebarOpen ? 'Collapse incident list' : 'Expand map'}
-          title={sidebarOpen ? 'Collapse' : 'Expand'}
-        >
-          {sidebarOpen ? (
-            <>
-              <span>Collapse</span>
-              <ChevronRight className="h-4 w-4" aria-hidden />
-            </>
-          ) : (
-            <>
-              <ChevronLeft className="h-4 w-4" aria-hidden />
-              <span>Expand</span>
-            </>
-          )}
-        </button>
+        {!sidebarOpen && incidentListToggle('right-0')}
         {loading && (
           <div className="absolute inset-0 z-[1001] flex items-center justify-center bg-navy-900/80">
             <div className="flex items-center gap-3 text-text-muted">
@@ -718,10 +719,13 @@ export default function CrimeMap() {
         </div>
 
         {sidebarOpen && (
-          <CrimeMapIncidentSidebar
-            incidents={sidebarIncidents}
-            selectedCategory={selectedCategory}
-          />
+          <div className="relative shrink-0">
+            {incidentListToggle('left-0 -translate-x-full')}
+            <CrimeMapIncidentSidebar
+              incidents={sidebarIncidents}
+              selectedCategory={selectedCategory}
+            />
+          </div>
         )}
       </div>
     </div>
