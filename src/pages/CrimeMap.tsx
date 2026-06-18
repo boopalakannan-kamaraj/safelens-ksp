@@ -25,6 +25,7 @@ import {
   urbanizationColor,
 } from '../utils/socioEconomic'
 import { severityColor } from '../utils/helpers'
+import { renderCrimeCategoryIconMarkup } from '../utils/crimeCategoryIcons'
 
 const KARNATAKA_CENTER: L.LatLngExpression = [15.3173, 75.7139]
 
@@ -90,6 +91,36 @@ function createIncidentIcon(severity: CrimeIncident['severity'], highlighted = f
         "></div>`,
     iconSize: [size, size],
     iconAnchor: [anchor, anchor],
+  })
+}
+
+function createDrilledIncidentIcon(
+  category: CrimeIncident['category'],
+  severity: CrimeIncident['severity'],
+  highlighted = false,
+) {
+  const color = severityColor(severity)
+  const size = highlighted ? 28 : 22
+  const iconSize = highlighted ? 14 : 11
+  const border = highlighted ? 3 : 2
+  const iconMarkup = renderCrimeCategoryIconMarkup(category, {
+    size: iconSize,
+    color: '#ffffff',
+    strokeWidth: 2.25,
+  })
+
+  return L.divIcon({
+    className: highlighted ? 'highlighted-incident-marker' : '',
+    html: `<div style="
+      width:${size}px;height:${size}px;
+      background:${color};
+      border:${border}px solid #fff;
+      border-radius:50%;
+      display:flex;align-items:center;justify-content:center;
+      box-shadow:0 0 ${highlighted ? 14 : 6}px ${color}${highlighted ? ', 0 0 24px ' + color + '80' : ''};
+    ">${iconMarkup}</div>`,
+    iconSize: [size, size],
+    iconAnchor: [size / 2, size / 2],
   })
 }
 
@@ -327,7 +358,9 @@ export default function CrimeMap() {
       for (const inc of incidentsToPlot) {
         const highlighted = highlightedIncidentId === inc.id
         const marker = L.marker([inc.lat, inc.lng], {
-          icon: createIncidentIcon(inc.severity, highlighted),
+          icon: drilledDistrictId
+            ? createDrilledIncidentIcon(inc.category, inc.severity, highlighted)
+            : createIncidentIcon(inc.severity, highlighted),
           zIndexOffset: highlighted ? 2000 : 1000,
         })
 
