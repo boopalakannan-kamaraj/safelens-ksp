@@ -1,12 +1,14 @@
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useLocation, useSearchParams } from 'react-router-dom'
 import L from 'leaflet'
 import PageHeader from '../components/ui/PageHeader'
 import NativeSelect from '../components/ui/NativeSelect'
+import IncidentDetailDrawer from '../components/ui/IncidentDetailDrawer'
 import {
   btnSegment,
   btnSegmentActive,
   btnSegmentGroup,
+  btnSecondary,
   formCheckLabel,
   formCheckbox,
   formToolbar,
@@ -111,8 +113,31 @@ export default function CrimeMap() {
   const [reloadKey, setReloadKey] = useState(0)
   const [investigationContext, setInvestigationContext] = useState<InvestigationContext | null>(null)
   const [highlightedIncidentId, setHighlightedIncidentId] = useState<string | null>(null)
+  const [drilledDistrictId, setDrilledDistrictId] = useState<string | null>(null)
+  const [selectedIncident, setSelectedIncident] = useState<CrimeIncident | null>(null)
   const [searchParams, setSearchParams] = useSearchParams()
   const districtFilter = searchParams.get('district')
+
+  const drilledDistrict = districts.find((d) => d.id === drilledDistrictId) ?? null
+
+  const openIncidentDetail = useCallback((incident: CrimeIncident) => {
+    setSelectedIncident(incident)
+  }, [])
+
+  const closeIncidentDetail = useCallback(() => {
+    setSelectedIncident(null)
+  }, [])
+
+  const drillIntoDistrict = useCallback((district: District) => {
+    setSelectedIncident(null)
+    setDrilledDistrictId(district.id)
+  }, [])
+
+  const exitDistrictDrill = useCallback(() => {
+    setDrilledDistrictId(null)
+    setSelectedIncident(null)
+    mapInstance.current?.flyTo(KARNATAKA_CENTER, 7, { duration: 1 })
+  }, [])
 
   useEffect(() => {
     const state = location.state as InvestigationContext | undefined
@@ -269,44 +294,98 @@ export default function CrimeMap() {
       }
     }
 
-    if (viewMode === 'districts') {
+    if (viewMode === 'districts' && !drilledDistrictId) {
       for (const district of districts) {
         const count = incidentCounts.get(district.id) ?? 0
         if (count === 0 && selectedCategory !== 'All') continue
 
-        L.marker([district.lat, district.lng], { icon: createDistrictIcon(count), zIndexOffset: 1000 })
-          .bindPopup(
-            `<div style="min-width:160px">
+        const marker = L.marker([district.lat, district.lng], {
+          icon: createDistrictIcon(count),
+          zIndexOffset: 1000,
+        }).bindPopup(
+          `<div style="min-width:160px">
               <strong>${district.name}</strong><br/>
               <span style="color:#8ba4c4">Mapped Incidents: ${count}</span><br/>
               <span style="color:#8ba4c4">Population: ${district.population.toLocaleString('en-IN')}</span>
             </div>`,
-          )
-          .addTo(markersLayer.current)
+        )
+
+        marker.on('click', () => {
+          drillIntoDistrict(district)
+        })
+
+        marker.addTo(markersLayer.current)
       }
-    } else {
-      for (const inc of filtered) {
+    }
+
+    const showIncidentMarkers = viewMode === 'incidents' || drilledDistrictId != null
+    if (showIncidentMarkers) {
+      const incidentsToPlot = drilledDistrictId
+        ? filtered.filter((inc) => inc.districtId === drilledDistrictId)
+        : filtered
+
+      for (const inc of incidentsToPlot) {
         const highlighted = highlightedIncidentId === inc.id
         const marker = L.marker([inc.lat, inc.lng], {
           icon: createIncidentIcon(inc.severity, highlighted),
           zIndexOffset: highlighted ? 2000 : 1000,
-        }).bindPopup(
-          `<div style="min-width:180px">
-              <strong>${inc.id}</strong><br/>
-              <span style="color:#4a90d9">${inc.category}</span> · ${inc.severity}<br/>
-              ${inc.districtName}<br/>
-              <span style="color:#8ba4c4">${inc.location}</span><br/>
-              <span style="color:#8ba4c4;font-size:12px">${inc.description}</span>
-            </div>`,
-        )
+        })
+
+        marker.on('click', () => {
+          openIncidentDetail(inc)
+        })
+
         marker.addTo(markersLayer.current!)
 
         if (highlighted) {
+          marker.bindPopup(
+            `<div style="min-width:180px">
+              <strong>${inc.id}</strong><br/>
+              <span style="color:#4a90d9">${inc.category}</span> · ${inc.severity}
+            </div>`,
+          )
           marker.openPopup()
         }
       }
     }
-  }, [districts, incidents, viewMode, selectedCategory, showHeatmap, showSocioEconomic, loading, districtFilter, highlightedIncidentId])
+  }, [
+    districts,
+    incidents,
+    viewMode,
+    selectedCategory,
+    showHeatmap,
+    showSocioEconomic,
+    loading,
+    districtFilter,
+    highlightedIncidentId,
+    drilledDistrictId,
+    drillIntoDistrict,
+    openIncidentDetail,
+  ])
+
+  useEffect(() => {
+    if (!mapInstance.current || loading || !drilledDistrictId) return
+
+    const district = districts.find((d) => d.id === drilledDistrictId)
+    if (!district) return
+
+    const districtIncidents = incidents.filter((inc) => {
+      if (inc.districtId !== drilledDistrictId) return false
+      if (selectedCategory !== 'All' && inc.category !== selectedCategory) return false
+      if (districtFilter && inc.districtName !== districtFilter) return false
+      return true
+    })
+
+    if (districtIncidents.length > 0) {
+      const bounds = L.latLngBounds(
+        districtIncidents.map((inc) => [inc.lat, inc.lng] as L.LatLngExpression),
+      )
+      mapInstance.current.flyToBounds(bounds, { padding: [60, 60], maxZoom: 13, duration: 1 })
+      return
+    }
+
+    mapInstance.current.flyTo([district.lat, district.lng], 11, { duration: 1 })
+  }, [drilledDistrictId, districts, incidents, selectedCategory, districtFilter, loading])
 
   useEffect(() => {
     if (!mapInstance.current || loading) return
@@ -329,6 +408,16 @@ export default function CrimeMap() {
   }, [districtFilter, investigationContext, districts, loading])
 
   const categories = ['All', ...new Set(incidents.map((i) => i.category))]
+
+  const drawerIncidents = useMemo(() => {
+    return incidents.filter((inc) => {
+      if (selectedCategory !== 'All' && inc.category !== selectedCategory) return false
+      if (districtFilter && inc.districtName !== districtFilter) return false
+      if (drilledDistrictId) return inc.districtId === drilledDistrictId
+      if (viewMode === 'incidents') return true
+      return false
+    })
+  }, [incidents, selectedCategory, districtFilter, drilledDistrictId, viewMode])
 
   if (error) {
     return <ErrorState message={error} onRetry={() => setReloadKey((k) => k + 1)} />
@@ -418,6 +507,15 @@ export default function CrimeMap() {
               </button>
             </div>
           </div>
+        )}
+        {drilledDistrictId && drilledDistrict && (
+          <button
+            type="button"
+            onClick={exitDistrictDrill}
+            className={`pointer-events-auto absolute left-14 top-4 z-[1002] ${btnSecondary} text-sm shadow-lg`}
+          >
+            ← Back to all districts
+          </button>
         )}
         {loading && (
           <div className="absolute inset-0 z-[1001] flex items-center justify-center bg-navy-900/80">
@@ -522,6 +620,13 @@ export default function CrimeMap() {
             )}
           </div>
         </div>
+
+        <IncidentDetailDrawer
+          incident={selectedIncident}
+          incidents={drawerIncidents}
+          onClose={closeIncidentDetail}
+          onSelect={openIncidentDetail}
+        />
       </div>
     </div>
   )
