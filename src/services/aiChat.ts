@@ -1,11 +1,26 @@
 import { askSafeLens } from './api.js'
 
-export async function processSafeLensQuery(query: string): Promise<string> {
-  const trimmed = query.trim()
+export interface AskSafeLensSource {
+  index: number
+  content: string | null
+  documentId?: string | null
+  documentTitle?: string | null
+}
+
+export interface AskSafeLensResult {
+  answer: string
+  sources: AskSafeLensSource[]
+}
+
+/** POST `{ question }` to `/ask` and return `{ answer, sources }`. */
+export async function askSafeLensQuestion(
+  question: string,
+): Promise<AskSafeLensResult> {
+  const trimmed = question.trim()
   if (!trimmed) {
-    return 'Please enter a query about crime data in Karnataka.'
+    throw new Error('Question is required')
   }
 
-  const { answer } = await askSafeLens(trimmed)
-  return answer
+  const { answer, sources } = await askSafeLens(trimmed)
+  return { answer, sources: sources as AskSafeLensSource[] }
 }

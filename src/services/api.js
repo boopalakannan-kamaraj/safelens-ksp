@@ -49,10 +49,15 @@ export async function fetchAll() {
 }
 
 export async function askSafeLens(question) {
+  const trimmed = typeof question === 'string' ? question.trim() : ''
+  if (!trimmed) {
+    throw new Error('Question is required')
+  }
+
   const response = await fetch(`${BASE_URL}/ask`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ question }),
+    body: JSON.stringify({ question: trimmed }),
   })
 
   let payload
@@ -66,9 +71,13 @@ export async function askSafeLens(question) {
     throw new Error(payload.error || 'AI assistant is temporarily unavailable')
   }
 
+  if (typeof payload.answer !== 'string' || !payload.answer) {
+    throw new Error('AI assistant is temporarily unavailable')
+  }
+
   return {
     answer: payload.answer,
-    sources: payload.sources ?? [],
+    sources: Array.isArray(payload.sources) ? payload.sources : [],
   }
 }
 

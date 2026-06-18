@@ -1,22 +1,34 @@
 import { useEffect, useRef, useState } from 'react'
-import { processSafeLensQuery } from '../services/aiChat'
+import { askSafeLensQuestion } from '../services/aiChat'
 import type { ChatMessage } from '../types/crime'
 import { btnIcon, btnPrimary, btnSecondary, formInput } from './ui/formClasses'
 
 const SUGGESTIONS = [
-  'Show me theft cases in Mysuru last month',
+  'Show me theft cases in Mysuru',
   'What are the high-risk districts?',
   'Cybercrime trends this year',
 ]
+
+const ERROR_MESSAGE =
+  "Sorry, I'm having trouble answering right now — please try again."
 
 function createWelcomeMessage(): ChatMessage {
   return {
     id: 'welcome',
     role: 'assistant',
     content:
-      'Hello! I\'m SafeLens AI. Ask me about crime data across Karnataka — incidents, districts, trends, and risk scores.',
+      "Hello! I'm SafeLens AI. Ask me about crime data across Karnataka — incidents, districts, trends, and risk scores.",
     timestamp: new Date(),
   }
+}
+
+function renderAssistantContent(content: string) {
+  return content.split('\n').map((line, lineIndex, lines) => (
+    <span key={lineIndex}>
+      {line}
+      {lineIndex < lines.length - 1 && <br />}
+    </span>
+  ))
 }
 
 export default function AskSafeLens() {
@@ -40,24 +52,26 @@ export default function AskSafeLens() {
     const trimmed = text.trim()
     if (!trimmed || loading) return
 
-    const userMsg: ChatMessage = {
-      id: `user-${Date.now()}`,
-      role: 'user',
-      content: trimmed,
-      timestamp: new Date(),
-    }
-    setMessages((prev) => [...prev, userMsg])
+    setMessages((prev) => [
+      ...prev,
+      {
+        id: `user-${Date.now()}`,
+        role: 'user',
+        content: trimmed,
+        timestamp: new Date(),
+      },
+    ])
     setInput('')
     setLoading(true)
 
     try {
-      const response = await processSafeLensQuery(trimmed)
+      const { answer } = await askSafeLensQuestion(trimmed)
       setMessages((prev) => [
         ...prev,
         {
           id: `assistant-${Date.now()}`,
           role: 'assistant',
-          content: response,
+          content: answer,
           timestamp: new Date(),
         },
       ])
@@ -67,7 +81,7 @@ export default function AskSafeLens() {
         {
           id: `assistant-${Date.now()}`,
           role: 'assistant',
-          content: "Sorry, I'm having trouble answering right now — please try again.",
+          content: ERROR_MESSAGE,
           timestamp: new Date(),
         },
       ])
@@ -83,33 +97,16 @@ export default function AskSafeLens() {
     inputRef.current?.focus()
   }
 
-  const renderContent = (content: string) => {
-    return content.split('\n').map((line, i) => {
-      const parts = line.split(/(\*\*[^*]+\*\*|_[^_]+_)/g)
-      return (
-        <span key={i}>
-          {parts.map((part, j) => {
-            if (part.startsWith('**') && part.endsWith('**')) {
-              return <strong key={j} className="font-semibold text-white">{part.slice(2, -2)}</strong>
-            }
-            if (part.startsWith('_') && part.endsWith('_')) {
-              return <em key={j} className="text-text-muted">{part.slice(1, -1)}</em>
-            }
-            if (part.startsWith('• ')) {
-              return <span key={j}>{part}</span>
-            }
-            return <span key={j}>{part}</span>
-          })}
-          {i < content.split('\n').length - 1 && <br />}
-        </span>
-      )
-    })
-  }
+  const showSuggestions = messages.length <= 1 && !loading
 
   return (
     <>
       {!open && (
-        <button onClick={() => setOpen(true)} className={`fixed bottom-6 right-6 z-[1100] ${btnPrimary} rounded-full px-5 py-3 text-sm font-semibold shadow-lg shadow-accent/25 hover:shadow-accent/40`}>
+        <button
+          type="button"
+          onClick={() => setOpen(true)}
+          className={`fixed bottom-6 right-6 z-[1100] ${btnPrimary} rounded-full px-5 py-3 text-sm font-semibold shadow-lg shadow-accent/25 hover:shadow-accent/40`}
+        >
           <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.847-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.847.813a4.5 4.5 0 00-3.09 3.09z" />
           </svg>
@@ -125,7 +122,7 @@ export default function AskSafeLens() {
               : 'h-[min(520px,calc(100vh-3rem))] w-[min(400px,calc(100vw-3rem))]'
           }`}
         >
-          <div className="flex items-center justify-between border-b border-border bg-surface px-4 py-3">
+          <header className="flex items-center justify-between border-b border-border bg-surface px-4 py-3">
             <div className="flex items-center gap-2.5">
               <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent/20">
                 <svg className="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="currentColor">
@@ -143,8 +140,8 @@ export default function AskSafeLens() {
                 onClick={resetChat}
                 disabled={loading}
                 className={btnIcon}
-                aria-label="Reset chat"
-                title="Reset chat"
+                aria-label="New chat"
+                title="New chat"
               >
                 <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
@@ -155,6 +152,7 @@ export default function AskSafeLens() {
                 onClick={() => setExpanded((prev) => !prev)}
                 className={btnIcon}
                 aria-label={expanded ? 'Collapse panel' : 'Expand panel'}
+                title={expanded ? 'Collapse' : 'Expand'}
               >
                 {expanded ? (
                   <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -168,23 +166,24 @@ export default function AskSafeLens() {
               </button>
               <button
                 type="button"
-                onClick={() => {
-                  setOpen(false)
-                  setExpanded(false)
-                }}
+                onClick={() => setOpen(false)}
                 className={btnIcon}
                 aria-label="Close panel"
+                title="Close"
               >
                 <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
             </div>
-          </div>
+          </header>
 
-          <div className="flex-1 overflow-y-auto px-4 py-4 space-y-4">
+          <div className="flex-1 space-y-4 overflow-y-auto px-4 py-4">
             {messages.map((msg) => (
-              <div key={msg.id} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+              <div
+                key={msg.id}
+                className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
+              >
                 <div
                   className={`max-w-[85%] rounded-xl px-3.5 py-2.5 text-sm leading-relaxed ${
                     msg.role === 'user'
@@ -192,7 +191,9 @@ export default function AskSafeLens() {
                       : 'bg-surface text-text-muted ring-1 ring-border'
                   }`}
                 >
-                  {msg.role === 'assistant' ? renderContent(msg.content) : msg.content}
+                  {msg.role === 'assistant'
+                    ? renderAssistantContent(msg.content)
+                    : msg.content}
                 </div>
               </div>
             ))}
@@ -211,17 +212,18 @@ export default function AskSafeLens() {
             <div ref={messagesEndRef} />
           </div>
 
-          {messages.length <= 1 && (
+          {showSuggestions && (
             <div className="border-t border-border px-4 py-2">
               <p className="mb-2 text-xs text-text-muted">Try asking:</p>
               <div className="flex flex-wrap gap-1.5">
-                {SUGGESTIONS.map((s) => (
+                {SUGGESTIONS.map((suggestion) => (
                   <button
-                    key={s}
-                    onClick={() => sendMessage(s)}
+                    key={suggestion}
+                    type="button"
+                    onClick={() => sendMessage(suggestion)}
                     className={`${btnSecondary} rounded-full px-2.5 py-1 text-xs`}
                   >
-                    {s}
+                    {suggestion}
                   </button>
                 ))}
               </div>

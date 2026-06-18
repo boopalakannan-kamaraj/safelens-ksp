@@ -18,9 +18,9 @@ const RAG_URL =
 
 const SYSTEM_PROMPT_PREFIX =
   'You are SafeLens AI, a crime intelligence assistant for Karnataka State Police. ' +
-  'Only report incidents that genuinely and specifically match the user\'s criteria (category, district, date, etc.). ' +
-  'If the retrieved context includes unrelated incidents, ignore them — do not list incidents that don\'t match what was asked. ' +
-  'If you\'re not confident the retrieved information precisely answers the question, say so rather than presenting a partial or loosely-related answer as if it were exact. ' +
+  'Only report incidents that genuinely and specifically match the user\'s criteria. ' +
+  'If retrieved context includes unrelated incidents, ignore them. ' +
+  'If you\'re not confident the retrieved information precisely answers the question, say so rather than guessing. ' +
   'Question: '
 
 const CORS_HEADERS = {
@@ -147,19 +147,34 @@ function truncateForLog(text, max = 100) {
   return text.length <= max ? text : `${text.slice(0, max)}...`
 }
 
-async function getAdminAccessToken(adminApp) {
+function sleep(ms) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms)
+  })
+}
+
+/** OAuth token for RAG — Catalyst admin scope (same Zoho-oauthtoken header as Stage 1 direct curl). */
+async function getRagAccessToken(adminApp) {
   adminApp.credential.switchUser('admin')
   const token = await adminApp.credential.getToken()
   if (!token?.access_token) {
-    throw new Error('Failed to obtain admin OAuth access token')
+    throw new Error('Failed to obtain OAuth access token')
   }
   return token.access_token
 }
 
-function mapRetrievedNodes(nodes) {
-  if (!Array.isArray(nodes)) return []
+function buildRagQuery(question) {
+  return SYSTEM_PROMPT_PREFIX + question
+}
 
-  return nodes.map((node, index) => {
+function bodyContainsRag1004(rawBody) {
+  return typeof rawBody === 'string' && rawBody.includes('RAG_1004')
+}
+
+function mapSources(retrievedNodes) {
+  if (!Array.isArray(retrievedNodes)) return []
+
+  return retrievedNodes.map((node, index) => {
     if (typeof node === 'string') {
       return { index, content: node }
     }
@@ -167,9 +182,9 @@ function mapRetrievedNodes(nodes) {
     if (node && typeof node === 'object') {
       return {
         index,
-        content: node.content ?? node.text ?? node.snippet ?? null,
-        documentId: node.document_id ?? node.documentId ?? node.id ?? null,
-        score: node.score ?? node.relevance ?? null,
+        content: node.content ?? null,
+        documentId: node.document_id ?? null,
+        documentTitle: node.document_title ?? null,
       }
     }
 
@@ -177,83 +192,27 @@ function mapRetrievedNodes(nodes) {
   })
 }
 
-function parseRagResponse(raw) {
-  const answer =
-    raw?.response ??
-    raw?.answer ??
-    raw?.result?.response ??
-    raw?.result?.answer ??
-    raw?.data?.response ??
-    raw?.data?.answer ??
-    (typeof raw?.result === 'string' ? raw.result : null) ??
-    (typeof raw?.data === 'string' ? raw.data : null)
-
-  const sources = mapRetrievedNodes(raw?.retrieved_nodes)
-
-  return {
-    answer,
-    sources,
-    meta: {
-      status: raw?.status ?? null,
-      responseLength: typeof answer === 'string' ? answer.length : 0,
-      retrievedNodesCount: Array.isArray(raw?.retrieved_nodes)
-        ? raw.retrieved_nodes.length
-        : 0,
-      usage: raw?.usage ?? null,
-    },
-  }
+function parseRagAnswer(raw) {
+  const answer = typeof raw?.response === 'string' ? raw.response : null
+  const sources = mapSources(raw?.retrieved_nodes)
+  return { answer, sources }
 }
 
-function logRagSuccess(raw, meta) {
+/** Single RAG HTTP attempt — mirrors Stage 1 direct fetch (Zoho-oauthtoken + CATALYST-ORG). */
+async function fetchRagAttempt(accessToken, query, attemptNum) {
   console.log(
-    'RAG raw response:',
-    JSON.stringify({
-      status: meta.status,
-      responseLength: meta.responseLength,
-      retrievedNodesCount: meta.retrievedNodesCount,
-      usage: meta.usage,
-      responsePreview:
-        typeof raw?.response === 'string'
-          ? truncateForLog(raw.response, 200)
-          : null,
-      retrievedNodesPreview: Array.isArray(raw?.retrieved_nodes)
-        ? raw.retrieved_nodes.slice(0, 2)
-        : [],
-    }),
+    `RAG call attempt ${attemptNum}/${RAG_MAX_ATTEMPTS} starting, query preview:`,
+    truncateForLog(query),
   )
-}
 
-function logRagError(error) {
-  console.error('RAG ask error:', error?.message || String(error))
-  if (error?.statusCode != null) {
-    console.error('RAG ask error statusCode:', error.statusCode)
-  }
-  if (error?.rawBody) {
-    console.error('RAG ask error rawBody:', error.rawBody)
-  }
-}
-
-function isRag1004Error(rawBody) {
-  return typeof rawBody === 'string' && rawBody.includes('RAG_1004')
-}
-
-function sleep(ms) {
-  return new Promise((resolve) => {
-    setTimeout(resolve, ms)
-  })
-}
-
-async function fetchRagOnce(accessToken, query) {
   const controller = new AbortController()
-  const timeoutId = setTimeout(() => {
-    controller.abort()
-  }, RAG_FETCH_TIMEOUT_MS)
+  const timeoutId = setTimeout(() => controller.abort(), RAG_FETCH_TIMEOUT_MS)
 
-  let response
+  let httpResponse
   let rawBody = ''
 
   try {
-    response = await fetch(RAG_URL, {
+    httpResponse = await fetch(RAG_URL, {
       method: 'POST',
       headers: {
         Authorization: `Zoho-oauthtoken ${accessToken}`,
@@ -267,7 +226,7 @@ async function fetchRagOnce(accessToken, query) {
       }),
       signal: controller.signal,
     })
-    rawBody = await response.text()
+    rawBody = await httpResponse.text()
   } catch (error) {
     if (error?.name === 'AbortError') {
       const timeoutError = new Error(
@@ -286,38 +245,62 @@ async function fetchRagOnce(accessToken, query) {
     parsed = rawBody ? JSON.parse(rawBody) : null
   } catch {
     const parseError = new Error('RAG returned non-JSON response')
-    parseError.statusCode = response.status
+    parseError.statusCode = httpResponse.status
     parseError.rawBody = rawBody
     throw parseError
   }
 
-  if (!response.ok) {
+  if (!httpResponse.ok) {
     const apiError = new Error(
-      parsed?.message ||
-        parsed?.data?.message ||
-        `RAG request failed with HTTP ${response.status}`,
+      parsed?.message || `RAG request failed with HTTP ${httpResponse.status}`,
     )
-    apiError.statusCode = response.status
+    apiError.statusCode = httpResponse.status
     apiError.rawBody = rawBody
     throw apiError
   }
 
+  console.log(
+    'RAG raw response:',
+    JSON.stringify({
+      status: parsed?.status ?? null,
+      responseLength:
+        typeof parsed?.response === 'string' ? parsed.response.length : 0,
+      retrievedNodesCount: Array.isArray(parsed?.retrieved_nodes)
+        ? parsed.retrieved_nodes.length
+        : 0,
+      responsePreview:
+        typeof parsed?.response === 'string'
+          ? truncateForLog(parsed.response, 200)
+          : null,
+    }),
+  )
+
   return parsed
 }
 
-async function callRag(adminApp, question) {
-  const accessToken = await getAdminAccessToken(adminApp)
-  const query = SYSTEM_PROMPT_PREFIX + question
+async function callRagWithRetries(adminApp, question) {
+  const accessToken = await getRagAccessToken(adminApp)
+  const query = buildRagQuery(question)
   let lastError = null
 
   for (let attempt = 1; attempt <= RAG_MAX_ATTEMPTS; attempt++) {
     try {
-      return await fetchRagOnce(accessToken, query)
+      return await fetchRagAttempt(accessToken, query, attempt)
     } catch (error) {
       lastError = error
+      console.error(
+        `RAG failure on attempt ${attempt}/${RAG_MAX_ATTEMPTS}:`,
+        error?.message || String(error),
+      )
+      if (error?.statusCode != null) {
+        console.error('RAG error HTTP status:', error.statusCode)
+      }
+      if (error?.rawBody) {
+        console.error('RAG error rawBody:', error.rawBody)
+      }
 
       const shouldRetry =
-        attempt < RAG_MAX_ATTEMPTS && isRag1004Error(error?.rawBody)
+        attempt < RAG_MAX_ATTEMPTS && bodyContainsRag1004(error?.rawBody)
 
       if (!shouldRetry) {
         throw error
@@ -354,21 +337,25 @@ async function handleAsk(req, res) {
   const adminApp = catalyst.initialize(req, { scope: 'admin' })
 
   try {
-    console.log('RAG call starting for question:', truncateForLog(question))
-    const raw = await callRag(adminApp, question)
-    const { answer, sources, meta } = parseRagResponse(raw)
+    const raw = await callRagWithRetries(adminApp, question)
+    const { answer, sources } = parseRagAnswer(raw)
 
-    if (!answer || typeof answer !== 'string') {
-      console.error('RAG ask error: RAG response did not include answer text')
+    if (!answer) {
+      console.error('RAG ask error: missing response field in RAG payload')
       console.error('RAG ask error rawBody:', JSON.stringify(raw))
       sendJson(res, 502, { error: 'AI assistant is temporarily unavailable' })
       return
     }
 
-    logRagSuccess(raw, meta)
     sendJson(res, 200, { answer, sources })
   } catch (error) {
-    logRagError(error)
+    console.error('RAG ask error (final):', error?.message || String(error))
+    if (error?.statusCode != null) {
+      console.error('RAG ask error statusCode:', error.statusCode)
+    }
+    if (error?.rawBody) {
+      console.error('RAG ask error rawBody:', error.rawBody)
+    }
     sendJson(res, 502, { error: 'AI assistant is temporarily unavailable' })
   }
 }
