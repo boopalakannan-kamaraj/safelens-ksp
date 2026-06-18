@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useLocation, useSearchParams } from 'react-router-dom'
 import L from 'leaflet'
-import { PanelRightClose, PanelRightOpen, Maximize2, Minimize2 } from 'lucide-react'
+import { ChevronLeft, ChevronRight, PanelRightClose, PanelRightOpen } from 'lucide-react'
 import PageHeader from '../components/ui/PageHeader'
 import NativeSelect from '../components/ui/NativeSelect'
 import IncidentDetailDrawer from '../components/ui/IncidentDetailDrawer'
@@ -150,7 +150,6 @@ export default function CrimeMap() {
   const [drilledDistrictId, setDrilledDistrictId] = useState<string | null>(null)
   const [selectedIncident, setSelectedIncident] = useState<CrimeIncident | null>(null)
   const [sidebarOpen, setSidebarOpen] = useState(true)
-  const [mapExpanded, setMapExpanded] = useState(false)
   const [searchParams, setSearchParams] = useSearchParams()
   const districtFilter = searchParams.get('district')
 
@@ -182,16 +181,7 @@ export default function CrimeMap() {
       map.invalidateSize()
     }, 200)
     return () => window.clearTimeout(timer)
-  }, [sidebarOpen, mapExpanded])
-
-  useEffect(() => {
-    if (!mapExpanded) return
-    const previousOverflow = document.body.style.overflow
-    document.body.style.overflow = 'hidden'
-    return () => {
-      document.body.style.overflow = previousOverflow
-    }
-  }, [mapExpanded])
+  }, [sidebarOpen])
 
   useEffect(() => {
     const state = location.state as InvestigationContext | undefined
@@ -541,39 +531,16 @@ export default function CrimeMap() {
           <PanelRightOpen className="h-5 w-5" aria-hidden />
         )}
       </button>
-      <button
-        type="button"
-        onClick={() => setMapExpanded((expanded) => !expanded)}
-        className={btnIcon}
-        aria-label={mapExpanded ? 'Collapse map view' : 'Expand map view'}
-        title={mapExpanded ? 'Collapse' : 'Expand'}
-      >
-        {mapExpanded ? (
-          <Minimize2 className="h-5 w-5" aria-hidden />
-        ) : (
-          <Maximize2 className="h-5 w-5" aria-hidden />
-        )}
-      </button>
     </div>
   )
 
   return (
-    <div
-      className={`flex flex-col bg-navy-900 ${
-        mapExpanded ? 'fixed inset-0 z-[1500] h-[100dvh]' : 'h-full'
-      }`}
-    >
-      {mapExpanded ? (
-        <div className="relative z-[1001] flex shrink-0 justify-end border-b border-border bg-navy-950/50 px-4 py-3">
-          {mapToolbar}
-        </div>
-      ) : (
-        <PageHeader
-          title="Crime Map"
-          description="Interactive Karnataka district crime visualization"
-          actions={mapToolbar}
-        />
-      )}
+    <div className="flex h-full flex-col bg-navy-900">
+      <PageHeader
+        title="Crime Map"
+        description="Interactive Karnataka district crime visualization"
+        actions={mapToolbar}
+      />
 
       <div className="flex min-h-0 flex-1">
         <div className="relative min-w-0 flex-1">
@@ -619,6 +586,25 @@ export default function CrimeMap() {
             ← Back to all districts
           </button>
         )}
+        <button
+          type="button"
+          onClick={() => setSidebarOpen((open) => !open)}
+          className={`pointer-events-auto absolute right-0 top-4 z-[1002] flex items-center gap-1 rounded-l-lg border border-r-0 border-border bg-surface/95 px-2 py-2 text-xs font-medium text-text-muted shadow-lg backdrop-blur-sm transition-colors hover:bg-surface hover:text-white`}
+          aria-label={sidebarOpen ? 'Collapse incident list' : 'Expand map'}
+          title={sidebarOpen ? 'Collapse' : 'Expand'}
+        >
+          {sidebarOpen ? (
+            <>
+              <span>Collapse</span>
+              <ChevronRight className="h-4 w-4" aria-hidden />
+            </>
+          ) : (
+            <>
+              <ChevronLeft className="h-4 w-4" aria-hidden />
+              <span>Expand</span>
+            </>
+          )}
+        </button>
         {loading && (
           <div className="absolute inset-0 z-[1001] flex items-center justify-center bg-navy-900/80">
             <div className="flex items-center gap-3 text-text-muted">
