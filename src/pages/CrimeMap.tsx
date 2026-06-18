@@ -1,14 +1,17 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useLocation, useSearchParams } from 'react-router-dom'
 import L from 'leaflet'
+import { PanelRightClose, PanelRightOpen } from 'lucide-react'
 import PageHeader from '../components/ui/PageHeader'
 import NativeSelect from '../components/ui/NativeSelect'
 import IncidentDetailDrawer from '../components/ui/IncidentDetailDrawer'
+import CrimeMapIncidentSidebar from '../components/crime/CrimeMapIncidentSidebar'
 import {
   btnSegment,
   btnSegmentActive,
   btnSegmentGroup,
   btnSecondary,
+  btnIcon,
   formCheckLabel,
   formCheckbox,
   formToolbar,
@@ -146,6 +149,7 @@ export default function CrimeMap() {
   const [highlightedIncidentId, setHighlightedIncidentId] = useState<string | null>(null)
   const [drilledDistrictId, setDrilledDistrictId] = useState<string | null>(null)
   const [selectedIncident, setSelectedIncident] = useState<CrimeIncident | null>(null)
+  const [sidebarOpen, setSidebarOpen] = useState(true)
   const [searchParams, setSearchParams] = useSearchParams()
   const districtFilter = searchParams.get('district')
 
@@ -169,6 +173,15 @@ export default function CrimeMap() {
     setSelectedIncident(null)
     mapInstance.current?.flyTo(KARNATAKA_CENTER, 7, { duration: 1 })
   }, [])
+
+  useEffect(() => {
+    if (!mapInstance.current) return
+    const map = mapInstance.current
+    const timer = window.setTimeout(() => {
+      map.invalidateSize()
+    }, 200)
+    return () => window.clearTimeout(timer)
+  }, [sidebarOpen])
 
   useEffect(() => {
     const state = location.state as InvestigationContext | undefined
@@ -452,6 +465,13 @@ export default function CrimeMap() {
     })
   }, [incidents, selectedCategory, districtFilter, drilledDistrictId, viewMode])
 
+  const sidebarIncidents = useMemo(() => {
+    return incidents.filter((inc) => {
+      if (selectedCategory !== 'All' && inc.category !== selectedCategory) return false
+      return true
+    })
+  }, [incidents, selectedCategory])
+
   if (error) {
     return <ErrorState message={error} onRetry={() => setReloadKey((k) => k + 1)} />
   }
@@ -503,11 +523,25 @@ export default function CrimeMap() {
                 </button>
               ))}
             </div>
+            <button
+              type="button"
+              onClick={() => setSidebarOpen((open) => !open)}
+              className={btnIcon}
+              aria-label={sidebarOpen ? 'Hide incident list' : 'Show incident list'}
+              title={sidebarOpen ? 'Hide incident list' : 'Show incident list'}
+            >
+              {sidebarOpen ? (
+                <PanelRightClose className="h-5 w-5" aria-hidden />
+              ) : (
+                <PanelRightOpen className="h-5 w-5" aria-hidden />
+              )}
+            </button>
           </div>
         }
       />
 
-      <div className="relative flex-1">
+      <div className="flex min-h-0 flex-1">
+        <div className="relative min-w-0 flex-1">
         {(districtFilter || highlightedIncidentId || (investigationContext?.category && selectedCategory !== 'All')) && (
           <div className="pointer-events-none absolute inset-x-0 top-0 z-[1002] flex justify-center pt-4">
             <div className="pointer-events-auto flex flex-wrap items-center justify-center gap-3 rounded-lg border border-accent/40 bg-surface/95 px-4 py-2 shadow-lg backdrop-blur-sm">
@@ -660,6 +694,14 @@ export default function CrimeMap() {
           onClose={closeIncidentDetail}
           onSelect={openIncidentDetail}
         />
+        </div>
+
+        {sidebarOpen && (
+          <CrimeMapIncidentSidebar
+            incidents={sidebarIncidents}
+            selectedCategory={selectedCategory}
+          />
+        )}
       </div>
     </div>
   )
