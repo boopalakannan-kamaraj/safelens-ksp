@@ -11,6 +11,8 @@ const RAG_PROJECT_ID = '47091000000019001'
 const CATALYST_ORG_ID = '60073566542'
 const KB_DOCUMENT_ID = '2385000000004002'
 const RAG_FETCH_TIMEOUT_MS = 30000
+const RAG_MAX_ATTEMPTS = 3
+const RAG_RETRY_DELAY_MS = 1500
 const RAG_URL =
   `${RAG_CONSOLE_ORIGIN}/quickml/v1/project/${RAG_PROJECT_ID}/rag/answer`
 
@@ -231,9 +233,17 @@ function logRagError(error) {
   }
 }
 
-async function callRag(adminApp, question) {
-  const accessToken = await getAdminAccessToken(adminApp)
-  const query = SYSTEM_PROMPT_PREFIX + question
+function isRag1004Error(rawBody) {
+  return typeof rawBody === 'string' && rawBody.includes('RAG_1004')
+}
+
+function sleep(ms) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms)
+  })
+}
+
+async function fetchRagOnce(accessToken, query) {
   const controller = new AbortController()
   const timeoutId = setTimeout(() => {
     controller.abort()
@@ -293,6 +303,35 @@ async function callRag(adminApp, question) {
   }
 
   return parsed
+}
+
+async function callRag(adminApp, question) {
+  const accessToken = await getAdminAccessToken(adminApp)
+  const query = SYSTEM_PROMPT_PREFIX + question
+  let lastError = null
+
+  for (let attempt = 1; attempt <= RAG_MAX_ATTEMPTS; attempt++) {
+    try {
+      return await fetchRagOnce(accessToken, query)
+    } catch (error) {
+      lastError = error
+
+      const shouldRetry =
+        attempt < RAG_MAX_ATTEMPTS && isRag1004Error(error?.rawBody)
+
+      if (!shouldRetry) {
+        throw error
+      }
+
+      console.log(
+        `RAG retry attempt ${attempt + 1}/${RAG_MAX_ATTEMPTS} after RAG_1004 error for question:`,
+        truncateForLog(question),
+      )
+      await sleep(RAG_RETRY_DELAY_MS)
+    }
+  }
+
+  throw lastError
 }
 
 async function handleAsk(req, res) {
