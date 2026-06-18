@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useLocation, useSearchParams } from 'react-router-dom'
 import L from 'leaflet'
-import { PanelRightClose, PanelRightOpen } from 'lucide-react'
+import { PanelRightClose, PanelRightOpen, Maximize2, Minimize2 } from 'lucide-react'
 import PageHeader from '../components/ui/PageHeader'
 import NativeSelect from '../components/ui/NativeSelect'
 import IncidentDetailDrawer from '../components/ui/IncidentDetailDrawer'
@@ -150,6 +150,7 @@ export default function CrimeMap() {
   const [drilledDistrictId, setDrilledDistrictId] = useState<string | null>(null)
   const [selectedIncident, setSelectedIncident] = useState<CrimeIncident | null>(null)
   const [sidebarOpen, setSidebarOpen] = useState(true)
+  const [mapExpanded, setMapExpanded] = useState(false)
   const [searchParams, setSearchParams] = useSearchParams()
   const districtFilter = searchParams.get('district')
 
@@ -181,7 +182,16 @@ export default function CrimeMap() {
       map.invalidateSize()
     }, 200)
     return () => window.clearTimeout(timer)
-  }, [sidebarOpen])
+  }, [sidebarOpen, mapExpanded])
+
+  useEffect(() => {
+    if (!mapExpanded) return
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    return () => {
+      document.body.style.overflow = previousOverflow
+    }
+  }, [mapExpanded])
 
   useEffect(() => {
     const state = location.state as InvestigationContext | undefined
@@ -476,69 +486,94 @@ export default function CrimeMap() {
     return <ErrorState message={error} onRetry={() => setReloadKey((k) => k + 1)} />
   }
 
+  const mapToolbar = (
+    <div className={formToolbar}>
+      <label className={formCheckLabel}>
+        <input
+          type="checkbox"
+          checked={showHeatmap}
+          onChange={(e) => setShowHeatmap(e.target.checked)}
+          className={formCheckbox}
+        />
+        <span className="text-text-muted">Heatmap</span>
+      </label>
+      <label className={formCheckLabel}>
+        <input
+          type="checkbox"
+          checked={showSocioEconomic}
+          onChange={(e) => setShowSocioEconomic(e.target.checked)}
+          className={formCheckbox}
+        />
+        <span className="text-text-muted">Socio-Economic</span>
+      </label>
+      <NativeSelect
+        selectWidth="fixed"
+        value={selectedCategory}
+        onChange={(e) => setSelectedCategory(e.target.value)}
+      >
+        {categories.map((cat) => (
+          <option key={cat} value={cat}>
+            {cat}
+          </option>
+        ))}
+      </NativeSelect>
+      <div className={`${btnSegmentGroup} shrink-0`}>
+        {(['districts', 'incidents'] as const).map((mode) => (
+          <button
+            key={mode}
+            onClick={() => setViewMode(mode)}
+            className={`${btnSegment} capitalize ${viewMode === mode ? btnSegmentActive : ''}`}
+          >
+            {mode}
+          </button>
+        ))}
+      </div>
+      <button
+        type="button"
+        onClick={() => setSidebarOpen((open) => !open)}
+        className={btnIcon}
+        aria-label={sidebarOpen ? 'Hide incident list' : 'Show incident list'}
+        title={sidebarOpen ? 'Hide incident list' : 'Show incident list'}
+      >
+        {sidebarOpen ? (
+          <PanelRightClose className="h-5 w-5" aria-hidden />
+        ) : (
+          <PanelRightOpen className="h-5 w-5" aria-hidden />
+        )}
+      </button>
+      <button
+        type="button"
+        onClick={() => setMapExpanded((expanded) => !expanded)}
+        className={btnIcon}
+        aria-label={mapExpanded ? 'Collapse map view' : 'Expand map view'}
+        title={mapExpanded ? 'Collapse' : 'Expand'}
+      >
+        {mapExpanded ? (
+          <Minimize2 className="h-5 w-5" aria-hidden />
+        ) : (
+          <Maximize2 className="h-5 w-5" aria-hidden />
+        )}
+      </button>
+    </div>
+  )
+
   return (
-    <div className="flex h-full flex-col">
-      <PageHeader
-        title="Crime Map"
-        description="Interactive Karnataka district crime visualization"
-        actions={
-          <div className={formToolbar}>
-            <label className={formCheckLabel}>
-              <input
-                type="checkbox"
-                checked={showHeatmap}
-                onChange={(e) => setShowHeatmap(e.target.checked)}
-                className={formCheckbox}
-              />
-              <span className="text-text-muted">Heatmap</span>
-            </label>
-            <label className={formCheckLabel}>
-              <input
-                type="checkbox"
-                checked={showSocioEconomic}
-                onChange={(e) => setShowSocioEconomic(e.target.checked)}
-                className={formCheckbox}
-              />
-              <span className="text-text-muted">Socio-Economic</span>
-            </label>
-            <NativeSelect
-              selectWidth="fixed"
-              value={selectedCategory}
-              onChange={(e) => setSelectedCategory(e.target.value)}
-            >
-              {categories.map((cat) => (
-                <option key={cat} value={cat}>
-                  {cat}
-                </option>
-              ))}
-            </NativeSelect>
-            <div className={`${btnSegmentGroup} shrink-0`}>
-              {(['districts', 'incidents'] as const).map((mode) => (
-                <button
-                  key={mode}
-                  onClick={() => setViewMode(mode)}
-                  className={`${btnSegment} capitalize ${viewMode === mode ? btnSegmentActive : ''}`}
-                >
-                  {mode}
-                </button>
-              ))}
-            </div>
-            <button
-              type="button"
-              onClick={() => setSidebarOpen((open) => !open)}
-              className={btnIcon}
-              aria-label={sidebarOpen ? 'Hide incident list' : 'Show incident list'}
-              title={sidebarOpen ? 'Hide incident list' : 'Show incident list'}
-            >
-              {sidebarOpen ? (
-                <PanelRightClose className="h-5 w-5" aria-hidden />
-              ) : (
-                <PanelRightOpen className="h-5 w-5" aria-hidden />
-              )}
-            </button>
-          </div>
-        }
-      />
+    <div
+      className={`flex flex-col bg-navy-900 ${
+        mapExpanded ? 'fixed inset-0 z-[1500] h-[100dvh]' : 'h-full'
+      }`}
+    >
+      {mapExpanded ? (
+        <div className="relative z-[1001] flex shrink-0 justify-end border-b border-border bg-navy-950/50 px-4 py-3">
+          {mapToolbar}
+        </div>
+      ) : (
+        <PageHeader
+          title="Crime Map"
+          description="Interactive Karnataka district crime visualization"
+          actions={mapToolbar}
+        />
+      )}
 
       <div className="flex min-h-0 flex-1">
         <div className="relative min-w-0 flex-1">
