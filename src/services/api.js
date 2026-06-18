@@ -48,4 +48,28 @@ export async function fetchAll() {
   return payload.data
 }
 
+export async function askSafeLens(question) {
+  const response = await fetch(`${BASE_URL}/ask`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ question }),
+  })
+
+  let payload
+  try {
+    payload = await response.json()
+  } catch {
+    throw new Error('AI assistant is temporarily unavailable')
+  }
+
+  if (!response.ok || payload.error) {
+    throw new Error(payload.error || 'AI assistant is temporarily unavailable')
+  }
+
+  return {
+    answer: payload.answer,
+    sources: payload.sources ?? [],
+  }
+}
+
 export { BASE_URL }

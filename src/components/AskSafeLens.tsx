@@ -9,18 +9,22 @@ const SUGGESTIONS = [
   'Cybercrime trends this year',
 ]
 
+function createWelcomeMessage(): ChatMessage {
+  return {
+    id: 'welcome',
+    role: 'assistant',
+    content:
+      'Hello! I\'m SafeLens AI. Ask me about crime data across Karnataka — incidents, districts, trends, and risk scores.',
+    timestamp: new Date(),
+  }
+}
+
 export default function AskSafeLens() {
   const [open, setOpen] = useState(false)
+  const [expanded, setExpanded] = useState(false)
   const [input, setInput] = useState('')
   const [loading, setLoading] = useState(false)
-  const [messages, setMessages] = useState<ChatMessage[]>([
-    {
-      id: 'welcome',
-      role: 'assistant',
-      content: 'Hello! I\'m SafeLens AI. Ask me about crime data across Karnataka — incidents, districts, trends, and risk scores.',
-      timestamp: new Date(),
-    },
-  ])
+  const [messages, setMessages] = useState<ChatMessage[]>([createWelcomeMessage()])
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
 
@@ -57,9 +61,26 @@ export default function AskSafeLens() {
           timestamp: new Date(),
         },
       ])
+    } catch {
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: `assistant-${Date.now()}`,
+          role: 'assistant',
+          content: "Sorry, I'm having trouble answering right now — please try again.",
+          timestamp: new Date(),
+        },
+      ])
     } finally {
       setLoading(false)
     }
+  }
+
+  const resetChat = () => {
+    if (loading) return
+    setMessages([createWelcomeMessage()])
+    setInput('')
+    inputRef.current?.focus()
   }
 
   const renderContent = (content: string) => {
@@ -88,7 +109,7 @@ export default function AskSafeLens() {
   return (
     <>
       {!open && (
-        <button onClick={() => setOpen(true)} className={`fixed bottom-6 right-6 z-50 ${btnPrimary} rounded-full px-5 py-3 text-sm font-semibold shadow-lg shadow-accent/25 hover:shadow-accent/40`}>
+        <button onClick={() => setOpen(true)} className={`fixed bottom-6 right-6 z-[1100] ${btnPrimary} rounded-full px-5 py-3 text-sm font-semibold shadow-lg shadow-accent/25 hover:shadow-accent/40`}>
           <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.847-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.847.813a4.5 4.5 0 00-3.09 3.09z" />
           </svg>
@@ -97,7 +118,13 @@ export default function AskSafeLens() {
       )}
 
       {open && (
-        <div className="fixed bottom-6 right-6 z-50 flex h-[520px] w-[400px] flex-col overflow-hidden rounded-2xl border border-border bg-navy-950 shadow-2xl shadow-black/40">
+        <div
+          className={`fixed bottom-6 right-6 z-[1100] flex flex-col overflow-hidden rounded-2xl border border-border bg-navy-950 shadow-2xl shadow-black/40 transition-[width,height] duration-200 ease-out ${
+            expanded
+              ? 'h-[min(780px,calc(100vh-3rem))] w-[min(600px,calc(100vw-3rem))]'
+              : 'h-[min(520px,calc(100vh-3rem))] w-[min(400px,calc(100vw-3rem))]'
+          }`}
+        >
           <div className="flex items-center justify-between border-b border-border bg-surface px-4 py-3">
             <div className="flex items-center gap-2.5">
               <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent/20">
@@ -110,11 +137,49 @@ export default function AskSafeLens() {
                 <p className="text-xs text-text-muted">AI Crime Intelligence</p>
               </div>
             </div>
-            <button onClick={() => setOpen(false)} className={btnIcon}>
-              <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
+            <div className="flex items-center gap-1">
+              <button
+                type="button"
+                onClick={resetChat}
+                disabled={loading}
+                className={btnIcon}
+                aria-label="Reset chat"
+                title="Reset chat"
+              >
+                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
+                </svg>
+              </button>
+              <button
+                type="button"
+                onClick={() => setExpanded((prev) => !prev)}
+                className={btnIcon}
+                aria-label={expanded ? 'Collapse panel' : 'Expand panel'}
+              >
+                {expanded ? (
+                  <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M4 14h6v6M20 10h-6V4M14 10l7-7M3 21l7-7" />
+                  </svg>
+                ) : (
+                  <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+                  </svg>
+                )}
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setOpen(false)
+                  setExpanded(false)
+                }}
+                className={btnIcon}
+                aria-label="Close panel"
+              >
+                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
           </div>
 
           <div className="flex-1 overflow-y-auto px-4 py-4 space-y-4">

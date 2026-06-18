@@ -37,3 +37,8 @@ export function fetchByDistrict(
 }>
 
 export function fetchAll(): Promise<unknown[]>
+
+export function askSafeLens(question: string): Promise<{
+  answer: string
+  sources: unknown[]
+}>

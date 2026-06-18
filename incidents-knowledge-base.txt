@@ -1,0 +1,3129 @@
+Incident ID: INC-001
+District: Tumakuru
+Category: Fraud
+Severity: Medium
+Status: Open
+Date: 2025-01-04
+Location: B.H. Road
+Officer: PSI Divya Hegde
+Description: Investment scam promising high returns to local traders
+---
+Incident ID: INC-002
+District: Yadgir
+Category: Assault
+Severity: High
+Status: Under Investigation
+Date: 2025-01-07
+Location: Shahpur
+Officer: ASI Meena Kumari
+Description: Bar fight escalated into serious assault injuring two persons
+---
+Incident ID: INC-003
+District: Raichur
+Category: Domestic Violence
+Severity: Medium
+Status: Under Investigation
+Date: 2025-01-07
+Location: Mantralayam Road
+Officer: ASI Priya Shetty
+Description: Domestic assault during family dispute — victim hospitalized
+---
+Incident ID: INC-004
+District: Kodagu
+Category: Domestic Violence
+Severity: High
+Status: Closed
+Date: 2025-01-09
+Location: Virajpet Road
+Officer: PSI Ramesh H.R.
+Description: Domestic violence complaint filed by spouse at police station
+---
+Incident ID: INC-005
+District: Tumakuru
+Category: Theft
+Severity: Medium
+Status: Under Investigation
+Date: 2025-01-10
+Location: Gubbi Cross
+Officer: ASI Sunitha M.
+Description: Two-wheeler stolen from Gubbi Cross residential parking area during night hours
+---
+Incident ID: INC-006
+District: Kolar
+Category: Robbery
+Severity: Critical
+Status: Open
+Date: 2025-01-12
+Location: BEML Layout
+Officer: PI Prakash Babu
+Description: Armed robbery at jewellery store during business hours
+---
+Incident ID: INC-007
+District: Bengaluru Urban
+Category: Domestic Violence
+Severity: High
+Status: Under Investigation
+Date: 2025-01-12
+Location: Electronic City
+Officer: PI Nandini Gowda
+Description: Domestic assault during family dispute — victim hospitalized
+---
+Incident ID: INC-008
+District: Chikkamagaluru
+Category: Fraud
+Severity: Medium
+Status: Closed
+Date: 2025-01-17
+Location: Kaimara
+Officer: PSI Harish B.
+Description: Real estate fraud using forged property documents
+---
+Incident ID: INC-009
+District: Bengaluru Urban
+Category: Murder
+Severity: Critical
+Status: Under Investigation
+Date: 2025-01-18
+Location: BTM Layout
+Officer: PI Ganesh Murthy
+Description: Contract killing suspected in business rivalry case
+---
+Incident ID: INC-010
+District: Dakshina Kannada
+Category: Theft
+Severity: Medium
+Status: Under Investigation
+Date: 2025-01-18
+Location: Port Area
+Officer: PI Mohan Gowda
+Description: Gold chain snatching near Port Area market during peak shopping hours
+---
+Incident ID: INC-011
+District: Bengaluru Urban
+Category: Assault
+Severity: High
+Status: Closed
+Date: 2025-01-20
+Location: Hebbal
+Officer: PSI Harish B.
+Description: Physical assault following road rage incident at traffic junction
+---
+Incident ID: INC-012
+District: Chikkaballapur
+Category: Theft
+Severity: Low
+Status: Closed
+Date: 2025-01-22
+Location: Chikkaballapur Town
+Officer: PSI Harish B.
+Description: Agricultural pump motor theft from farm shed overnight
+---
+Incident ID: INC-013
+District: Mysuru
+Category: Assault
+Severity: High
+Status: Open
+Date: 2025-01-23
+Location: Vijayanagar
+Officer: PSI Anitha Reddy
+Description: Assault on auto driver over fare disagreement
+---
+Incident ID: INC-014
+District: Bengaluru Urban
+Category: Theft
+Severity: Medium
+Status: Under Investigation
+Date: 2025-01-24
+Location: Yelahanka
+Officer: PSI Vijay Patil
+Description: Laptop theft from unattended vehicle at parking lot
+---
+Incident ID: INC-015
+District: Haveri
+Category: Assault
+Severity: Medium
+Status: Open
+Date: 2025-01-25
+Location: Ranebennur Cross
+Officer: ASI Meena Kumari
+Description: Bar fight escalated into serious assault injuring two persons
+---
+Incident ID: INC-016
+District: Bengaluru Urban
+Category: Assault
+Severity: High
+Status: Under Investigation
+Date: 2025-02-01
+Location: Jayanagar
+Officer: PSI Anitha Reddy
+Description: Assault on auto driver over fare disagreement
+---
+Incident ID: INC-017
+District: Bengaluru Urban
+Category: Cybercrime
+Severity: High
+Status: Under Investigation
+Date: 2025-02-01
+Location: Koramangala
+Officer: PSI Harish B.
+Description: UPI fraud — victim lost money via fake payment request link
+---
+Incident ID: INC-018
+District: Ballari
+Category: Theft
+Severity: Medium
+Status: Under Investigation
+Date: 2025-02-01
+Location: Cowl Bazaar
+Officer: PI Deepak Joshi
+Description: Two-wheeler stolen from Cowl Bazaar residential parking area during night hours
+---
+Incident ID: INC-019
+District: Yadgir
+Category: Fraud
+Severity: Medium
+Status: Closed
+Date: 2025-02-01
+Location: Station Area
+Officer: PSI Rajesh Kumar
+Description: Matrimonial fraud extracting money from victim family
+---
+Incident ID: INC-020
+District: Bengaluru Urban
+Category: Theft
+Severity: Low
+Status: Open
+Date: 2025-02-01
+Location: Electronic City
+Officer: PSI Anitha Reddy
+Description: Agricultural pump motor theft from farm shed overnight
+---
+Incident ID: INC-021
+District: Haveri
+Category: Theft
+Severity: Low
+Status: Open
+Date: 2025-02-02
+Location: Ranebennur Cross
+Officer: PI Ganesh Murthy
+Description: Copper wire theft from construction site reported by site supervisor
+---
+Incident ID: INC-022
+District: Bengaluru Urban
+Category: Domestic Violence
+Severity: Medium
+Status: Open
+Date: 2025-02-04
+Location: Electronic City
+Officer: PSI Rajesh Kumar
+Description: Domestic violence complaint filed by spouse at police station
+---
+Incident ID: INC-023
+District: Tumakuru
+Category: Kidnapping
+Severity: High
+Status: Open
+Date: 2025-02-05
+Location: Kyathsandra
+Officer: ASI Kavitha B.N.
+Description: Attempted kidnapping foiled by bystanders near school
+---
+Incident ID: INC-024
+District: Bengaluru Urban
+Category: Assault
+Severity: High
+Status: Under Investigation
+Date: 2025-02-05
+Location: Jayanagar
+Officer: PSI Harish B.
+Description: Assault on auto driver over fare disagreement
+---
+Incident ID: INC-025
+District: Ballari
+Category: Theft
+Severity: Medium
+Status: Under Investigation
+Date: 2025-02-05
+Location: Toranagallu Road
+Officer: ASI Priya Shetty
+Description: Bicycle stolen from apartment compound entrance
+---
+Incident ID: INC-026
+District: Koppal
+Category: Drug Offense
+Severity: High
+Status: Closed
+Date: 2025-02-07
+Location: Karatagi
+Officer: PSI Divya Hegde
+Description: Synthetic drug distribution network bust in urban area
+---
+Incident ID: INC-027
+District: Bengaluru Urban
+Category: Theft
+Severity: Medium
+Status: Under Investigation
+Date: 2025-02-10
+Location: Whitefield
+Officer: PSI Anitha Reddy
+Description: Bicycle stolen from apartment compound entrance
+---
+Incident ID: INC-028
+District: Ramanagara
+Category: Theft
+Severity: Low
+Status: Open
+Date: 2025-02-11
+Location: Magadi Road
+Officer: PI Ganesh Murthy
+Description: Bicycle stolen from apartment compound entrance
+---
+Incident ID: INC-029
+District: Kalaburagi
+Category: Assault
+Severity: High
+Status: Under Investigation
+Date: 2025-02-15
+Location: Malkhed Road
+Officer: PI Nandini Gowda
+Description: Physical assault following road rage incident at traffic junction
+---
+Incident ID: INC-030
+District: Ramanagara
+Category: Domestic Violence
+Severity: High
+Status: Under Investigation
+Date: 2025-02-17
+Location: Channapatna
+Officer: PI Nandini Gowda
+Description: Domestic violence complaint filed by spouse at police station
+---
+Incident ID: INC-031
+District: Mandya
+Category: Assault
+Severity: Medium
+Status: Under Investigation
+Date: 2025-02-19
+Location: Srirangapatna
+Officer: PSI Ramesh H.R.
+Description: Physical assault following road rage incident at traffic junction
+---
+Incident ID: INC-032
+District: Belagavi
+Category: Fraud
+Severity: Medium
+Status: Open
+Date: 2025-02-20
+Location: Tilakwadi
+Officer: ASI Kavitha B.N.
+Description: Job recruitment scam collecting fees via social media
+---
+Incident ID: INC-033
+District: Uttara Kannada
+Category: Theft
+Severity: Low
+Status: Under Investigation
+Date: 2025-02-20
+Location: Karwar Port
+Officer: PSI Divya Hegde
+Description: Agricultural pump motor theft from farm shed overnight
+---
+Incident ID: INC-034
+District: Belagavi
+Category: Theft
+Severity: Medium
+Status: Open
+Date: 2025-02-22
+Location: Camp Area
+Officer: PI Suresh Naik
+Description: Cash theft from shop counter while owner was distracted
+---
+Incident ID: INC-035
+District: Vijayanagara
+Category: Burglary
+Severity: Medium
+Status: Under Investigation
+Date: 2025-02-23
+Location: Kudligi Road
+Officer: PI Suresh Naik
+Description: Attempted burglary foiled by alarm system at warehouse
+---
+Incident ID: INC-036
+District: Hubballi-Dharwad
+Category: Drug Offense
+Severity: Critical
+Status: Open
+Date: 2025-02-23
+Location: Gokul Road
+Officer: ASI Manjunath S.
+Description: Cross-border drug trafficking interdiction at highway check post
+---
+Incident ID: INC-037
+District: Chitradurga
+Category: Fraud
+Severity: High
+Status: Closed
+Date: 2025-02-23
+Location: NH Bypass
+Officer: PI Shweta Rao
+Description: Investment scam promising high returns to local traders
+---
+Incident ID: INC-038
+District: Mysuru
+Category: Assault
+Severity: Medium
+Status: Closed
+Date: 2025-02-23
+Location: Vijayanagar
+Officer: PI Nandini Gowda
+Description: Assault with blunt object during property dispute altercation
+---
+Incident ID: INC-039
+District: Mandya
+Category: Burglary
+Severity: Medium
+Status: Under Investigation
+Date: 2025-02-25
+Location: Pandavapura
+Officer: PSI Harish B.
+Description: Office burglary — computer equipment and documents stolen
+---
+Incident ID: INC-040
+District: Kolar
+Category: Robbery
+Severity: Critical
+Status: Under Investigation
+Date: 2025-03-02
+Location: Tamaka
+Officer: ASI Meena Kumari
+Description: Highway robbery of cash-carrying courier van
+---
+Incident ID: INC-041
+District: Bengaluru Urban
+Category: Cybercrime
+Severity: Medium
+Status: Closed
+Date: 2025-03-02
+Location: Hebbal
+Officer: PI Deepak Joshi
+Description: UPI fraud — victim lost money via fake payment request link
+---
+Incident ID: INC-042
+District: Yadgir
+Category: Fraud
+Severity: High
+Status: Closed
+Date: 2025-03-02
+Location: Shahpur
+Officer: PI Shweta Rao
+Description: Investment scam promising high returns to local traders
+---
+Incident ID: INC-043
+District: Belagavi
+Category: Cybercrime
+Severity: High
+Status: Closed
+Date: 2025-03-04
+Location: Shahapur
+Officer: PSI Harish B.
+Description: Ransomware attack on SME server with data encryption
+---
+Incident ID: INC-044
+District: Ballari
+Category: Domestic Violence
+Severity: High
+Status: Open
+Date: 2025-03-04
+Location: Cowl Bazaar
+Officer: PI Deepak Joshi
+Description: Dowry-related harassment complaint registered by victim
+---
+Incident ID: INC-045
+District: Vijayapura
+Category: Robbery
+Severity: Critical
+Status: Open
+Date: 2025-03-04
+Location: Almel
+Officer: PI Shweta Rao
+Description: ATM customer robbed at knifepoint after withdrawal
+---
+Incident ID: INC-046
+District: Ballari
+Category: Burglary
+Severity: High
+Status: Open
+Date: 2025-03-05
+Location: Cowl Bazaar
+Officer: PSI Vijay Patil
+Description: Office burglary — computer equipment and documents stolen
+---
+Incident ID: INC-047
+District: Bengaluru Urban
+Category: Assault
+Severity: High
+Status: Under Investigation
+Date: 2025-03-08
+Location: Yelahanka
+Officer: PSI Ramesh H.R.
+Description: Physical assault following road rage incident at traffic junction
+---
+Incident ID: INC-048
+District: Chitradurga
+Category: Fraud
+Severity: Medium
+Status: Closed
+Date: 2025-03-09
+Location: Medehalli
+Officer: ASI Priya Shetty
+Description: Investment scam promising high returns to local traders
+---
+Incident ID: INC-049
+District: Vijayapura
+Category: Robbery
+Severity: High
+Status: Closed
+Date: 2025-03-11
+Location: Almel
+Officer: PI Prakash Babu
+Description: Armed robbery at jewellery store during business hours
+---
+Incident ID: INC-050
+District: Bidar
+Category: Domestic Violence
+Severity: Medium
+Status: Closed
+Date: 2025-03-13
+Location: Manna Ekhelli
+Officer: PSI Anitha Reddy
+Description: Domestic assault during family dispute — victim hospitalized
+---
+Incident ID: INC-051
+District: Mysuru
+Category: Robbery
+Severity: High
+Status: Open
+Date: 2025-03-19
+Location: Gokulam
+Officer: ASI Kavitha B.N.
+Description: Highway robbery of cash-carrying courier van
+---
+Incident ID: INC-052
+District: Mysuru
+Category: Cybercrime
+Severity: Critical
+Status: Open
+Date: 2025-03-20
+Location: Bannimantap
+Officer: ASI Lakshmi Devi
+Description: OTP fraud targeting elderly citizen through impersonation call
+---
+Incident ID: INC-053
+District: Bengaluru Urban
+Category: Robbery
+Severity: High
+Status: Open
+Date: 2025-03-20
+Location: Jayanagar
+Officer: PSI Anitha Reddy
+Description: Highway robbery of cash-carrying courier van
+---
+Incident ID: INC-054
+District: Kolar
+Category: Domestic Violence
+Severity: Medium
+Status: Closed
+Date: 2025-03-25
+Location: Andersonpet
+Officer: PI Ganesh Murthy
+Description: Protection order sought following repeated harassment at home
+---
+Incident ID: INC-055
+District: Hubballi-Dharwad
+Category: Cybercrime
+Severity: Critical
+Status: Open
+Date: 2025-03-29
+Location: Deshpande Nagar
+Officer: PSI Arun Kulkarni
+Description: Ransomware attack on SME server with data encryption
+---
+Incident ID: INC-056
+District: Gadag
+Category: Robbery
+Severity: Critical
+Status: Under Investigation
+Date: 2025-03-30
+Location: Betageri
+Officer: ASI Sunitha M.
+Description: Snatch-and-run robbery of business cash collection
+---
+Incident ID: INC-057
+District: Dakshina Kannada
+Category: Robbery
+Severity: Critical
+Status: Closed
+Date: 2025-04-02
+Location: Kadri
+Officer: ASI Priya Shetty
+Description: ATM customer robbed at knifepoint after withdrawal
+---
+Incident ID: INC-058
+District: Bengaluru Urban
+Category: Kidnapping
+Severity: Critical
+Status: Closed
+Date: 2025-04-03
+Location: Marathahalli
+Officer: PI Prakash Babu
+Description: Kidnapping for ransom — victim abducted from workplace
+---
+Incident ID: INC-059
+District: Raichur
+Category: Drug Offense
+Severity: Critical
+Status: Open
+Date: 2025-04-05
+Location: Sindhanur Road
+Officer: PSI Anitha Reddy
+Description: Cross-border drug trafficking interdiction at highway check post
+---
+Incident ID: INC-060
+District: Chitradurga
+Category: Cybercrime
+Severity: High
+Status: Closed
+Date: 2025-04-08
+Location: NH Bypass
+Officer: PSI Arun Kulkarni
+Description: UPI fraud — victim lost money via fake payment request link
+---
+Incident ID: INC-061
+District: Bengaluru Urban
+Category: Theft
+Severity: Medium
+Status: Under Investigation
+Date: 2025-04-09
+Location: Yelahanka
+Officer: ASI Meena Kumari
+Description: Cash theft from shop counter while owner was distracted
+---
+Incident ID: INC-062
+District: Mandya
+Category: Fraud
+Severity: Medium
+Status: Under Investigation
+Date: 2025-04-11
+Location: Srirangapatna
+Officer: PSI Divya Hegde
+Description: Job recruitment scam collecting fees via social media
+---
+Incident ID: INC-063
+District: Uttara Kannada
+Category: Theft
+Severity: Low
+Status: Closed
+Date: 2025-04-11
+Location: Kumta Beach Road
+Officer: PI Prakash Babu
+Description: Agricultural pump motor theft from farm shed overnight
+---
+Incident ID: INC-064
+District: Hassan
+Category: Fraud
+Severity: Medium
+Status: Closed
+Date: 2025-04-12
+Location: BM Road
+Officer: PI Nandini Gowda
+Description: Loan fraud using forged identity documents
+---
+Incident ID: INC-065
+District: Hassan
+Category: Theft
+Severity: Low
+Status: Closed
+Date: 2025-04-19
+Location: Ramanathapura
+Officer: PI Prakash Babu
+Description: Two-wheeler stolen from Ramanathapura residential parking area during night hours
+---
+Incident ID: INC-066
+District: Bengaluru Urban
+Category: Assault
+Severity: High
+Status: Open
+Date: 2025-04-20
+Location: BTM Layout
+Officer: PI Mohan Gowda
+Description: Physical assault following road rage incident at traffic junction
+---
+Incident ID: INC-067
+District: Bagalkot
+Category: Theft
+Severity: Medium
+Status: Closed
+Date: 2025-04-20
+Location: Navanagar
+Officer: PI Mohan Gowda
+Description: Bicycle stolen from apartment compound entrance
+---
+Incident ID: INC-068
+District: Bengaluru Urban
+Category: Assault
+Severity: High
+Status: Closed
+Date: 2025-04-22
+Location: BTM Layout
+Officer: PSI Arun Kulkarni
+Description: Assault with blunt object during property dispute altercation
+---
+Incident ID: INC-069
+District: Kolar
+Category: Assault
+Severity: Critical
+Status: Closed
+Date: 2025-04-25
+Location: Tamaka
+Officer: PSI Anitha Reddy
+Description: Assault with blunt object during property dispute altercation
+---
+Incident ID: INC-070
+District: Bengaluru Urban
+Category: Assault
+Severity: High
+Status: Under Investigation
+Date: 2025-04-27
+Location: MG Road
+Officer: PI Suresh Naik
+Description: Physical assault following road rage incident at traffic junction
+---
+Incident ID: INC-071
+District: Mysuru
+Category: Theft
+Severity: Low
+Status: Under Investigation
+Date: 2025-04-29
+Location: Kuvempunagar
+Officer: PSI Anitha Reddy
+Description: Agricultural pump motor theft from farm shed overnight
+---
+Incident ID: INC-072
+District: Chamarajanagar
+Category: Theft
+Severity: Medium
+Status: Under Investigation
+Date: 2025-04-29
+Location: Kollegal Road
+Officer: PSI Arun Kulkarni
+Description: Laptop theft from unattended vehicle at parking lot
+---
+Incident ID: INC-073
+District: Bagalkot
+Category: Theft
+Severity: Low
+Status: Under Investigation
+Date: 2025-04-30
+Location: Vidyagiri
+Officer: PI Mohan Gowda
+Description: Agricultural pump motor theft from farm shed overnight
+---
+Incident ID: INC-074
+District: Koppal
+Category: Cybercrime
+Severity: High
+Status: Open
+Date: 2025-05-02
+Location: Yelburga Road
+Officer: PI Mohan Gowda
+Description: Online shopping fraud — paid for goods never delivered
+---
+Incident ID: INC-075
+District: Bagalkot
+Category: Robbery
+Severity: High
+Status: Under Investigation
+Date: 2025-05-07
+Location: Navanagar
+Officer: PI Shweta Rao
+Description: Armed robbery at jewellery store during business hours
+---
+Incident ID: INC-076
+District: Bengaluru Urban
+Category: Burglary
+Severity: Medium
+Status: Closed
+Date: 2025-05-07
+Location: Indiranagar
+Officer: PI Prakash Babu
+Description: Office burglary — computer equipment and documents stolen
+---
+Incident ID: INC-077
+District: Bidar
+Category: Theft
+Severity: Low
+Status: Closed
+Date: 2025-05-08
+Location: Manna Ekhelli
+Officer: ASI Sunitha M.
+Description: Laptop theft from unattended vehicle at parking lot
+---
+Incident ID: INC-078
+District: Chamarajanagar
+Category: Robbery
+Severity: Critical
+Status: Closed
+Date: 2025-05-08
+Location: Hanur
+Officer: ASI Sunitha M.
+Description: Highway robbery of cash-carrying courier van
+---
+Incident ID: INC-079
+District: Bengaluru Urban
+Category: Theft
+Severity: Medium
+Status: Open
+Date: 2025-05-08
+Location: Koramangala
+Officer: PI Deepak Joshi
+Description: Gold chain snatching near Koramangala market during peak shopping hours
+---
+Incident ID: INC-080
+District: Dakshina Kannada
+Category: Cybercrime
+Severity: High
+Status: Under Investigation
+Date: 2025-05-12
+Location: Hampankatta
+Officer: ASI Manjunath S.
+Description: OTP fraud targeting elderly citizen through impersonation call
+---
+Incident ID: INC-081
+District: Bengaluru Urban
+Category: Drug Offense
+Severity: Critical
+Status: Open
+Date: 2025-05-14
+Location: Whitefield
+Officer: PI Ganesh Murthy
+Description: Synthetic drug distribution network bust in urban area
+---
+Incident ID: INC-082
+District: Chamarajanagar
+Category: Murder
+Severity: Critical
+Status: Open
+Date: 2025-05-15
+Location: Kollegal Road
+Officer: PI Shweta Rao
+Description: Contract killing suspected in business rivalry case
+---
+Incident ID: INC-083
+District: Bengaluru Urban
+Category: Theft
+Severity: Low
+Status: Open
+Date: 2025-05-15
+Location: Hebbal
+Officer: ASI Kavitha B.N.
+Description: Gold chain snatching near Hebbal market during peak shopping hours
+---
+Incident ID: INC-084
+District: Bengaluru Urban
+Category: Domestic Violence
+Severity: Medium
+Status: Open
+Date: 2025-05-17
+Location: Hebbal
+Officer: PI Ganesh Murthy
+Description: Dowry-related harassment complaint registered by victim
+---
+Incident ID: INC-085
+District: Shivamogga
+Category: Assault
+Severity: Critical
+Status: Closed
+Date: 2025-05-19
+Location: Bhadravathi Road
+Officer: PSI Ramesh H.R.
+Description: Assault on auto driver over fare disagreement
+---
+Incident ID: INC-086
+District: Bengaluru Urban
+Category: Robbery
+Severity: Critical
+Status: Closed
+Date: 2025-05-20
+Location: Whitefield
+Officer: ASI Lakshmi Devi
+Description: Highway robbery of cash-carrying courier van
+---
+Incident ID: INC-087
+District: Shivamogga
+Category: Robbery
+Severity: High
+Status: Closed
+Date: 2025-05-22
+Location: Durgigudi
+Officer: PI Shweta Rao
+Description: ATM customer robbed at knifepoint after withdrawal
+---
+Incident ID: INC-088
+District: Hubballi-Dharwad
+Category: Theft
+Severity: Low
+Status: Under Investigation
+Date: 2025-05-23
+Location: Vidyanagar
+Officer: PI Ganesh Murthy
+Description: Mobile phone snatching near bus stand by motorcycle-borne offenders
+---
+Incident ID: INC-089
+District: Bengaluru Urban
+Category: Fraud
+Severity: High
+Status: Open
+Date: 2025-05-27
+Location: Whitefield
+Officer: PI Ganesh Murthy
+Description: Investment scam promising high returns to local traders
+---
+Incident ID: INC-090
+District: Vijayanagara
+Category: Drug Offense
+Severity: Critical
+Status: Open
+Date: 2025-05-29
+Location: Kottur Cross
+Officer: PI Suresh Naik
+Description: Cross-border drug trafficking interdiction at highway check post
+---
+Incident ID: INC-091
+District: Udupi
+Category: Cybercrime
+Severity: High
+Status: Closed
+Date: 2025-06-03
+Location: Malpe
+Officer: PI Nandini Gowda
+Description: Ransomware attack on SME server with data encryption
+---
+Incident ID: INC-092
+District: Mysuru
+Category: Theft
+Severity: Low
+Status: Closed
+Date: 2025-06-03
+Location: Nazarbad
+Officer: PI Suresh Naik
+Description: Laptop theft from unattended vehicle at parking lot
+---
+Incident ID: INC-093
+District: Bengaluru Urban
+Category: Fraud
+Severity: Medium
+Status: Under Investigation
+Date: 2025-06-03
+Location: Electronic City
+Officer: ASI Kavitha B.N.
+Description: Job recruitment scam collecting fees via social media
+---
+Incident ID: INC-094
+District: Belagavi
+Category: Theft
+Severity: Medium
+Status: Under Investigation
+Date: 2025-06-05
+Location: Tilakwadi
+Officer: PSI Harish B.
+Description: Copper wire theft from construction site reported by site supervisor
+---
+Incident ID: INC-095
+District: Mysuru
+Category: Theft
+Severity: Medium
+Status: Open
+Date: 2025-06-07
+Location: Gokulam
+Officer: ASI Meena Kumari
+Description: Agricultural pump motor theft from farm shed overnight
+---
+Incident ID: INC-096
+District: Mysuru
+Category: Cybercrime
+Severity: High
+Status: Closed
+Date: 2025-06-07
+Location: Saraswathipuram
+Officer: ASI Meena Kumari
+Description: OTP fraud targeting elderly citizen through impersonation call
+---
+Incident ID: INC-097
+District: Ramanagara
+Category: Robbery
+Severity: Critical
+Status: Under Investigation
+Date: 2025-06-09
+Location: Channapatna
+Officer: PI Deepak Joshi
+Description: Highway robbery of cash-carrying courier van
+---
+Incident ID: INC-098
+District: Bengaluru Urban
+Category: Robbery
+Severity: High
+Status: Closed
+Date: 2025-06-10
+Location: Yelahanka
+Officer: PSI Ramesh H.R.
+Description: Armed robbery at jewellery store during business hours
+---
+Incident ID: INC-099
+District: Mysuru
+Category: Theft
+Severity: Medium
+Status: Closed
+Date: 2025-06-10
+Location: Nazarbad
+Officer: PSI Divya Hegde
+Description: Copper wire theft from construction site reported by site supervisor
+---
+Incident ID: INC-100
+District: Mysuru
+Category: Burglary
+Severity: High
+Status: Open
+Date: 2025-06-13
+Location: Saraswathipuram
+Officer: PI Deepak Joshi
+Description: House break-in while family was away on vacation
+---
+Incident ID: INC-101
+District: Koppal
+Category: Cybercrime
+Severity: High
+Status: Under Investigation
+Date: 2025-06-13
+Location: Karatagi
+Officer: PI Ganesh Murthy
+Description: UPI fraud — victim lost money via fake payment request link
+---
+Incident ID: INC-102
+District: Dakshina Kannada
+Category: Domestic Violence
+Severity: Medium
+Status: Under Investigation
+Date: 2025-06-13
+Location: Bendoor
+Officer: PSI Harish B.
+Description: Protection order sought following repeated harassment at home
+---
+Incident ID: INC-103
+District: Bengaluru Urban
+Category: Assault
+Severity: High
+Status: Under Investigation
+Date: 2025-06-14
+Location: Marathahalli
+Officer: PSI Divya Hegde
+Description: Physical assault following road rage incident at traffic junction
+---
+Incident ID: INC-104
+District: Yadgir
+Category: Domestic Violence
+Severity: High
+Status: Closed
+Date: 2025-06-15
+Location: Saidapur
+Officer: ASI Lakshmi Devi
+Description: Domestic violence complaint filed by spouse at police station
+---
+Incident ID: INC-105
+District: Gadag
+Category: Theft
+Severity: Low
+Status: Under Investigation
+Date: 2025-06-20
+Location: Betageri
+Officer: PI Nandini Gowda
+Description: Mobile phone snatching near bus stand by motorcycle-borne offenders
+---
+Incident ID: INC-106
+District: Bengaluru Urban
+Category: Drug Offense
+Severity: Critical
+Status: Open
+Date: 2025-06-22
+Location: MG Road
+Officer: ASI Manjunath S.
+Description: Cross-border drug trafficking interdiction at highway check post
+---
+Incident ID: INC-107
+District: Udupi
+Category: Cybercrime
+Severity: Critical
+Status: Under Investigation
+Date: 2025-06-24
+Location: Kundapura Road
+Officer: PI Prakash Babu
+Description: Online shopping fraud — paid for goods never delivered
+---
+Incident ID: INC-108
+District: Vijayapura
+Category: Domestic Violence
+Severity: Medium
+Status: Under Investigation
+Date: 2025-06-24
+Location: Almel
+Officer: PI Shweta Rao
+Description: Protection order sought following repeated harassment at home
+---
+Incident ID: INC-109
+District: Hassan
+Category: Drug Offense
+Severity: Critical
+Status: Under Investigation
+Date: 2025-06-25
+Location: Arsikere Road
+Officer: ASI Lakshmi Devi
+Description: Synthetic drug distribution network bust in urban area
+---
+Incident ID: INC-110
+District: Bidar
+Category: Fraud
+Severity: Medium
+Status: Closed
+Date: 2025-06-25
+Location: Gumpa Area
+Officer: PSI Divya Hegde
+Description: Investment scam promising high returns to local traders
+---
+Incident ID: INC-111
+District: Mysuru
+Category: Cybercrime
+Severity: Critical
+Status: Under Investigation
+Date: 2025-06-26
+Location: Kuvempunagar
+Officer: PSI Anitha Reddy
+Description: Ransomware attack on SME server with data encryption
+---
+Incident ID: INC-112
+District: Hubballi-Dharwad
+Category: Robbery
+Severity: Critical
+Status: Closed
+Date: 2025-06-28
+Location: Unkal
+Officer: PI Suresh Naik
+Description: ATM customer robbed at knifepoint after withdrawal
+---
+Incident ID: INC-113
+District: Hubballi-Dharwad
+Category: Theft
+Severity: Low
+Status: Under Investigation
+Date: 2025-06-28
+Location: Unkal
+Officer: ASI Meena Kumari
+Description: Laptop theft from unattended vehicle at parking lot
+---
+Incident ID: INC-114
+District: Dakshina Kannada
+Category: Theft
+Severity: Low
+Status: Closed
+Date: 2025-06-29
+Location: Bendoor
+Officer: PI Nandini Gowda
+Description: Bicycle stolen from apartment compound entrance
+---
+Incident ID: INC-115
+District: Bengaluru Urban
+Category: Robbery
+Severity: High
+Status: Open
+Date: 2025-06-30
+Location: Jayanagar
+Officer: ASI Sunitha M.
+Description: Snatch-and-run robbery of business cash collection
+---
+Incident ID: INC-116
+District: Haveri
+Category: Burglary
+Severity: Medium
+Status: Closed
+Date: 2025-07-04
+Location: Byadgi Road
+Officer: PI Suresh Naik
+Description: House break-in while family was away on vacation
+---
+Incident ID: INC-117
+District: Hubballi-Dharwad
+Category: Burglary
+Severity: Medium
+Status: Open
+Date: 2025-07-07
+Location: Gokul Road
+Officer: PI Deepak Joshi
+Description: Commercial burglary at electronics shop after closing hours
+---
+Incident ID: INC-118
+District: Bengaluru Urban
+Category: Burglary
+Severity: High
+Status: Under Investigation
+Date: 2025-07-08
+Location: Whitefield
+Officer: PI Prakash Babu
+Description: Office burglary — computer equipment and documents stolen
+---
+Incident ID: INC-119
+District: Bengaluru Urban
+Category: Assault
+Severity: High
+Status: Under Investigation
+Date: 2025-07-09
+Location: MG Road
+Officer: PSI Harish B.
+Description: Physical assault following road rage incident at traffic junction
+---
+Incident ID: INC-120
+District: Bidar
+Category: Drug Offense
+Severity: Critical
+Status: Closed
+Date: 2025-07-11
+Location: Gumpa Area
+Officer: ASI Lakshmi Devi
+Description: NDPS seizure — contraband recovered during vehicle checkpoint
+---
+Incident ID: INC-121
+District: Hubballi-Dharwad
+Category: Domestic Violence
+Severity: Medium
+Status: Open
+Date: 2025-07-12
+Location: Gokul Road
+Officer: ASI Sunitha M.
+Description: Domestic violence complaint filed by spouse at police station
+---
+Incident ID: INC-122
+District: Bengaluru Urban
+Category: Cybercrime
+Severity: Critical
+Status: Open
+Date: 2025-07-12
+Location: Jayanagar
+Officer: ASI Meena Kumari
+Description: OTP fraud targeting elderly citizen through impersonation call
+---
+Incident ID: INC-123
+District: Bengaluru Rural
+Category: Fraud
+Severity: High
+Status: Under Investigation
+Date: 2025-07-15
+Location: Nelamangala
+Officer: PI Mohan Gowda
+Description: Investment scam promising high returns to local traders
+---
+Incident ID: INC-124
+District: Vijayapura
+Category: Theft
+Severity: Low
+Status: Under Investigation
+Date: 2025-07-21
+Location: Almel
+Officer: PI Deepak Joshi
+Description: Mobile phone snatching near bus stand by motorcycle-borne offenders
+---
+Incident ID: INC-125
+District: Bengaluru Urban
+Category: Burglary
+Severity: Medium
+Status: Under Investigation
+Date: 2025-07-24
+Location: Jayanagar
+Officer: PI Suresh Naik
+Description: Commercial burglary at electronics shop after closing hours
+---
+Incident ID: INC-126
+District: Bengaluru Rural
+Category: Theft
+Severity: Medium
+Status: Closed
+Date: 2025-07-24
+Location: Devanahalli
+Officer: PI Deepak Joshi
+Description: Cash theft from shop counter while owner was distracted
+---
+Incident ID: INC-127
+District: Bengaluru Urban
+Category: Robbery
+Severity: Critical
+Status: Open
+Date: 2025-07-24
+Location: Yelahanka
+Officer: PSI Rajesh Kumar
+Description: Snatch-and-run robbery of business cash collection
+---
+Incident ID: INC-128
+District: Hubballi-Dharwad
+Category: Assault
+Severity: High
+Status: Open
+Date: 2025-07-25
+Location: Deshpande Nagar
+Officer: PSI Divya Hegde
+Description: Assault with blunt object during property dispute altercation
+---
+Incident ID: INC-129
+District: Shivamogga
+Category: Theft
+Severity: Low
+Status: Open
+Date: 2025-08-02
+Location: Vinoba Nagar
+Officer: PI Deepak Joshi
+Description: Mobile phone snatching near bus stand by motorcycle-borne offenders
+---
+Incident ID: INC-130
+District: Hubballi-Dharwad
+Category: Theft
+Severity: Low
+Status: Open
+Date: 2025-08-03
+Location: Gokul Road
+Officer: PSI Vijay Patil
+Description: Bicycle stolen from apartment compound entrance
+---
+Incident ID: INC-131
+District: Belagavi
+Category: Murder
+Severity: Critical
+Status: Closed
+Date: 2025-08-07
+Location: Shahapur
+Officer: PSI Arun Kulkarni
+Description: Homicide reported following altercation at Shahapur residential premises
+---
+Incident ID: INC-132
+District: Koppal
+Category: Kidnapping
+Severity: Critical
+Status: Under Investigation
+Date: 2025-08-10
+Location: Kukanoor Cross
+Officer: PSI Anitha Reddy
+Description: Attempted kidnapping foiled by bystanders near school
+---
+Incident ID: INC-133
+District: Bagalkot
+Category: Theft
+Severity: Low
+Status: Under Investigation
+Date: 2025-08-12
+Location: Badami Cross
+Officer: PSI Arun Kulkarni
+Description: Mobile phone snatching near bus stand by motorcycle-borne offenders
+---
+Incident ID: INC-134
+District: Shivamogga
+Category: Theft
+Severity: Medium
+Status: Open
+Date: 2025-08-15
+Location: Vinoba Nagar
+Officer: PI Mohan Gowda
+Description: Gold chain snatching near Vinoba Nagar market during peak shopping hours
+---
+Incident ID: INC-135
+District: Chikkamagaluru
+Category: Theft
+Severity: Low
+Status: Under Investigation
+Date: 2025-08-16
+Location: Koppa Road
+Officer: PSI Rajesh Kumar
+Description: Bicycle stolen from apartment compound entrance
+---
+Incident ID: INC-136
+District: Raichur
+Category: Theft
+Severity: Medium
+Status: Under Investigation
+Date: 2025-08-20
+Location: Lingasugur Cross
+Officer: PSI Arun Kulkarni
+Description: Mobile phone snatching near bus stand by motorcycle-borne offenders
+---
+Incident ID: INC-137
+District: Bengaluru Rural
+Category: Theft
+Severity: Medium
+Status: Closed
+Date: 2025-08-20
+Location: Nelamangala
+Officer: PI Ganesh Murthy
+Description: Laptop theft from unattended vehicle at parking lot
+---
+Incident ID: INC-138
+District: Bengaluru Urban
+Category: Burglary
+Severity: Medium
+Status: Closed
+Date: 2025-08-21
+Location: Koramangala
+Officer: PI Nandini Gowda
+Description: Attempted burglary foiled by alarm system at warehouse
+---
+Incident ID: INC-139
+District: Chitradurga
+Category: Cybercrime
+Severity: Critical
+Status: Under Investigation
+Date: 2025-08-22
+Location: Devigiri
+Officer: PI Suresh Naik
+Description: UPI fraud — victim lost money via fake payment request link
+---
+Incident ID: INC-140
+District: Hubballi-Dharwad
+Category: Burglary
+Severity: Medium
+Status: Closed
+Date: 2025-08-23
+Location: Vidyanagar
+Officer: ASI Sunitha M.
+Description: Attempted burglary foiled by alarm system at warehouse
+---
+Incident ID: INC-141
+District: Kalaburagi
+Category: Fraud
+Severity: High
+Status: Under Investigation
+Date: 2025-08-31
+Location: Super Market
+Officer: PI Shweta Rao
+Description: Matrimonial fraud extracting money from victim family
+---
+Incident ID: INC-142
+District: Raichur
+Category: Theft
+Severity: Medium
+Status: Closed
+Date: 2025-09-03
+Location: Sindhanur Road
+Officer: ASI Priya Shetty
+Description: Gold chain snatching near Sindhanur Road market during peak shopping hours
+---
+Incident ID: INC-143
+District: Mysuru
+Category: Burglary
+Severity: High
+Status: Closed
+Date: 2025-09-03
+Location: Nazarbad
+Officer: PI Shweta Rao
+Description: Commercial burglary at electronics shop after closing hours
+---
+Incident ID: INC-144
+District: Bengaluru Urban
+Category: Drug Offense
+Severity: High
+Status: Open
+Date: 2025-09-04
+Location: Hebbal
+Officer: ASI Meena Kumari
+Description: Drug peddling near college campus — two suspects detained
+---
+Incident ID: INC-145
+District: Mysuru
+Category: Assault
+Severity: Medium
+Status: Closed
+Date: 2025-09-04
+Location: Gokulam
+Officer: PI Mohan Gowda
+Description: Group assault during local festival near temple premises
+---
+Incident ID: INC-146
+District: Dakshina Kannada
+Category: Theft
+Severity: Low
+Status: Under Investigation
+Date: 2025-09-05
+Location: Hampankatta
+Officer: PI Ganesh Murthy
+Description: Mobile phone snatching near bus stand by motorcycle-borne offenders
+---
+Incident ID: INC-147
+District: Bengaluru Urban
+Category: Theft
+Severity: Medium
+Status: Under Investigation
+Date: 2025-09-05
+Location: MG Road
+Officer: PSI Ramesh H.R.
+Description: Two-wheeler stolen from MG Road residential parking area during night hours
+---
+Incident ID: INC-148
+District: Bengaluru Urban
+Category: Theft
+Severity: Medium
+Status: Under Investigation
+Date: 2025-09-06
+Location: Electronic City
+Officer: PSI Ramesh H.R.
+Description: Two-wheeler stolen from Electronic City residential parking area during night hours
+---
+Incident ID: INC-149
+District: Mandya
+Category: Robbery
+Severity: Critical
+Status: Closed
+Date: 2025-09-07
+Location: Mandya Town
+Officer: PSI Ramesh H.R.
+Description: ATM customer robbed at knifepoint after withdrawal
+---
+Incident ID: INC-150
+District: Mysuru
+Category: Burglary
+Severity: High
+Status: Under Investigation
+Date: 2025-09-07
+Location: Vijayanagar
+Officer: PI Ganesh Murthy
+Description: Attempted burglary foiled by alarm system at warehouse
+---
+Incident ID: INC-151
+District: Bengaluru Urban
+Category: Drug Offense
+Severity: High
+Status: Closed
+Date: 2025-09-09
+Location: Indiranagar
+Officer: PI Prakash Babu
+Description: Synthetic drug distribution network bust in urban area
+---
+Incident ID: INC-152
+District: Mysuru
+Category: Fraud
+Severity: High
+Status: Closed
+Date: 2025-09-12
+Location: Vijayanagar
+Officer: ASI Manjunath S.
+Description: Real estate fraud using forged property documents
+---
+Incident ID: INC-153
+District: Kolar
+Category: Theft
+Severity: Low
+Status: Open
+Date: 2025-09-13
+Location: BEML Layout
+Officer: PSI Ramesh H.R.
+Description: Copper wire theft from construction site reported by site supervisor
+---
+Incident ID: INC-154
+District: Hubballi-Dharwad
+Category: Theft
+Severity: Medium
+Status: Under Investigation
+Date: 2025-09-15
+Location: Unkal
+Officer: PI Suresh Naik
+Description: Laptop theft from unattended vehicle at parking lot
+---
+Incident ID: INC-155
+District: Bengaluru Urban
+Category: Drug Offense
+Severity: High
+Status: Closed
+Date: 2025-09-18
+Location: BTM Layout
+Officer: PSI Harish B.
+Description: NDPS seizure — contraband recovered during vehicle checkpoint
+---
+Incident ID: INC-156
+District: Hubballi-Dharwad
+Category: Cybercrime
+Severity: Critical
+Status: Closed
+Date: 2025-09-21
+Location: Unkal
+Officer: PI Shweta Rao
+Description: UPI fraud — victim lost money via fake payment request link
+---
+Incident ID: INC-157
+District: Hubballi-Dharwad
+Category: Burglary
+Severity: Medium
+Status: Under Investigation
+Date: 2025-09-23
+Location: Station Road
+Officer: ASI Sunitha M.
+Description: Office burglary — computer equipment and documents stolen
+---
+Incident ID: INC-158
+District: Kodagu
+Category: Theft
+Severity: Medium
+Status: Under Investigation
+Date: 2025-09-27
+Location: Madikeri Town
+Officer: ASI Sunitha M.
+Description: Copper wire theft from construction site reported by site supervisor
+---
+Incident ID: INC-159
+District: Haveri
+Category: Burglary
+Severity: High
+Status: Under Investigation
+Date: 2025-10-01
+Location: Haveri Town
+Officer: PSI Anitha Reddy
+Description: House break-in while family was away on vacation
+---
+Incident ID: INC-160
+District: Bengaluru Urban
+Category: Murder
+Severity: Critical
+Status: Closed
+Date: 2025-10-05
+Location: Koramangala
+Officer: PSI Rajesh Kumar
+Description: Contract killing suspected in business rivalry case
+---
+Incident ID: INC-161
+District: Hubballi-Dharwad
+Category: Cybercrime
+Severity: Critical
+Status: Under Investigation
+Date: 2025-10-06
+Location: Unkal
+Officer: ASI Kavitha B.N.
+Description: UPI fraud — victim lost money via fake payment request link
+---
+Incident ID: INC-162
+District: Bengaluru Urban
+Category: Domestic Violence
+Severity: Medium
+Status: Under Investigation
+Date: 2025-10-09
+Location: MG Road
+Officer: PSI Ramesh H.R.
+Description: Domestic assault during family dispute — victim hospitalized
+---
+Incident ID: INC-163
+District: Hubballi-Dharwad
+Category: Robbery
+Severity: High
+Status: Closed
+Date: 2025-10-09
+Location: Gokul Road
+Officer: PI Mohan Gowda
+Description: Snatch-and-run robbery of business cash collection
+---
+Incident ID: INC-164
+District: Bagalkot
+Category: Fraud
+Severity: High
+Status: Open
+Date: 2025-10-10
+Location: Vidyagiri
+Officer: PSI Vijay Patil
+Description: Matrimonial fraud extracting money from victim family
+---
+Incident ID: INC-165
+District: Mandya
+Category: Robbery
+Severity: High
+Status: Open
+Date: 2025-10-19
+Location: Pandavapura
+Officer: PSI Vijay Patil
+Description: Snatch-and-run robbery of business cash collection
+---
+Incident ID: INC-166
+District: Tumakuru
+Category: Cybercrime
+Severity: High
+Status: Open
+Date: 2025-10-20
+Location: B.H. Road
+Officer: PSI Vijay Patil
+Description: Phishing attack compromised corporate email credentials
+---
+Incident ID: INC-167
+District: Hassan
+Category: Robbery
+Severity: High
+Status: Under Investigation
+Date: 2025-10-23
+Location: Campus Area
+Officer: ASI Lakshmi Devi
+Description: Highway robbery of cash-carrying courier van
+---
+Incident ID: INC-168
+District: Mysuru
+Category: Robbery
+Severity: Critical
+Status: Open
+Date: 2025-10-27
+Location: Bannimantap
+Officer: ASI Sunitha M.
+Description: Highway robbery of cash-carrying courier van
+---
+Incident ID: INC-169
+District: Raichur
+Category: Domestic Violence
+Severity: High
+Status: Closed
+Date: 2025-10-28
+Location: Mantralayam Road
+Officer: ASI Priya Shetty
+Description: Domestic violence complaint filed by spouse at police station
+---
+Incident ID: INC-170
+District: Shivamogga
+Category: Theft
+Severity: Low
+Status: Closed
+Date: 2025-10-29
+Location: Vinoba Nagar
+Officer: ASI Manjunath S.
+Description: Mobile phone snatching near bus stand by motorcycle-borne offenders
+---
+Incident ID: INC-171
+District: Mysuru
+Category: Theft
+Severity: Low
+Status: Closed
+Date: 2025-10-31
+Location: Vijayanagar
+Officer: PSI Arun Kulkarni
+Description: Cash theft from shop counter while owner was distracted
+---
+Incident ID: INC-172
+District: Hassan
+Category: Domestic Violence
+Severity: High
+Status: Closed
+Date: 2025-10-31
+Location: Arsikere Road
+Officer: PSI Ramesh H.R.
+Description: Domestic violence complaint filed by spouse at police station
+---
+Incident ID: INC-173
+District: Koppal
+Category: Cybercrime
+Severity: Medium
+Status: Open
+Date: 2025-11-01
+Location: Gangavathi Road
+Officer: PI Ganesh Murthy
+Description: UPI fraud — victim lost money via fake payment request link
+---
+Incident ID: INC-174
+District: Ballari
+Category: Drug Offense
+Severity: High
+Status: Under Investigation
+Date: 2025-11-01
+Location: Cowl Bazaar
+Officer: PI Nandini Gowda
+Description: Synthetic drug distribution network bust in urban area
+---
+Incident ID: INC-175
+District: Bengaluru Urban
+Category: Theft
+Severity: Medium
+Status: Under Investigation
+Date: 2025-11-05
+Location: Electronic City
+Officer: PI Nandini Gowda
+Description: Laptop theft from unattended vehicle at parking lot
+---
+Incident ID: INC-176
+District: Kalaburagi
+Category: Burglary
+Severity: High
+Status: Closed
+Date: 2025-11-05
+Location: Sedam Road
+Officer: PSI Vijay Patil
+Description: Office burglary — computer equipment and documents stolen
+---
+Incident ID: INC-177
+District: Bengaluru Urban
+Category: Assault
+Severity: High
+Status: Closed
+Date: 2025-11-06
+Location: Yelahanka
+Officer: PI Suresh Naik
+Description: Assault with blunt object during property dispute altercation
+---
+Incident ID: INC-178
+District: Bengaluru Urban
+Category: Theft
+Severity: Medium
+Status: Closed
+Date: 2025-11-06
+Location: Koramangala
+Officer: PSI Harish B.
+Description: Cash theft from shop counter while owner was distracted
+---
+Incident ID: INC-179
+District: Chitradurga
+Category: Domestic Violence
+Severity: Medium
+Status: Under Investigation
+Date: 2025-11-07
+Location: Devigiri
+Officer: PI Mohan Gowda
+Description: Protection order sought following repeated harassment at home
+---
+Incident ID: INC-180
+District: Chikkaballapur
+Category: Theft
+Severity: Low
+Status: Open
+Date: 2025-11-07
+Location: Chikkaballapur Town
+Officer: ASI Manjunath S.
+Description: Gold chain snatching near Chikkaballapur Town market during peak shopping hours
+---
+Incident ID: INC-181
+District: Bengaluru Urban
+Category: Burglary
+Severity: High
+Status: Open
+Date: 2025-11-09
+Location: BTM Layout
+Officer: PSI Ramesh H.R.
+Description: House break-in while family was away on vacation
+---
+Incident ID: INC-182
+District: Ramanagara
+Category: Theft
+Severity: Low
+Status: Under Investigation
+Date: 2025-11-10
+Location: Magadi Road
+Officer: PI Mohan Gowda
+Description: Mobile phone snatching near bus stand by motorcycle-borne offenders
+---
+Incident ID: INC-183
+District: Mandya
+Category: Kidnapping
+Severity: Critical
+Status: Under Investigation
+Date: 2025-11-14
+Location: Mandya Town
+Officer: ASI Sunitha M.
+Description: Kidnapping for ransom — victim abducted from workplace
+---
+Incident ID: INC-184
+District: Mysuru
+Category: Drug Offense
+Severity: High
+Status: Open
+Date: 2025-11-15
+Location: Vijayanagar
+Officer: PSI Anitha Reddy
+Description: Cross-border drug trafficking interdiction at highway check post
+---
+Incident ID: INC-185
+District: Hassan
+Category: Robbery
+Severity: Critical
+Status: Closed
+Date: 2025-11-16
+Location: Campus Area
+Officer: PI Nandini Gowda
+Description: ATM customer robbed at knifepoint after withdrawal
+---
+Incident ID: INC-186
+District: Udupi
+Category: Theft
+Severity: Medium
+Status: Closed
+Date: 2025-11-17
+Location: Kundapura Road
+Officer: ASI Priya Shetty
+Description: Copper wire theft from construction site reported by site supervisor
+---
+Incident ID: INC-187
+District: Haveri
+Category: Assault
+Severity: Critical
+Status: Under Investigation
+Date: 2025-11-17
+Location: Haveri Town
+Officer: PSI Anitha Reddy
+Description: Bar fight escalated into serious assault injuring two persons
+---
+Incident ID: INC-188
+District: Kodagu
+Category: Cybercrime
+Severity: Critical
+Status: Open
+Date: 2025-11-17
+Location: Madikeri Town
+Officer: ASI Priya Shetty
+Description: Ransomware attack on SME server with data encryption
+---
+Incident ID: INC-189
+District: Kodagu
+Category: Burglary
+Severity: High
+Status: Under Investigation
+Date: 2025-11-22
+Location: Somwarpet
+Officer: PI Deepak Joshi
+Description: Residential burglary — jewellery and cash stolen from locked house
+---
+Incident ID: INC-190
+District: Chitradurga
+Category: Burglary
+Severity: High
+Status: Under Investigation
+Date: 2025-11-26
+Location: Hosadurga Road
+Officer: PI Prakash Babu
+Description: House break-in while family was away on vacation
+---
+Incident ID: INC-191
+District: Ramanagara
+Category: Theft
+Severity: Medium
+Status: Closed
+Date: 2025-11-27
+Location: Channapatna
+Officer: PSI Vijay Patil
+Description: Copper wire theft from construction site reported by site supervisor
+---
+Incident ID: INC-192
+District: Yadgir
+Category: Theft
+Severity: Medium
+Status: Closed
+Date: 2025-11-30
+Location: Saidapur
+Officer: PSI Anitha Reddy
+Description: Two-wheeler stolen from Saidapur residential parking area during night hours
+---
+Incident ID: INC-193
+District: Haveri
+Category: Domestic Violence
+Severity: Medium
+Status: Closed
+Date: 2025-12-01
+Location: Haveri Town
+Officer: PI Suresh Naik
+Description: Protection order sought following repeated harassment at home
+---
+Incident ID: INC-194
+District: Koppal
+Category: Burglary
+Severity: Medium
+Status: Open
+Date: 2025-12-03
+Location: Karatagi
+Officer: PSI Ramesh H.R.
+Description: Residential burglary — jewellery and cash stolen from locked house
+---
+Incident ID: INC-195
+District: Ballari
+Category: Assault
+Severity: High
+Status: Under Investigation
+Date: 2025-12-04
+Location: Cantonment
+Officer: PI Suresh Naik
+Description: Physical assault following road rage incident at traffic junction
+---
+Incident ID: INC-196
+District: Kalaburagi
+Category: Domestic Violence
+Severity: High
+Status: Closed
+Date: 2025-12-04
+Location: Jewargi Cross
+Officer: PI Suresh Naik
+Description: Domestic violence complaint filed by spouse at police station
+---
+Incident ID: INC-197
+District: Bengaluru Urban
+Category: Fraud
+Severity: Medium
+Status: Open
+Date: 2025-12-08
+Location: Marathahalli
+Officer: ASI Kavitha B.N.
+Description: Matrimonial fraud extracting money from victim family
+---
+Incident ID: INC-198
+District: Mysuru
+Category: Domestic Violence
+Severity: Medium
+Status: Under Investigation
+Date: 2025-12-08
+Location: Gokulam
+Officer: PI Mohan Gowda
+Description: Protection order sought following repeated harassment at home
+---
+Incident ID: INC-199
+District: Bengaluru Urban
+Category: Cybercrime
+Severity: High
+Status: Under Investigation
+Date: 2025-12-10
+Location: BTM Layout
+Officer: PSI Anitha Reddy
+Description: UPI fraud — victim lost money via fake payment request link
+---
+Incident ID: INC-200
+District: Mysuru
+Category: Theft
+Severity: Low
+Status: Under Investigation
+Date: 2025-12-12
+Location: Vijayanagar
+Officer: PSI Vijay Patil
+Description: Laptop theft from unattended vehicle at parking lot
+---
+Incident ID: INC-201
+District: Chamarajanagar
+Category: Kidnapping
+Severity: Critical
+Status: Under Investigation
+Date: 2025-12-14
+Location: Yelandur Cross
+Officer: PSI Ramesh H.R.
+Description: Attempted kidnapping foiled by bystanders near school
+---
+Incident ID: INC-202
+District: Bengaluru Urban
+Category: Domestic Violence
+Severity: Medium
+Status: Closed
+Date: 2025-12-14
+Location: Indiranagar
+Officer: PSI Divya Hegde
+Description: Domestic violence complaint filed by spouse at police station
+---
+Incident ID: INC-203
+District: Gadag
+Category: Theft
+Severity: Medium
+Status: Open
+Date: 2025-12-14
+Location: Mulgund Road
+Officer: ASI Lakshmi Devi
+Description: Mobile phone snatching near bus stand by motorcycle-borne offenders
+---
+Incident ID: INC-204
+District: Uttara Kannada
+Category: Murder
+Severity: Critical
+Status: Open
+Date: 2025-12-17
+Location: Karwar Port
+Officer: PI Suresh Naik
+Description: Homicide reported following altercation at Karwar Port residential premises
+---
+Incident ID: INC-205
+District: Kalaburagi
+Category: Burglary
+Severity: High
+Status: Closed
+Date: 2025-12-17
+Location: Malkhed Road
+Officer: PI Deepak Joshi
+Description: House break-in while family was away on vacation
+---
+Incident ID: INC-206
+District: Shivamogga
+Category: Theft
+Severity: Low
+Status: Closed
+Date: 2025-12-17
+Location: Vinoba Nagar
+Officer: PSI Divya Hegde
+Description: Cash theft from shop counter while owner was distracted
+---
+Incident ID: INC-207
+District: Shivamogga
+Category: Theft
+Severity: Low
+Status: Closed
+Date: 2025-12-18
+Location: Durgigudi
+Officer: PSI Ramesh H.R.
+Description: Two-wheeler stolen from Durgigudi residential parking area during night hours
+---
+Incident ID: INC-208
+District: Bagalkot
+Category: Robbery
+Severity: High
+Status: Open
+Date: 2025-12-19
+Location: Vidyagiri
+Officer: PSI Rajesh Kumar
+Description: Snatch-and-run robbery of business cash collection
+---
+Incident ID: INC-209
+District: Bengaluru Urban
+Category: Theft
+Severity: Low
+Status: Open
+Date: 2025-12-19
+Location: Hebbal
+Officer: PI Shweta Rao
+Description: Two-wheeler stolen from Hebbal residential parking area during night hours
+---
+Incident ID: INC-210
+District: Chamarajanagar
+Category: Assault
+Severity: High
+Status: Under Investigation
+Date: 2025-12-23
+Location: Hanur
+Officer: ASI Lakshmi Devi
+Description: Assault with blunt object during property dispute altercation
+---
+Incident ID: INC-211
+District: Hubballi-Dharwad
+Category: Domestic Violence
+Severity: Medium
+Status: Under Investigation
+Date: 2025-12-24
+Location: Gokul Road
+Officer: PSI Vijay Patil
+Description: Protection order sought following repeated harassment at home
+---
+Incident ID: INC-212
+District: Bengaluru Urban
+Category: Burglary
+Severity: High
+Status: Open
+Date: 2025-12-24
+Location: Hebbal
+Officer: PSI Harish B.
+Description: Commercial burglary at electronics shop after closing hours
+---
+Incident ID: INC-213
+District: Vijayanagara
+Category: Robbery
+Severity: High
+Status: Open
+Date: 2025-12-29
+Location: Hospete
+Officer: PI Suresh Naik
+Description: ATM customer robbed at knifepoint after withdrawal
+---
+Incident ID: INC-214
+District: Hubballi-Dharwad
+Category: Cybercrime
+Severity: Critical
+Status: Open
+Date: 2025-12-30
+Location: Gokul Road
+Officer: ASI Meena Kumari
+Description: Ransomware attack on SME server with data encryption
+---
+Incident ID: INC-215
+District: Bengaluru Urban
+Category: Burglary
+Severity: Medium
+Status: Closed
+Date: 2026-01-02
+Location: MG Road
+Officer: PSI Harish B.
+Description: Residential burglary — jewellery and cash stolen from locked house
+---
+Incident ID: INC-216
+District: Bengaluru Urban
+Category: Burglary
+Severity: High
+Status: Under Investigation
+Date: 2026-01-03
+Location: Koramangala
+Officer: PI Nandini Gowda
+Description: Attempted burglary foiled by alarm system at warehouse
+---
+Incident ID: INC-217
+District: Vijayapura
+Category: Drug Offense
+Severity: Critical
+Status: Closed
+Date: 2026-01-04
+Location: Station Road
+Officer: ASI Kavitha B.N.
+Description: NDPS seizure — contraband recovered during vehicle checkpoint
+---
+Incident ID: INC-218
+District: Vijayanagara
+Category: Drug Offense
+Severity: High
+Status: Open
+Date: 2026-01-07
+Location: Hospete
+Officer: PSI Vijay Patil
+Description: Synthetic drug distribution network bust in urban area
+---
+Incident ID: INC-219
+District: Belagavi
+Category: Fraud
+Severity: High
+Status: Open
+Date: 2026-01-08
+Location: Camp Area
+Officer: PSI Ramesh H.R.
+Description: Investment scam promising high returns to local traders
+---
+Incident ID: INC-220
+District: Kodagu
+Category: Assault
+Severity: Medium
+Status: Under Investigation
+Date: 2026-01-09
+Location: Kushalnagar
+Officer: ASI Lakshmi Devi
+Description: Group assault during local festival near temple premises
+---
+Incident ID: INC-221
+District: Davangere
+Category: Theft
+Severity: Low
+Status: Under Investigation
+Date: 2026-01-15
+Location: Azad Nagar
+Officer: ASI Priya Shetty
+Description: Bicycle stolen from apartment compound entrance
+---
+Incident ID: INC-222
+District: Davangere
+Category: Drug Offense
+Severity: High
+Status: Closed
+Date: 2026-01-15
+Location: Chigateri
+Officer: PSI Rajesh Kumar
+Description: Synthetic drug distribution network bust in urban area
+---
+Incident ID: INC-223
+District: Chikkaballapur
+Category: Theft
+Severity: Medium
+Status: Open
+Date: 2026-01-16
+Location: Chikkaballapur Town
+Officer: PSI Harish B.
+Description: Gold chain snatching near Chikkaballapur Town market during peak shopping hours
+---
+Incident ID: INC-224
+District: Gadag
+Category: Fraud
+Severity: Medium
+Status: Open
+Date: 2026-01-16
+Location: Station Area
+Officer: PSI Divya Hegde
+Description: Matrimonial fraud extracting money from victim family
+---
+Incident ID: INC-225
+District: Bengaluru Urban
+Category: Drug Offense
+Severity: Critical
+Status: Under Investigation
+Date: 2026-01-21
+Location: Jayanagar
+Officer: ASI Priya Shetty
+Description: Cross-border drug trafficking interdiction at highway check post
+---
+Incident ID: INC-226
+District: Ballari
+Category: Drug Offense
+Severity: High
+Status: Closed
+Date: 2026-01-22
+Location: Toranagallu Road
+Officer: PSI Ramesh H.R.
+Description: NDPS seizure — contraband recovered during vehicle checkpoint
+---
+Incident ID: INC-227
+District: Uttara Kannada
+Category: Theft
+Severity: Low
+Status: Open
+Date: 2026-01-24
+Location: Sirsi Road
+Officer: PI Mohan Gowda
+Description: Gold chain snatching near Sirsi Road market during peak shopping hours
+---
+Incident ID: INC-228
+District: Bengaluru Urban
+Category: Domestic Violence
+Severity: Medium
+Status: Open
+Date: 2026-01-24
+Location: Hebbal
+Officer: PSI Arun Kulkarni
+Description: Dowry-related harassment complaint registered by victim
+---
+Incident ID: INC-229
+District: Bengaluru Urban
+Category: Cybercrime
+Severity: High
+Status: Open
+Date: 2026-01-24
+Location: MG Road
+Officer: PSI Rajesh Kumar
+Description: Ransomware attack on SME server with data encryption
+---
+Incident ID: INC-230
+District: Bengaluru Urban
+Category: Domestic Violence
+Severity: High
+Status: Open
+Date: 2026-01-24
+Location: Marathahalli
+Officer: PSI Divya Hegde
+Description: Domestic assault during family dispute — victim hospitalized
+---
+Incident ID: INC-231
+District: Udupi
+Category: Theft
+Severity: Low
+Status: Open
+Date: 2026-01-26
+Location: Car Street
+Officer: PSI Arun Kulkarni
+Description: Cash theft from shop counter while owner was distracted
+---
+Incident ID: INC-232
+District: Bengaluru Urban
+Category: Assault
+Severity: Critical
+Status: Closed
+Date: 2026-01-26
+Location: Indiranagar
+Officer: PSI Vijay Patil
+Description: Assault with blunt object during property dispute altercation
+---
+Incident ID: INC-233
+District: Udupi
+Category: Theft
+Severity: Low
+Status: Under Investigation
+Date: 2026-01-26
+Location: Malpe
+Officer: PI Mohan Gowda
+Description: Laptop theft from unattended vehicle at parking lot
+---
+Incident ID: INC-234
+District: Gadag
+Category: Cybercrime
+Severity: High
+Status: Under Investigation
+Date: 2026-01-30
+Location: Mulgund Road
+Officer: PSI Vijay Patil
+Description: Phishing attack compromised corporate email credentials
+---
+Incident ID: INC-235
+District: Bengaluru Urban
+Category: Fraud
+Severity: High
+Status: Under Investigation
+Date: 2026-01-30
+Location: BTM Layout
+Officer: PSI Ramesh H.R.
+Description: Investment scam promising high returns to local traders
+---
+Incident ID: INC-236
+District: Chikkamagaluru
+Category: Theft
+Severity: Medium
+Status: Closed
+Date: 2026-01-31
+Location: Koppa Road
+Officer: PSI Vijay Patil
+Description: Bicycle stolen from apartment compound entrance
+---
+Incident ID: INC-237
+District: Bengaluru Urban
+Category: Theft
+Severity: Medium
+Status: Under Investigation
+Date: 2026-02-01
+Location: Hebbal
+Officer: ASI Lakshmi Devi
+Description: Bicycle stolen from apartment compound entrance
+---
+Incident ID: INC-238
+District: Bengaluru Urban
+Category: Theft
+Severity: Medium
+Status: Closed
+Date: 2026-02-01
+Location: Koramangala
+Officer: PI Deepak Joshi
+Description: Cash theft from shop counter while owner was distracted
+---
+Incident ID: INC-239
+District: Hubballi-Dharwad
+Category: Theft
+Severity: Medium
+Status: Under Investigation
+Date: 2026-02-04
+Location: Vidyanagar
+Officer: PI Shweta Rao
+Description: Mobile phone snatching near bus stand by motorcycle-borne offenders
+---
+Incident ID: INC-240
+District: Bengaluru Rural
+Category: Fraud
+Severity: Medium
+Status: Open
+Date: 2026-02-08
+Location: Doddaballapur
+Officer: PSI Anitha Reddy
+Description: Investment scam promising high returns to local traders
+---
+Incident ID: INC-241
+District: Bengaluru Urban
+Category: Theft
+Severity: Low
+Status: Closed
+Date: 2026-02-09
+Location: Yelahanka
+Officer: PI Suresh Naik
+Description: Mobile phone snatching near bus stand by motorcycle-borne offenders
+---
+Incident ID: INC-242
+District: Dakshina Kannada
+Category: Murder
+Severity: Critical
+Status: Closed
+Date: 2026-02-11
+Location: Bendoor
+Officer: PSI Vijay Patil
+Description: Murder case registered — body found in isolated area
+---
+Incident ID: INC-243
+District: Chikkaballapur
+Category: Theft
+Severity: Low
+Status: Closed
+Date: 2026-02-13
+Location: Sidlaghatta
+Officer: PSI Arun Kulkarni
+Description: Bicycle stolen from apartment compound entrance
+---
+Incident ID: INC-244
+District: Bengaluru Urban
+Category: Theft
+Severity: Medium
+Status: Closed
+Date: 2026-02-13
+Location: Electronic City
+Officer: PSI Anitha Reddy
+Description: Copper wire theft from construction site reported by site supervisor
+---
+Incident ID: INC-245
+District: Hubballi-Dharwad
+Category: Cybercrime
+Severity: Medium
+Status: Closed
+Date: 2026-02-14
+Location: Vidyanagar
+Officer: ASI Manjunath S.
+Description: Online shopping fraud — paid for goods never delivered
+---
+Incident ID: INC-246
+District: Bengaluru Rural
+Category: Drug Offense
+Severity: High
+Status: Closed
+Date: 2026-02-14
+Location: Devanahalli
+Officer: PI Suresh Naik
+Description: Synthetic drug distribution network bust in urban area
+---
+Incident ID: INC-247
+District: Kalaburagi
+Category: Kidnapping
+Severity: Critical
+Status: Under Investigation
+Date: 2026-02-16
+Location: Super Market
+Officer: ASI Sunitha M.
+Description: Minor kidnapping case — child recovered within 48 hours
+---
+Incident ID: INC-248
+District: Davangere
+Category: Drug Offense
+Severity: High
+Status: Under Investigation
+Date: 2026-02-20
+Location: PJ Extension
+Officer: PSI Arun Kulkarni
+Description: Cross-border drug trafficking interdiction at highway check post
+---
+Incident ID: INC-249
+District: Chikkaballapur
+Category: Theft
+Severity: Low
+Status: Under Investigation
+Date: 2026-02-22
+Location: Chikkaballapur Town
+Officer: PSI Divya Hegde
+Description: Agricultural pump motor theft from farm shed overnight
+---
+Incident ID: INC-250
+District: Bengaluru Urban
+Category: Theft
+Severity: Medium
+Status: Open
+Date: 2026-02-25
+Location: Electronic City
+Officer: ASI Kavitha B.N.
+Description: Copper wire theft from construction site reported by site supervisor
+---
+Incident ID: INC-251
+District: Bengaluru Urban
+Category: Assault
+Severity: Critical
+Status: Under Investigation
+Date: 2026-02-26
+Location: Marathahalli
+Officer: ASI Lakshmi Devi
+Description: Physical assault following road rage incident at traffic junction
+---
+Incident ID: INC-252
+District: Bengaluru Urban
+Category: Fraud
+Severity: Medium
+Status: Closed
+Date: 2026-03-01
+Location: Hebbal
+Officer: PSI Vijay Patil
+Description: Job recruitment scam collecting fees via social media
+---
+Incident ID: INC-253
+District: Bengaluru Urban
+Category: Theft
+Severity: Medium
+Status: Open
+Date: 2026-03-04
+Location: MG Road
+Officer: PSI Arun Kulkarni
+Description: Laptop theft from unattended vehicle at parking lot
+---
+Incident ID: INC-254
+District: Hubballi-Dharwad
+Category: Domestic Violence
+Severity: Medium
+Status: Open
+Date: 2026-03-06
+Location: Station Road
+Officer: PI Mohan Gowda
+Description: Domestic assault during family dispute — victim hospitalized
+---
+Incident ID: INC-255
+District: Bengaluru Urban
+Category: Theft
+Severity: Low
+Status: Open
+Date: 2026-03-06
+Location: MG Road
+Officer: PI Prakash Babu
+Description: Bicycle stolen from apartment compound entrance
+---
+Incident ID: INC-256
+District: Hubballi-Dharwad
+Category: Fraud
+Severity: High
+Status: Closed
+Date: 2026-03-06
+Location: Gokul Road
+Officer: ASI Priya Shetty
+Description: Real estate fraud using forged property documents
+---
+Incident ID: INC-257
+District: Mysuru
+Category: Theft
+Severity: Low
+Status: Open
+Date: 2026-03-08
+Location: Vijayanagar
+Officer: PSI Rajesh Kumar
+Description: Mobile phone snatching near bus stand by motorcycle-borne offenders
+---
+Incident ID: INC-258
+District: Tumakuru
+Category: Robbery
+Severity: Critical
+Status: Open
+Date: 2026-03-12
+Location: Gubbi Cross
+Officer: ASI Lakshmi Devi
+Description: Highway robbery of cash-carrying courier van
+---
+Incident ID: INC-259
+District: Udupi
+Category: Cybercrime
+Severity: Medium
+Status: Under Investigation
+Date: 2026-03-16
+Location: Malpe
+Officer: PI Deepak Joshi
+Description: Online shopping fraud — paid for goods never delivered
+---
+Incident ID: INC-260
+District: Bidar
+Category: Fraud
+Severity: High
+Status: Under Investigation
+Date: 2026-03-17
+Location: Chidri Road
+Officer: PSI Harish B.
+Description: Job recruitment scam collecting fees via social media
+---
+Incident ID: INC-261
+District: Hubballi-Dharwad
+Category: Assault
+Severity: High
+Status: Under Investigation
+Date: 2026-03-18
+Location: Gokul Road
+Officer: PSI Divya Hegde
+Description: Assault on auto driver over fare disagreement
+---
+Incident ID: INC-262
+District: Chikkaballapur
+Category: Fraud
+Severity: Medium
+Status: Open
+Date: 2026-03-20
+Location: Gauribidanur Road
+Officer: ASI Priya Shetty
+Description: Matrimonial fraud extracting money from victim family
+---
+Incident ID: INC-263
+District: Raichur
+Category: Burglary
+Severity: High
+Status: Under Investigation
+Date: 2026-03-21
+Location: Sindhanur Road
+Officer: PSI Rajesh Kumar
+Description: Residential burglary — jewellery and cash stolen from locked house
+---
+Incident ID: INC-264
+District: Uttara Kannada
+Category: Fraud
+Severity: Medium
+Status: Open
+Date: 2026-03-23
+Location: Ankola Road
+Officer: PI Deepak Joshi
+Description: Real estate fraud using forged property documents
+---
+Incident ID: INC-265
+District: Davangere
+Category: Cybercrime
+Severity: Critical
+Status: Under Investigation
+Date: 2026-03-24
+Location: Azad Nagar
+Officer: ASI Kavitha B.N.
+Description: Ransomware attack on SME server with data encryption
+---
+Incident ID: INC-266
+District: Bengaluru Urban
+Category: Theft
+Severity: Low
+Status: Open
+Date: 2026-03-24
+Location: Jayanagar
+Officer: PSI Arun Kulkarni
+Description: Gold chain snatching near Jayanagar market during peak shopping hours
+---
+Incident ID: INC-267
+District: Bengaluru Rural
+Category: Burglary
+Severity: High
+Status: Closed
+Date: 2026-03-26
+Location: Devanahalli
+Officer: ASI Manjunath S.
+Description: House break-in while family was away on vacation
+---
+Incident ID: INC-268
+District: Hubballi-Dharwad
+Category: Theft
+Severity: Low
+Status: Open
+Date: 2026-03-27
+Location: Vidyanagar
+Officer: ASI Manjunath S.
+Description: Laptop theft from unattended vehicle at parking lot
+---
+Incident ID: INC-269
+District: Gadag
+Category: Theft
+Severity: Low
+Status: Closed
+Date: 2026-03-28
+Location: Mundaragi Road
+Officer: PSI Anitha Reddy
+Description: Mobile phone snatching near bus stand by motorcycle-borne offenders
+---
+Incident ID: INC-270
+District: Mysuru
+Category: Theft
+Severity: Medium
+Status: Closed
+Date: 2026-03-28
+Location: Vijayanagar
+Officer: ASI Meena Kumari
+Description: Laptop theft from unattended vehicle at parking lot
+---
+Incident ID: INC-271
+District: Kalaburagi
+Category: Domestic Violence
+Severity: Medium
+Status: Closed
+Date: 2026-04-03
+Location: Malkhed Road
+Officer: PSI Rajesh Kumar
+Description: Domestic violence complaint filed by spouse at police station
+---
+Incident ID: INC-272
+District: Uttara Kannada
+Category: Cybercrime
+Severity: Critical
+Status: Under Investigation
+Date: 2026-04-03
+Location: Sirsi Road
+Officer: ASI Sunitha M.
+Description: Online shopping fraud — paid for goods never delivered
+---
+Incident ID: INC-273
+District: Bengaluru Urban
+Category: Theft
+Severity: Low
+Status: Closed
+Date: 2026-04-07
+Location: Whitefield
+Officer: PSI Arun Kulkarni
+Description: Cash theft from shop counter while owner was distracted
+---
+Incident ID: INC-274
+District: Vijayanagara
+Category: Burglary
+Severity: High
+Status: Under Investigation
+Date: 2026-04-09
+Location: Kamalapura
+Officer: ASI Lakshmi Devi
+Description: Commercial burglary at electronics shop after closing hours
+---
+Incident ID: INC-275
+District: Davangere
+Category: Burglary
+Severity: Medium
+Status: Open
+Date: 2026-04-11
+Location: MCC B Block
+Officer: PI Prakash Babu
+Description: Commercial burglary at electronics shop after closing hours
+---
+Incident ID: INC-276
+District: Hubballi-Dharwad
+Category: Drug Offense
+Severity: High
+Status: Under Investigation
+Date: 2026-04-13
+Location: Gokul Road
+Officer: PI Prakash Babu
+Description: Synthetic drug distribution network bust in urban area
+---
+Incident ID: INC-277
+District: Tumakuru
+Category: Drug Offense
+Severity: High
+Status: Under Investigation
+Date: 2026-04-15
+Location: Gubbi Cross
+Officer: PSI Vijay Patil
+Description: NDPS seizure — contraband recovered during vehicle checkpoint
+---
+Incident ID: INC-278
+District: Belagavi
+Category: Domestic Violence
+Severity: High
+Status: Closed
+Date: 2026-04-17
+Location: Shahapur
+Officer: ASI Priya Shetty
+Description: Dowry-related harassment complaint registered by victim
+---
+Incident ID: INC-279
+District: Bengaluru Urban
+Category: Theft
+Severity: Low
+Status: Under Investigation
+Date: 2026-04-22
+Location: Indiranagar
+Officer: ASI Priya Shetty
+Description: Laptop theft from unattended vehicle at parking lot
+---
+Incident ID: INC-280
+District: Chamarajanagar
+Category: Robbery
+Severity: Critical
+Status: Under Investigation
+Date: 2026-04-23
+Location: Gunhouse Road
+Officer: PSI Vijay Patil
+Description: Highway robbery of cash-carrying courier van
+---
+Incident ID: INC-281
+District: Davangere
+Category: Theft
+Severity: Medium
+Status: Open
+Date: 2026-04-24
+Location: Azad Nagar
+Officer: ASI Manjunath S.
+Description: Gold chain snatching near Azad Nagar market during peak shopping hours
+---
+Incident ID: INC-282
+District: Kodagu
+Category: Theft
+Severity: Low
+Status: Closed
+Date: 2026-04-27
+Location: Somwarpet
+Officer: ASI Kavitha B.N.
+Description: Laptop theft from unattended vehicle at parking lot
+---
+Incident ID: INC-283
+District: Bengaluru Urban
+Category: Drug Offense
+Severity: High
+Status: Closed
+Date: 2026-04-27
+Location: MG Road
+Officer: PSI Harish B.
+Description: NDPS seizure — contraband recovered during vehicle checkpoint
+---
+Incident ID: INC-284
+District: Raichur
+Category: Drug Offense
+Severity: Critical
+Status: Open
+Date: 2026-04-27
+Location: Sindhanur Road
+Officer: ASI Lakshmi Devi
+Description: Drug peddling near college campus — two suspects detained
+---
+Incident ID: INC-285
+District: Chikkamagaluru
+Category: Fraud
+Severity: Medium
+Status: Closed
+Date: 2026-04-29
+Location: Koppa Road
+Officer: ASI Lakshmi Devi
+Description: Job recruitment scam collecting fees via social media
+---
+Incident ID: INC-286
+District: Hassan
+Category: Theft
+Severity: Low
+Status: Closed
+Date: 2026-05-01
+Location: Arsikere Road
+Officer: PSI Arun Kulkarni
+Description: Two-wheeler stolen from Arsikere Road residential parking area during night hours
+---
+Incident ID: INC-287
+District: Chikkamagaluru
+Category: Fraud
+Severity: High
+Status: Under Investigation
+Date: 2026-05-01
+Location: MG Road
+Officer: ASI Sunitha M.
+Description: Matrimonial fraud extracting money from victim family
+---
+Incident ID: INC-288
+District: Bengaluru Urban
+Category: Drug Offense
+Severity: Critical
+Status: Closed
+Date: 2026-05-08
+Location: Jayanagar
+Officer: PI Deepak Joshi
+Description: Drug peddling near college campus — two suspects detained
+---
+Incident ID: INC-289
+District: Mysuru
+Category: Burglary
+Severity: Medium
+Status: Open
+Date: 2026-05-08
+Location: Saraswathipuram
+Officer: PI Mohan Gowda
+Description: House break-in while family was away on vacation
+---
+Incident ID: INC-290
+District: Bengaluru Urban
+Category: Robbery
+Severity: Critical
+Status: Open
+Date: 2026-05-12
+Location: Hebbal
+Officer: PSI Rajesh Kumar
+Description: Highway robbery of cash-carrying courier van
+---
+Incident ID: INC-291
+District: Mysuru
+Category: Theft
+Severity: Medium
+Status: Under Investigation
+Date: 2026-05-13
+Location: Bannimantap
+Officer: PSI Divya Hegde
+Description: Mobile phone snatching near bus stand by motorcycle-borne offenders
+---
+Incident ID: INC-292
+District: Vijayanagara
+Category: Cybercrime
+Severity: High
+Status: Under Investigation
+Date: 2026-05-15
+Location: Kudligi Road
+Officer: PSI Anitha Reddy
+Description: Ransomware attack on SME server with data encryption
+---
+Incident ID: INC-293
+District: Kolar
+Category: Theft
+Severity: Low
+Status: Open
+Date: 2026-05-15
+Location: Tamaka
+Officer: PI Suresh Naik
+Description: Gold chain snatching near Tamaka market during peak shopping hours
+---
+Incident ID: INC-294
+District: Tumakuru
+Category: Assault
+Severity: Critical
+Status: Closed
+Date: 2026-05-17
+Location: Gubbi Cross
+Officer: PI Mohan Gowda
+Description: Assault with blunt object during property dispute altercation
+---
+Incident ID: INC-295
+District: Chikkamagaluru
+Category: Assault
+Severity: Medium
+Status: Under Investigation
+Date: 2026-05-21
+Location: Koppa Road
+Officer: PSI Rajesh Kumar
+Description: Group assault during local festival near temple premises
+---
+Incident ID: INC-296
+District: Ramanagara
+Category: Drug Offense
+Severity: High
+Status: Under Investigation
+Date: 2026-05-23
+Location: Bidadi
+Officer: ASI Sunitha M.
+Description: Synthetic drug distribution network bust in urban area
+---
+Incident ID: INC-297
+District: Davangere
+Category: Theft
+Severity: Low
+Status: Under Investigation
+Date: 2026-05-24
+Location: MCC B Block
+Officer: PI Deepak Joshi
+Description: Agricultural pump motor theft from farm shed overnight
+---
+Incident ID: INC-298
+District: Bidar
+Category: Theft
+Severity: Medium
+Status: Open
+Date: 2026-05-27
+Location: Halbarga
+Officer: PI Ganesh Murthy
+Description: Two-wheeler stolen from Halbarga residential parking area during night hours
+---
+Incident ID: INC-299
+District: Yadgir
+Category: Drug Offense
+Severity: Critical
+Status: Under Investigation
+Date: 2026-05-31
+Location: Saidapur
+Officer: PI Nandini Gowda
+Description: Drug peddling near college campus — two suspects detained
+---
+Incident ID: INC-300
+District: Bengaluru Urban
+Category: Theft
+Severity: Medium
+Status: Closed
+Date: 2026-06-01
+Location: Koramangala
+Officer: PSI Arun Kulkarni
+Description: Two-wheeler theft from apartment basement parking in Koramangala
+---
+Incident ID: INC-301
+District: Bengaluru Urban
+Category: Cybercrime
+Severity: High
+Status: Open
+Date: 2026-06-02
+Location: Indiranagar
+Officer: ASI Sunitha M.
+Description: OTP fraud call targeting IT professional — ₹85,000 lost in Indiranagar
+---
+Incident ID: INC-302
+District: Mysuru
+Category: Burglary
+Severity: High
+Status: Under Investigation
+Date: 2026-06-02
+Location: Gokulam
+Officer: PI Deepak Joshi
+Description: Residential burglary in Gokulam — jewellery and cash stolen while family away
+---
+Incident ID: INC-303
+District: Hubballi-Dharwad
+Category: Robbery
+Severity: Critical
+Status: Open
+Date: 2026-06-03
+Location: Station Road
+Officer: PI Nandini Gowda
+Description: Armed robbery at mobile store on Station Road during evening hours
+---
+Incident ID: INC-304
+District: Belagavi
+Category: Fraud
+Severity: Medium
+Status: Closed
+Date: 2026-06-03
+Location: Camp Area
+Officer: ASI Lakshmi Devi
+Description: Fake loan approval scam defrauding small business owner in Camp Area
+---
+Incident ID: INC-305
+District: Dakshina Kannada
+Category: Drug Offense
+Severity: High
+Status: Under Investigation
+Date: 2026-06-04
+Location: Port Area
+Officer: PI Deepak Joshi
+Description: NDPS seizure near port area — 1.8kg contraband recovered from vehicle
+---
+Incident ID: INC-306
+District: Tumakuru
+Category: Assault
+Severity: Medium
+Status: Closed
+Date: 2026-06-04
+Location: B.H. Road
+Officer: PI Deepak Joshi
+Description: Assault during land dispute altercation on B.H. Road
+---
+Incident ID: INC-307
+District: Vijayapura
+Category: Domestic Violence
+Severity: Medium
+Status: Open
+Date: 2026-06-05
+Location: Almel
+Officer: ASI Priya Shetty
+Description: Dowry-related harassment complaint registered by victim
+---
+Incident ID: INC-308
+District: Kolar
+Category: Theft
+Severity: Low
+Status: Closed
+Date: 2026-06-05
+Location: Robertsonpet
+Officer: PI Shweta Rao
+Description: Gold chain snatching near Robertsonpet bus stand during morning rush
+---
+Incident ID: INC-309
+District: Davangere
+Category: Burglary
+Severity: Medium
+Status: Open
+Date: 2026-06-06
+Location: PJ Extension
+Officer: PSI Vijay Patil
+Description: Commercial burglary at hardware shop in PJ Extension after closing
+---
+Incident ID: INC-310
+District: Shivamogga
+Category: Domestic Violence
+Severity: High
+Status: Open
+Date: 2026-06-06
+Location: Gopala
+Officer: PSI Ramesh H.R.
+Description: Domestic violence complaint filed in Gopala — victim admitted to district hospital
+---
+Incident ID: INC-311
+District: Raichur
+Category: Theft
+Severity: Medium
+Status: Closed
+Date: 2026-06-07
+Location: Station Area
+Officer: PSI Ramesh H.R.
+Description: Copper cable theft from railway yard near Station Area
+---
+Incident ID: INC-312
+District: Udupi
+Category: Cybercrime
+Severity: Medium
+Status: Closed
+Date: 2026-06-07
+Location: Malpe
+Officer: PI Suresh Naik
+Description: Online payment fraud targeting tourists at Malpe beach vendors
+---
+Incident ID: INC-313
+District: Bengaluru Urban
+Category: Fraud
+Severity: High
+Status: Under Investigation
+Date: 2026-06-08
+Location: Whitefield
+Officer: ASI Priya Shetty
+Description: Real estate advance fraud using forged documents in Whitefield
