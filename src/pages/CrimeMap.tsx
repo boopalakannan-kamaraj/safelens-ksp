@@ -482,7 +482,7 @@ export default function CrimeMap() {
     <button
       type="button"
       onClick={() => setSidebarOpen((open) => !open)}
-      className={`pointer-events-auto absolute top-0 z-[1002] flex flex-col items-center gap-1.5 rounded-l-lg border border-r-0 border-border bg-surface/95 px-1.5 py-3 text-[10px] font-medium leading-snug text-text-muted shadow-lg backdrop-blur-sm transition-colors hover:bg-surface hover:text-white ${positionClass}`}
+      className={`pointer-events-auto absolute top-1/2 z-[1002] flex -translate-y-1/2 flex-col items-center gap-1.5 rounded-l-lg border border-r-0 border-border bg-surface/95 px-1.5 py-3 text-[10px] font-medium leading-snug text-text-muted shadow-lg backdrop-blur-sm transition-colors hover:bg-surface hover:text-white ${positionClass}`}
       aria-label={incidentListTabLabel}
       title={incidentListTabLabel}
     >
