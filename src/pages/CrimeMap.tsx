@@ -100,8 +100,8 @@ function createDrilledIncidentIcon(
   highlighted = false,
 ) {
   const color = severityColor(severity)
-  const size = highlighted ? 28 : 22
-  const iconSize = highlighted ? 14 : 11
+  const size = highlighted ? 38 : 32
+  const iconSize = highlighted ? 18 : 16
   const border = highlighted ? 3 : 2
   const iconMarkup = renderCrimeCategoryIconMarkup(category, {
     size: iconSize,
