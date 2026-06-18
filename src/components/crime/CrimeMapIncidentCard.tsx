@@ -2,6 +2,7 @@ import { ChevronLeft, ChevronRight, X } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import type { CrimeIncident } from '../../types/crime'
 import { exportIncidentPDF } from '../../utils/exportHelpers'
+import { CrimeCategoryIcon } from '../../utils/crimeCategoryIcons'
 import { severityColor, statusBadge } from '../../utils/helpers'
 import { btnIcon, btnSecondary } from '../ui/formClasses'
 
@@ -82,9 +83,19 @@ export default function CrimeMapIncidentCard({
       </div>
 
       <div className="min-h-0 flex-1 overflow-y-auto px-4 py-3">
-        <p className="font-mono text-sm font-semibold text-accent-light">{incident.id}</p>
-        <h2 className="mt-1 text-lg font-semibold text-white">{incident.category}</h2>
-        <p className="mt-0.5 text-sm text-text-muted">{incident.districtName}</p>
+        <div className="flex gap-3">
+          <div
+            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full ring-1 ring-white/20"
+            style={{ backgroundColor: severityColor(incident.severity) }}
+          >
+            <CrimeCategoryIcon category={incident.category} size={18} color="#ffffff" strokeWidth={2.25} />
+          </div>
+          <div className="min-w-0">
+            <p className="font-mono text-sm font-semibold text-accent-light">{incident.id}</p>
+            <h2 className="mt-0.5 text-lg font-semibold text-white">{incident.category}</h2>
+            <p className="mt-0.5 text-sm text-text-muted">{incident.districtName}</p>
+          </div>
+        </div>
         <div className="mt-2.5 flex flex-wrap gap-2">
           <span className={`rounded-full px-2.5 py-0.5 text-xs font-medium ring-1 ${statusBadge(incident.status)}`}>
             {incident.status}

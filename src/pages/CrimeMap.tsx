@@ -412,17 +412,17 @@ export default function CrimeMap() {
           selectIncidentOnMap(inc)
         })
 
-        marker.addTo(markersLayer.current!)
-
-        if (highlighted) {
-          marker.bindPopup(
+        if (drilledDistrictId) {
+          marker.bindTooltip(
             `<div style="min-width:180px">
               <strong>${inc.id}</strong><br/>
               <span style="color:#4a90d9">${inc.category}</span> · ${inc.severity}
             </div>`,
+            { direction: 'top', offset: [0, -18], opacity: 1 },
           )
-          marker.openPopup()
         }
+
+        marker.addTo(markersLayer.current!)
       }
     }
   }, [
@@ -584,39 +584,6 @@ export default function CrimeMap() {
 
       <div className="flex min-h-0 flex-1">
         <div className="relative min-w-0 flex-1">
-        {(districtFilter || highlightedIncidentId || (investigationContext?.category && selectedCategory !== 'All')) && (
-          <div className="pointer-events-none absolute inset-x-0 top-0 z-[1002] flex justify-center pt-4">
-            <div className="pointer-events-auto flex flex-wrap items-center justify-center gap-3 rounded-lg border border-accent/40 bg-surface/95 px-4 py-2 shadow-lg backdrop-blur-sm">
-              {highlightedIncidentId && (
-                <span className="text-sm text-white">
-                  Highlighting <span className="font-semibold text-accent-light">{highlightedIncidentId}</span>
-                </span>
-              )}
-              {districtFilter && (
-                <span className="text-sm text-white">
-                  Showing incidents in <span className="font-semibold text-accent-light">{districtFilter}</span>
-                </span>
-              )}
-              {selectedCategory !== 'All' && (
-                <span className="text-sm text-white">
-                  Category: <span className="font-semibold text-accent-light">{selectedCategory}</span>
-                </span>
-              )}
-              <button
-                onClick={() => {
-                  setSearchParams({})
-                  setSelectedCategory('All')
-                  setInvestigationContext(null)
-                  setHighlightedIncidentId(null)
-                  mapInstance.current?.flyTo(KARNATAKA_CENTER, 7, { duration: 1 })
-                }}
-                className="text-xs text-text-muted transition-colors hover:text-white"
-              >
-                Clear filters
-              </button>
-            </div>
-          </div>
-        )}
         {drilledDistrictId && drilledDistrict && (
           <button
             type="button"
