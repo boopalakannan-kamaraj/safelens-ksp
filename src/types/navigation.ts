@@ -2,6 +2,8 @@ export type InvestigationContext = {
   category?: string
   district?: string
   incidentId?: string
+  suspectId?: string
+  victimId?: string
   lat?: number
   lng?: number
 }

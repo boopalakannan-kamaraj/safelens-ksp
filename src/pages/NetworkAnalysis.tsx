@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
+import { useLocation } from 'react-router-dom'
 import PageHeader from '../components/ui/PageHeader'
 import ForceDirectedNetworkGraph, { NODE_COLORS } from '../components/network/ForceDirectedNetworkGraph'
 import NetworkProfileDrawer from '../components/network/NetworkProfileDrawer'
@@ -11,8 +12,20 @@ import {
 } from '../components/ui/formClasses'
 import { fetchIncidents, fetchNetworkData } from '../services/crimeApi'
 import type { CrimeIncident, NetworkEdge, NetworkNode } from '../types/crime'
+import type { InvestigationContext } from '../types/navigation'
+
+function resolveNavigationNodeId(
+  nodes: NetworkNode[],
+  suspectId?: string,
+  victimId?: string,
+): string | null {
+  if (suspectId && nodes.some((n) => n.id === suspectId)) return suspectId
+  if (victimId && nodes.some((n) => n.id === victimId)) return victimId
+  return null
+}
 
 export default function NetworkAnalysis() {
+  const location = useLocation()
   const [nodes, setNodes] = useState<NetworkNode[]>([])
   const [edges, setEdges] = useState<NetworkEdge[]>([])
   const [incidents, setIncidents] = useState<CrimeIncident[]>([])
@@ -33,6 +46,22 @@ export default function NetworkAnalysis() {
       })
       .finally(() => setLoading(false))
   }, [])
+
+  useEffect(() => {
+    if (loading || !nodes.length) return
+
+    const state = location.state as InvestigationContext | undefined
+    const nodeId = resolveNavigationNodeId(nodes, state?.suspectId, state?.victimId)
+    if (!nodeId) return
+
+    const node = nodes.find((n) => n.id === nodeId)
+    if (!node) return
+
+    setFilter((current) => (current !== 'all' && node.type !== current ? 'all' : current))
+    setSelectedNode(nodeId)
+    setSearchHighlightId(nodeId)
+    setSearchMessage(null)
+  }, [loading, nodes, location.key, location.state])
 
   const filteredNodes = filter === 'all' ? nodes : nodes.filter((n) => n.type === filter)
   const filteredEdges =
