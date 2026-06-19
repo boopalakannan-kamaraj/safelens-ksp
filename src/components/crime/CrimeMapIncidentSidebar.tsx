@@ -1,25 +1,29 @@
 import { useEffect, useRef } from 'react'
 import type { CrimeIncident } from '../../types/crime'
 import { CrimeCategoryIcon } from '../../utils/crimeCategoryIcons'
-import { severityColor, statusBadge } from '../../utils/helpers'
+import { severityColor, statusBadge, riskLevel } from '../../utils/helpers'
 
 interface CrimeMapIncidentSidebarProps {
   incidents: CrimeIncident[]
   selectedCategory: string
   selectedIncidentId?: string | null
+  districtRiskScores: Map<string, number>
   onIncidentSelect: (incident: CrimeIncident) => void
 }
 
 function IncidentListCard({
   incident,
   selected,
+  districtRiskScore,
   onSelect,
 }: {
   incident: CrimeIncident
   selected: boolean
+  districtRiskScore?: number
   onSelect: (incident: CrimeIncident) => void
 }) {
   const severityBg = severityColor(incident.severity)
+  const districtRisk = districtRiskScore != null ? riskLevel(districtRiskScore) : null
 
   return (
     <button
@@ -55,6 +59,20 @@ function IncidentListCard({
           >
             {incident.status}
           </span>
+          {districtRisk && districtRiskScore != null && (
+            <span
+              className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-medium ring-1"
+              style={{
+                color: districtRisk.color,
+                background: `${districtRisk.color}15`,
+                borderColor: `${districtRisk.color}40`,
+              }}
+              title={`${incident.districtName} district risk score`}
+            >
+              <span className="font-semibold">{districtRiskScore}</span>
+              <span className="uppercase tracking-wide opacity-90">{districtRisk.label} district risk</span>
+            </span>
+          )}
         </div>
       </div>
     </button>
@@ -65,6 +83,7 @@ export default function CrimeMapIncidentSidebar({
   incidents,
   selectedCategory,
   selectedIncidentId,
+  districtRiskScores,
   onIncidentSelect,
 }: CrimeMapIncidentSidebarProps) {
   const listRef = useRef<HTMLDivElement>(null)
@@ -100,6 +119,7 @@ export default function CrimeMapIncidentSidebar({
                 <IncidentListCard
                   incident={incident}
                   selected={incident.id === selectedIncidentId}
+                  districtRiskScore={districtRiskScores.get(incident.districtId)}
                   onSelect={onIncidentSelect}
                 />
               </li>

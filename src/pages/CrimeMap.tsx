@@ -847,6 +847,7 @@ export default function CrimeMap() {
               incidents={sidebarIncidents}
               selectedCategory={selectedCategory}
               selectedIncidentId={selectedIncident?.id}
+              districtRiskScores={districtRiskScores}
               onIncidentSelect={focusIncidentOnMap}
             />
           </div>
