@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useLocation, useSearchParams } from 'react-router-dom'
 import L from 'leaflet'
-import { PanelRightClose, PanelRightOpen } from 'lucide-react'
+import { ChevronDown, ChevronUp, PanelRightClose, PanelRightOpen } from 'lucide-react'
 import PageHeader from '../components/ui/PageHeader'
 import NativeSelect from '../components/ui/NativeSelect'
 import CrimeMapIncidentSidebar from '../components/crime/CrimeMapIncidentSidebar'
@@ -163,6 +163,8 @@ export default function CrimeMap() {
   const [drilledDistrictId, setDrilledDistrictId] = useState<string | null>(null)
   const [selectedIncident, setSelectedIncident] = useState<CrimeIncident | null>(null)
   const [sidebarOpen, setSidebarOpen] = useState(true)
+  const [legendExpanded, setLegendExpanded] = useState(false)
+  const [statsExpanded, setStatsExpanded] = useState(false)
   const [searchParams, setSearchParams] = useSearchParams()
   const districtFilter = searchParams.get('district')
 
@@ -633,107 +635,172 @@ export default function CrimeMap() {
         <div ref={mapRef} className="absolute inset-0 z-0 h-full w-full" />
 
         <div className="pointer-events-none absolute inset-0 z-[1000]">
-          <div className="pointer-events-auto absolute bottom-4 left-4 max-w-[min(100%,17rem)]">
-            <div className="rounded-lg border border-border bg-surface/95 p-2.5 shadow-lg shadow-black/30 backdrop-blur-sm">
-              <p className="mb-1.5 text-[10px] font-semibold uppercase tracking-wider text-text-muted">
-                Crime Density Heatmap
-              </p>
-              <div className="space-y-1 text-[11px] leading-tight">
-                <div className="flex items-center gap-2">
-                  <span className="relative flex h-3.5 w-3.5 shrink-0 items-center justify-center">
-                    <span
-                      className="h-3.5 w-3.5 rounded-full border border-white/30"
-                      style={{ background: `${HEATMAP_COLORS.high}99` }}
-                    />
-                    {showHeatmap && (
-                      <span className="absolute inset-0 animate-ping rounded-full border border-[rgba(224,90,58,0.4)]" />
-                    )}
-                  </span>
-                  <span>
-                    <span className="font-medium text-white">High</span>
-                    <span className="text-text-muted"> · 15+</span>
-                    {showHeatmap && <span className="text-danger"> · pulse</span>}
-                  </span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span
-                    className="h-3.5 w-3.5 shrink-0 rounded-full border border-white/30"
-                    style={{ background: `${HEATMAP_COLORS.medium}99` }}
-                  />
-                  <span>
-                    <span className="font-medium text-white">Medium</span>
-                    <span className="text-text-muted"> · 8–14</span>
-                  </span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span
-                    className="h-3.5 w-3.5 shrink-0 rounded-full border border-white/30"
-                    style={{ background: `${HEATMAP_COLORS.low}99` }}
-                  />
-                  <span>
-                    <span className="font-medium text-white">Low</span>
-                    <span className="text-text-muted"> · 1–7</span>
-                  </span>
-                </div>
-              </div>
-
-              {showSocioEconomic && (
-                <>
-                  <div className="my-2 border-t border-border/80" />
-                  <p className="mb-1 text-[10px] font-semibold uppercase tracking-wider text-text-muted">
-                    Socio-Economic Layer
+          <div className="pointer-events-auto absolute bottom-6 left-6 max-w-[calc(100%-3rem)]">
+            <div className="rounded-xl border border-border bg-surface/95 shadow-lg shadow-black/30 backdrop-blur-sm">
+              <button
+                type="button"
+                onClick={() => setLegendExpanded((open) => !open)}
+                className="flex w-full items-center justify-between gap-3 px-3 py-2 text-left transition-colors hover:bg-white/5"
+                aria-expanded={legendExpanded}
+                aria-label={legendExpanded ? 'Collapse map legend' : 'Expand map legend'}
+              >
+                <div className="min-w-0">
+                  <p className="text-[11px] font-semibold uppercase tracking-wider text-text-muted">
+                    Map Legend
                   </p>
-                  <p className="mb-1.5 text-[10px] leading-snug text-text-muted">
-                    Size = density · Color = urbanization
-                  </p>
-                  <div className="space-y-1 text-[11px] leading-tight">
-                    <div className="flex items-center gap-1.5">
-                      <span className="h-3 w-3 shrink-0 rounded-full bg-[#9b59b6]/60 ring-1 ring-[#9b59b6]" />
-                      <span className="text-text-muted">High urbanization (75%+)</span>
-                    </div>
-                    <div className="flex items-center gap-1.5">
-                      <span className="h-2.5 w-2.5 shrink-0 rounded-full bg-[#4a90d9]/60 ring-1 ring-[#4a90d9]" />
-                      <span className="text-text-muted">Moderate</span>
-                    </div>
-                    <div className="flex items-center gap-1.5">
-                      <span className="h-2 w-2 shrink-0 rounded-full bg-[#27ae60]/50 ring-1 ring-[#27ae60]" />
-                      <span className="text-text-muted">Rural / low</span>
-                    </div>
-                  </div>
-                  <div className="mt-1.5 flex items-start gap-1.5 rounded-md bg-danger/10 px-2 py-1.5 ring-1 ring-danger/20">
-                    <span className="relative mt-px flex h-3.5 w-3.5 shrink-0 items-center justify-center">
-                      <span className="absolute inset-0 animate-ping rounded-full border border-danger/40" />
-                      <span className="relative flex h-3.5 w-3.5 items-center justify-center rounded-full border border-danger bg-danger/20 text-[8px] font-bold text-danger">
-                        !
-                      </span>
-                    </span>
-                    <p className="text-[10px] font-medium leading-snug text-danger">
-                      Resource Priority Zone
-                      <span className="font-normal text-danger/80"> · red border + pulse badge</span>
+                  {!legendExpanded && (
+                    <p className="mt-0.5 truncate text-[11px] text-text-muted">
+                      {[
+                        showHeatmap && 'Heatmap',
+                        showSocioEconomic && 'Socio-Economic',
+                      ]
+                        .filter(Boolean)
+                        .join(' · ') || 'No layers active'}
                     </p>
+                  )}
+                </div>
+                <div className="flex shrink-0 items-center gap-2">
+                  {showHeatmap && (
+                    <span className="h-1.5 w-1.5 rounded-full bg-accent" title="Heatmap active" />
+                  )}
+                  {showSocioEconomic && (
+                    <span className="h-1.5 w-1.5 rounded-full bg-[#9b59b6]" title="Socio-economic active" />
+                  )}
+                  {legendExpanded ? (
+                    <ChevronUp className="h-4 w-4 text-text-muted" aria-hidden />
+                  ) : (
+                    <ChevronDown className="h-4 w-4 text-text-muted" aria-hidden />
+                  )}
+                </div>
+              </button>
+
+              {legendExpanded && (
+                <div className="space-y-3 border-t border-border px-3 pb-3 pt-2.5">
+                  <div>
+                    <p className="mb-2 text-[11px] font-semibold uppercase tracking-wider text-text-muted">
+                      Crime Density Heatmap
+                    </p>
+                    <div className="space-y-2 text-xs">
+                      <div className="flex items-center gap-2.5">
+                        <span className="relative flex h-4 w-4 items-center justify-center">
+                          <span
+                            className="h-4 w-4 rounded-full border-2 border-white/30"
+                            style={{ background: `${HEATMAP_COLORS.high}99` }}
+                          />
+                          {showHeatmap && (
+                            <span className="absolute inset-0 animate-ping rounded-full border border-[rgba(224,90,58,0.4)]" />
+                          )}
+                        </span>
+                        <div>
+                          <span className="font-medium text-white">High</span>
+                          <span className="ml-1.5 text-text-muted">15+ incidents</span>
+                          {showHeatmap && <span className="ml-1.5 text-danger">· pulsing</span>}
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-2.5">
+                        <span
+                          className="h-4 w-4 rounded-full border-2 border-white/30"
+                          style={{ background: `${HEATMAP_COLORS.medium}99` }}
+                        />
+                        <div>
+                          <span className="font-medium text-white">Medium</span>
+                          <span className="ml-1.5 text-text-muted">8–14 incidents</span>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-2.5">
+                        <span
+                          className="h-4 w-4 rounded-full border-2 border-white/30"
+                          style={{ background: `${HEATMAP_COLORS.low}99` }}
+                        />
+                        <div>
+                          <span className="font-medium text-white">Low</span>
+                          <span className="ml-1.5 text-text-muted">1–7 incidents</span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </>
+
+                  {showSocioEconomic && (
+                    <div className="border-t border-border pt-3">
+                      <p className="mb-1.5 text-[11px] font-semibold uppercase tracking-wider text-text-muted">
+                        Socio-Economic Layer
+                      </p>
+                      <p className="mb-2 text-[11px] leading-relaxed text-text-muted">
+                        Circle size = population density · Color intensity = urbanization level
+                      </p>
+                      <div className="space-y-1.5 text-xs">
+                        <div className="flex items-center gap-2">
+                          <span className="h-3.5 w-3.5 rounded-full bg-[#9b59b6]/60 ring-1 ring-[#9b59b6]" />
+                          <span className="text-text-muted">High urbanization (75%+)</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <span className="h-3 w-3 rounded-full bg-[#4a90d9]/60 ring-1 ring-[#4a90d9]" />
+                          <span className="text-text-muted">Moderate urbanization</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <span className="h-2.5 w-2.5 rounded-full bg-[#27ae60]/50 ring-1 ring-[#27ae60]" />
+                          <span className="text-text-muted">Rural / low urbanization</span>
+                        </div>
+                      </div>
+                      <div className="mt-2.5 flex items-start gap-2 rounded-lg bg-danger/10 px-2 py-1.5 ring-1 ring-danger/20">
+                        <span className="relative mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center">
+                          <span className="absolute inset-0 animate-ping rounded-full border border-danger/40" />
+                          <span className="relative flex h-4 w-4 items-center justify-center rounded-full border border-danger bg-danger/20 text-[9px] font-bold text-danger">
+                            !
+                          </span>
+                        </span>
+                        <p className="text-[10px] font-medium leading-snug text-danger">
+                          High crime + High density = Resource Priority Zone
+                          <span className="mt-0.5 block font-normal text-danger/80">
+                            Red border + pulsing badge on qualifying districts
+                          </span>
+                        </p>
+                      </div>
+                    </div>
+                  )}
+                </div>
               )}
             </div>
           </div>
 
-          <div className="pointer-events-auto absolute right-4 top-4 rounded-lg border border-border bg-surface/95 px-2.5 py-2 shadow-lg shadow-black/30 backdrop-blur-sm">
-            <p className="text-lg font-bold leading-none text-white tabular-nums">{incidents.length}</p>
-            <p className="mt-0.5 text-[10px] leading-tight text-text-muted">Active incidents mapped</p>
-            <p className="text-[10px] leading-tight text-text-muted">{districts.length} districts</p>
-            {(showHeatmap || showSocioEconomic) && (
-              <div className="mt-1 flex flex-wrap gap-x-2 gap-y-0.5 border-t border-border/60 pt-1">
+          <div className="pointer-events-auto absolute right-6 top-6 rounded-xl border border-border bg-surface/95 shadow-lg shadow-black/30 backdrop-blur-sm">
+            <button
+              type="button"
+              onClick={() => setStatsExpanded((open) => !open)}
+              className="flex w-full items-center justify-between gap-2 px-3 py-2 text-left transition-colors hover:bg-white/5"
+              aria-expanded={statsExpanded}
+              aria-label={statsExpanded ? 'Collapse map stats' : 'Expand map stats'}
+            >
+              <div className="min-w-0">
+                <p className="text-lg font-bold leading-none text-white">{incidents.length}</p>
+                {!statsExpanded && (
+                  <p className="mt-0.5 truncate text-[10px] text-text-muted">
+                    incidents · {districts.length} districts
+                  </p>
+                )}
+              </div>
+              {statsExpanded ? (
+                <ChevronUp className="h-4 w-4 shrink-0 text-text-muted" aria-hidden />
+              ) : (
+                <ChevronDown className="h-4 w-4 shrink-0 text-text-muted" aria-hidden />
+              )}
+            </button>
+
+            {statsExpanded && (
+              <div className="space-y-1.5 border-t border-border px-3 pb-2.5 pt-2 text-xs text-text-muted">
+                <p>Active incidents mapped</p>
+                <p>{districts.length} districts covered</p>
                 {showHeatmap && (
-                  <span className="flex items-center gap-1 text-[10px] text-accent-light">
-                    <span className="h-1 w-1 animate-pulse rounded-full bg-accent" />
-                    Heatmap
-                  </span>
+                  <p className="flex items-center gap-1.5 text-accent-light">
+                    <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-accent" />
+                    Heatmap active
+                  </p>
                 )}
                 {showSocioEconomic && (
-                  <span className="flex items-center gap-1 text-[10px] text-[#9b59b6]">
-                    <span className="h-1 w-1 animate-pulse rounded-full bg-[#9b59b6]" />
-                    Socio-economic
-                  </span>
+                  <p className="flex items-center gap-1.5 text-[#9b59b6]">
+                    <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#9b59b6]" />
+                    Socio-economic layer active
+                  </p>
                 )}
               </div>
             )}
