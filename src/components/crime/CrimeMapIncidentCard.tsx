@@ -55,7 +55,7 @@ export default function CrimeMapIncidentCard({
 
   return (
     <aside
-      className="pointer-events-auto absolute left-6 top-14 z-[1003] flex w-[380px] max-w-[calc(100%-3rem)] max-h-[min(70vh,520px)] flex-col overflow-hidden rounded-xl border border-border bg-surface/95 shadow-2xl shadow-black/40 backdrop-blur-sm"
+      className="pointer-events-auto absolute left-6 top-14 z-[1003] flex w-[380px] max-w-[calc(100%-3rem)] max-h-[calc(100vh-4rem)] flex-col rounded-xl border border-border bg-surface/95 shadow-2xl shadow-black/40 backdrop-blur-sm"
       role="dialog"
       aria-modal="false"
       aria-label={`Incident ${incident.id}`}
@@ -89,7 +89,7 @@ export default function CrimeMapIncidentCard({
         </div>
       </div>
 
-      <div className="min-h-0 flex-1 overflow-y-auto px-4 py-3">
+      <div className="px-4 py-3">
         <div className="flex gap-3">
           <div
             className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full ring-1 ring-white/20"
@@ -117,23 +117,23 @@ export default function CrimeMapIncidentCard({
           >
             {incident.severity}
           </span>
-          {districtRisk && districtRiskScore != null && (
-            <span
-              className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-medium ring-1"
-              style={{
-                color: districtRisk.color,
-                background: `${districtRisk.color}15`,
-                borderColor: `${districtRisk.color}40`,
-              }}
-              title={`${incident.districtName} district risk score`}
-            >
-              <span className="font-semibold">{districtRiskScore}</span>
-              <span className="text-[10px] uppercase tracking-wide opacity-90">
-                {districtRisk.label} district risk
-              </span>
-            </span>
-          )}
         </div>
+        {districtRisk && districtRiskScore != null && (
+          <div
+            className="mt-2 inline-flex w-full items-center gap-2 rounded-lg px-3 py-1.5 text-xs font-medium ring-1"
+            style={{
+              color: districtRisk.color,
+              background: `${districtRisk.color}12`,
+              borderColor: `${districtRisk.color}35`,
+            }}
+            title={`${incident.districtName} district risk score`}
+          >
+            <span className="text-base font-bold leading-none">{districtRiskScore}</span>
+            <span className="min-w-0 text-[10px] uppercase leading-snug tracking-wide opacity-90">
+              {districtRisk.label} district risk
+            </span>
+          </div>
+        )}
 
         <div className="mt-4 grid grid-cols-2 gap-2.5">
           <Field label="Date" value={incident.date} />
@@ -144,7 +144,9 @@ export default function CrimeMapIncidentCard({
 
         <section className="mt-4">
           <h3 className="text-xs font-semibold uppercase tracking-wider text-text-muted">Description</h3>
-          <p className="mt-1.5 text-sm leading-relaxed text-[#c8dff5]">{incident.description}</p>
+          <p className="mt-1.5 max-h-32 overflow-y-auto text-sm leading-relaxed text-[#c8dff5]">
+            {incident.description}
+          </p>
         </section>
 
         {(incident.suspectId || incident.victimId) && (
