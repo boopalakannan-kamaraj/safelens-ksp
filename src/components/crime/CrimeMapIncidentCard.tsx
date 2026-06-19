@@ -1,14 +1,16 @@
 import { ChevronLeft, ChevronRight, X } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
-import type { CrimeIncident } from '../../types/crime'
+import type { CrimeIncident, NetworkNode } from '../../types/crime'
 import { exportIncidentPDF } from '../../utils/exportHelpers'
 import { CrimeCategoryIcon } from '../../utils/crimeCategoryIcons'
+import { incidentHasNetworkLink } from '../../utils/networkNavigation'
 import { riskLevel, severityColor, statusBadge } from '../../utils/helpers'
 import { btnIcon, btnSecondary } from '../ui/formClasses'
 
 interface CrimeMapIncidentCardProps {
   incident: CrimeIncident | null
   incidents: CrimeIncident[]
+  networkNodes: NetworkNode[]
   districtRiskScore?: number
   onClose: () => void
   onSelect: (incident: CrimeIncident) => void
@@ -26,6 +28,7 @@ function Field({ label, value, mono }: { label: string; value: string; mono?: bo
 export default function CrimeMapIncidentCard({
   incident,
   incidents,
+  networkNodes,
   districtRiskScore,
   onClose,
   onSelect,
@@ -38,6 +41,7 @@ export default function CrimeMapIncidentCard({
   const hasPrev = currentIndex > 0
   const hasNext = currentIndex >= 0 && currentIndex < incidents.length - 1
   const districtRisk = districtRiskScore != null ? riskLevel(districtRiskScore) : null
+  const showNetworkLinks = incidentHasNetworkLink(incident, networkNodes)
 
   const handleViewNetwork = () => {
     navigate('/network', {
@@ -152,9 +156,11 @@ export default function CrimeMapIncidentCard({
       </div>
 
       <div className="space-y-2 border-t border-border px-4 py-3">
-        <button type="button" onClick={handleViewNetwork} className={`w-full ${btnSecondary}`}>
-          View Network Links
-        </button>
+        {showNetworkLinks && (
+          <button type="button" onClick={handleViewNetwork} className={`w-full ${btnSecondary}`}>
+            View Network Links
+          </button>
+        )}
         <button type="button" onClick={() => exportIncidentPDF(incident)} className={`w-full ${btnSecondary}`}>
           Export Incident Report
         </button>

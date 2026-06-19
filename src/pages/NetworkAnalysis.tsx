@@ -13,16 +13,7 @@ import {
 import { fetchIncidents, fetchNetworkData } from '../services/crimeApi'
 import type { CrimeIncident, NetworkEdge, NetworkNode } from '../types/crime'
 import type { InvestigationContext } from '../types/navigation'
-
-function resolveNavigationNodeId(
-  nodes: NetworkNode[],
-  suspectId?: string,
-  victimId?: string,
-): string | null {
-  if (suspectId && nodes.some((n) => n.id === suspectId)) return suspectId
-  if (victimId && nodes.some((n) => n.id === victimId)) return victimId
-  return null
-}
+import { resolveNavigationNodeId } from '../utils/networkNavigation'
 
 export default function NetworkAnalysis() {
   const location = useLocation()
