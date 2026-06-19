@@ -70,6 +70,19 @@ function createRedZonePulseIcon() {
   })
 }
 
+function createPriorityZonePulseIcon() {
+  return L.divIcon({
+    className: 'priority-zone-marker',
+    html: `<div class="priority-zone-pulse">
+      <span class="priority-zone-pulse-ring"></span>
+      <span class="priority-zone-pulse-ring priority-zone-pulse-ring--delay"></span>
+      <span class="priority-zone-badge" aria-hidden="true">!</span>
+    </div>`,
+    iconSize: [72, 72],
+    iconAnchor: [36, 36],
+  })
+}
+
 function createIncidentIcon(severity: CrimeIncident['severity'], highlighted = false) {
   const color = severityColor(severity)
   const size = highlighted ? 18 : 10
@@ -346,14 +359,15 @@ export default function CrimeMap() {
         const color = urbanizationColor(profile.urbanizationLevel)
         const radius = densityToRadius(profile.populationDensity)
         const opacity = 0.12 + (profile.urbanizationLevel / 100) * 0.22
+        const isPriorityZone = correlation.zone === 'priority'
 
         L.circle([district.lat, district.lng], {
           radius,
           fillColor: color,
-          fillOpacity: opacity,
-          color,
-          weight: 1.5,
-          opacity: 0.45,
+          fillOpacity: isPriorityZone ? Math.min(0.38, opacity + 0.12) : opacity,
+          color: isPriorityZone ? '#e74c3c' : color,
+          weight: isPriorityZone ? 3 : 1.5,
+          opacity: isPriorityZone ? 0.9 : 0.45,
           interactive: true,
         })
           .bindPopup(
@@ -366,6 +380,14 @@ export default function CrimeMap() {
             </div>`,
           )
           .addTo(socioLayer.current!)
+
+        if (isPriorityZone) {
+          L.marker([district.lat, district.lng], {
+            icon: createPriorityZonePulseIcon(),
+            interactive: false,
+            zIndexOffset: 600,
+          }).addTo(socioLayer.current!)
+        }
       }
     }
 
@@ -415,10 +437,16 @@ export default function CrimeMap() {
         if (drilledDistrictId) {
           marker.bindTooltip(
             `<div style="min-width:180px">
-              <strong>${inc.id}</strong><br/>
-              <span style="color:#4a90d9">${inc.category}</span> · ${inc.severity}
+              <strong style="color:#e8edf4">${inc.id}</strong><br/>
+              <span style="color:#4a90d9">${inc.category}</span>
+              <span style="color:#8ba4c4"> · ${inc.severity}</span>
             </div>`,
-            { direction: 'top', offset: [0, -18], opacity: 1 },
+            {
+              direction: 'top',
+              offset: [0, -18],
+              opacity: 1,
+              className: 'safelens-map-tooltip',
+            },
           )
         }
 
@@ -672,9 +700,20 @@ export default function CrimeMap() {
                     <span className="text-text-muted">Rural / low urbanization</span>
                   </div>
                 </div>
-                <p className="mt-3 rounded-lg bg-danger/10 px-2.5 py-2 text-[11px] font-medium text-danger ring-1 ring-danger/20">
-                  High crime + High density = Resource Priority Zone
-                </p>
+                <div className="mt-3 flex items-start gap-2.5 rounded-lg bg-danger/10 px-2.5 py-2 ring-1 ring-danger/20">
+                  <span className="relative mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center">
+                    <span className="absolute inset-0 animate-ping rounded-full border border-danger/40" />
+                    <span className="relative flex h-5 w-5 items-center justify-center rounded-full border-2 border-danger bg-danger/20 text-[10px] font-bold text-danger">
+                      !
+                    </span>
+                  </span>
+                  <p className="text-[11px] font-medium leading-snug text-danger">
+                    High crime + High density = Resource Priority Zone
+                    <span className="mt-0.5 block font-normal text-danger/80">
+                      Red border + pulsing badge on qualifying districts
+                    </span>
+                  </p>
+                </div>
               </div>
             )}
           </div>
