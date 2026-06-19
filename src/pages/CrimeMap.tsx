@@ -16,7 +16,12 @@ import {
   formToolbar,
 } from '../components/ui/formClasses'
 import { ErrorState } from '../components/ui/DataState'
-import { fetchDistrictIncidents, fetchDistricts, fetchIncidents } from '../services/crimeApi'
+import {
+  fetchDistrictIncidents,
+  fetchDistricts,
+  fetchIncidents,
+  fetchRiskPredictions,
+} from '../services/crimeApi'
 import type { CrimeIncident, District } from '../types/crime'
 import type { InvestigationContext } from '../types/navigation'
 import { getHeatmapTier, getHeatmapTierLabel } from '../utils/crimeAnalytics'
@@ -162,6 +167,7 @@ export default function CrimeMap() {
   const [highlightedIncidentId, setHighlightedIncidentId] = useState<string | null>(null)
   const [drilledDistrictId, setDrilledDistrictId] = useState<string | null>(null)
   const [selectedIncident, setSelectedIncident] = useState<CrimeIncident | null>(null)
+  const [districtRiskScores, setDistrictRiskScores] = useState<Map<string, number>>(new Map())
   const [sidebarOpen, setSidebarOpen] = useState(true)
   const [legendExpanded, setLegendExpanded] = useState(false)
   const [statsExpanded, setStatsExpanded] = useState(false)
@@ -252,11 +258,12 @@ export default function CrimeMap() {
 
     const loadIncidents = districtFilter ? fetchDistrictIncidents(districtFilter) : fetchIncidents()
 
-    Promise.all([fetchDistricts(), loadIncidents])
-      .then(([d, i]) => {
+    Promise.all([fetchDistricts(), loadIncidents, fetchRiskPredictions()])
+      .then(([d, i, predictions]) => {
         if (cancelled) return
         setDistricts(d)
         setIncidents(i)
+        setDistrictRiskScores(new Map(predictions.map((p) => [p.districtId, p.riskScore])))
       })
       .catch((err: Error) => {
         if (cancelled) return
@@ -810,6 +817,9 @@ export default function CrimeMap() {
         <CrimeMapIncidentCard
           incident={selectedIncident}
           incidents={cardIncidents}
+          districtRiskScore={
+            selectedIncident ? districtRiskScores.get(selectedIncident.districtId) : undefined
+          }
           onClose={closeIncidentDetail}
           onSelect={selectIncidentOnMap}
         />

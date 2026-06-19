@@ -3,12 +3,13 @@ import { useNavigate } from 'react-router-dom'
 import type { CrimeIncident } from '../../types/crime'
 import { exportIncidentPDF } from '../../utils/exportHelpers'
 import { CrimeCategoryIcon } from '../../utils/crimeCategoryIcons'
-import { severityColor, statusBadge } from '../../utils/helpers'
+import { riskLevel, severityColor, statusBadge } from '../../utils/helpers'
 import { btnIcon, btnSecondary } from '../ui/formClasses'
 
 interface CrimeMapIncidentCardProps {
   incident: CrimeIncident | null
   incidents: CrimeIncident[]
+  districtRiskScore?: number
   onClose: () => void
   onSelect: (incident: CrimeIncident) => void
 }
@@ -25,6 +26,7 @@ function Field({ label, value, mono }: { label: string; value: string; mono?: bo
 export default function CrimeMapIncidentCard({
   incident,
   incidents,
+  districtRiskScore,
   onClose,
   onSelect,
 }: CrimeMapIncidentCardProps) {
@@ -35,6 +37,7 @@ export default function CrimeMapIncidentCard({
   const currentIndex = incidents.findIndex((item) => item.id === incident.id)
   const hasPrev = currentIndex > 0
   const hasNext = currentIndex >= 0 && currentIndex < incidents.length - 1
+  const districtRisk = districtRiskScore != null ? riskLevel(districtRiskScore) : null
 
   const handleViewNetwork = () => {
     navigate('/network', {
@@ -96,7 +99,7 @@ export default function CrimeMapIncidentCard({
             <p className="mt-0.5 text-sm text-text-muted">{incident.districtName}</p>
           </div>
         </div>
-        <div className="mt-2.5 flex flex-wrap gap-2">
+        <div className="mt-2.5 flex flex-wrap items-center gap-2">
           <span className={`rounded-full px-2.5 py-0.5 text-xs font-medium ring-1 ${statusBadge(incident.status)}`}>
             {incident.status}
           </span>
@@ -110,6 +113,22 @@ export default function CrimeMapIncidentCard({
           >
             {incident.severity}
           </span>
+          {districtRisk && districtRiskScore != null && (
+            <span
+              className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-medium ring-1"
+              style={{
+                color: districtRisk.color,
+                background: `${districtRisk.color}15`,
+                borderColor: `${districtRisk.color}40`,
+              }}
+              title={`${incident.districtName} district risk score`}
+            >
+              <span className="font-semibold">{districtRiskScore}</span>
+              <span className="text-[10px] uppercase tracking-wide opacity-90">
+                {districtRisk.label} district risk
+              </span>
+            </span>
+          )}
         </div>
 
         <div className="mt-4 grid grid-cols-2 gap-2.5">

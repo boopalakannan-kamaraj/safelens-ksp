@@ -37,6 +37,24 @@ type ApiIncidentRow = {
   officer: string
   latitude: number | string
   longitude: number | string
+  suspect_id?: string
+  victim_id?: string
+  suspectId?: string
+  victimId?: string
+}
+
+const mockIncidentLinks = new Map(
+  (mockData.incidents as Array<{ id: string; suspectId?: string; victimId?: string }>).map(
+    (inc) => [inc.id, { suspectId: inc.suspectId, victimId: inc.victimId }],
+  ),
+)
+
+function pickOptionalId(row: ApiIncidentRow, ...keys: (keyof ApiIncidentRow)[]): string | undefined {
+  for (const key of keys) {
+    const value = row[key]
+    if (typeof value === 'string' && value.trim()) return value.trim()
+  }
+  return undefined
 }
 
 export type StatsResponse = {
@@ -53,6 +71,12 @@ const districtNameToId = new Map(
 
 export function mapApiIncident(row: ApiIncidentRow): CrimeIncident {
   const districtName = row.district
+  const mockLinks = mockIncidentLinks.get(row.incident_id)
+  const suspectId =
+    pickOptionalId(row, 'suspect_id', 'suspectId') ?? mockLinks?.suspectId
+  const victimId =
+    pickOptionalId(row, 'victim_id', 'victimId') ?? mockLinks?.victimId
+
   return {
     id: row.incident_id,
     districtId: districtNameToId.get(districtName) ?? districtName.replace(/\s+/g, '-').slice(0, 8).toUpperCase(),
@@ -66,6 +90,8 @@ export function mapApiIncident(row: ApiIncidentRow): CrimeIncident {
     description: row.description,
     status: row.status,
     officer: row.officer,
+    ...(suspectId ? { suspectId } : {}),
+    ...(victimId ? { victimId } : {}),
   }
 }
 
