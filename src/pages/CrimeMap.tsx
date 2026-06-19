@@ -149,6 +149,7 @@ export default function CrimeMap() {
   const mapRef = useRef<HTMLDivElement>(null)
   const mapInstance = useRef<L.Map | null>(null)
   const pendingFocusIncidentRef = useRef<CrimeIncident | null>(null)
+  const processedNavigationKeyRef = useRef<string | null>(null)
   const markersLayer = useRef<L.LayerGroup | null>(null)
   const heatmapLayer = useRef<L.LayerGroup | null>(null)
   const pulseLayer = useRef<L.LayerGroup | null>(null)
@@ -250,6 +251,22 @@ export default function CrimeMap() {
       setViewMode('incidents')
     }
   }, [location.key, location.state, setSearchParams])
+
+  useEffect(() => {
+    if (loading || !incidents.length) return
+
+    const state = location.state as InvestigationContext | undefined
+    if (!state?.incidentId) return
+    if (processedNavigationKeyRef.current === location.key) return
+    if (state.district && districtFilter !== state.district) return
+
+    const incident = incidents.find((i) => i.id === state.incidentId)
+    if (!incident) return
+
+    processedNavigationKeyRef.current = location.key
+    setSidebarOpen(true)
+    focusIncidentOnMap(incident)
+  }, [loading, incidents, districtFilter, location.key, location.state, focusIncidentOnMap])
 
   useEffect(() => {
     let cancelled = false

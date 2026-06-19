@@ -72,6 +72,18 @@ export default function NetworkProfileDrawer({
     }
   }
 
+  const handleViewIncidentOnMap = (incident: CrimeIncident) => {
+    navigate('/map', {
+      state: {
+        category: incident.category,
+        district: incident.districtName,
+        incidentId: incident.id,
+        lat: incident.lat,
+        lng: incident.lng,
+      },
+    })
+  }
+
   const handleLinkedEntityClick = (linked: NetworkNode | undefined) => {
     if (!linked) return
     onSelectNode(linked.id)
@@ -188,6 +200,13 @@ export default function NetworkProfileDrawer({
                     <p className="mt-2 text-[11px] font-medium" style={{ color: severityColor(inc.severity) }}>
                       {inc.severity} severity
                     </p>
+                    <button
+                      type="button"
+                      onClick={() => handleViewIncidentOnMap(inc)}
+                      className={`mt-3 w-full ${btnSecondary} text-xs`}
+                    >
+                      View on Crime Map
+                    </button>
                   </li>
                 ))}
               </ul>

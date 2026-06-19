@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react'
 import type { CrimeIncident } from '../../types/crime'
 import { CrimeCategoryIcon } from '../../utils/crimeCategoryIcons'
 import { severityColor, statusBadge } from '../../utils/helpers'
@@ -66,6 +67,14 @@ export default function CrimeMapIncidentSidebar({
   selectedIncidentId,
   onIncidentSelect,
 }: CrimeMapIncidentSidebarProps) {
+  const listRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (!selectedIncidentId || !listRef.current) return
+    const selected = listRef.current.querySelector<HTMLElement>(`[data-incident-id="${selectedIncidentId}"]`)
+    selected?.scrollIntoView({ block: 'nearest', behavior: 'smooth' })
+  }, [selectedIncidentId, incidents])
+
   return (
     <aside
       className="flex h-full w-80 shrink-0 flex-col border-l border-border bg-surface/95 backdrop-blur-sm"
@@ -79,7 +88,7 @@ export default function CrimeMapIncidentSidebar({
         </p>
       </div>
 
-      <div className="flex-1 overflow-y-auto px-3 py-3">
+      <div ref={listRef} className="flex-1 overflow-y-auto px-3 py-3">
         {incidents.length === 0 ? (
           <p className="px-1 py-6 text-center text-xs text-text-muted">
             No incidents match the current category filter.
@@ -87,7 +96,7 @@ export default function CrimeMapIncidentSidebar({
         ) : (
           <ul className="space-y-1.5">
             {incidents.map((incident) => (
-              <li key={incident.id}>
+              <li key={incident.id} data-incident-id={incident.id}>
                 <IncidentListCard
                   incident={incident}
                   selected={incident.id === selectedIncidentId}
