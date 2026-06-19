@@ -633,106 +633,109 @@ export default function CrimeMap() {
         <div ref={mapRef} className="absolute inset-0 z-0 h-full w-full" />
 
         <div className="pointer-events-none absolute inset-0 z-[1000]">
-          <div className="pointer-events-auto absolute bottom-6 left-6 flex max-w-[calc(100%-3rem)] flex-col gap-3">
-            <div className="rounded-xl border border-border bg-surface/95 p-4 shadow-lg shadow-black/30 backdrop-blur-sm">
-              <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-text-muted">
+          <div className="pointer-events-auto absolute bottom-4 left-4 max-w-[min(100%,17rem)]">
+            <div className="rounded-lg border border-border bg-surface/95 p-2.5 shadow-lg shadow-black/30 backdrop-blur-sm">
+              <p className="mb-1.5 text-[10px] font-semibold uppercase tracking-wider text-text-muted">
                 Crime Density Heatmap
               </p>
-              <div className="space-y-2.5 text-xs">
-                <div className="flex items-center gap-2.5">
-                  <span className="relative flex h-5 w-5 items-center justify-center">
+              <div className="space-y-1 text-[11px] leading-tight">
+                <div className="flex items-center gap-2">
+                  <span className="relative flex h-3.5 w-3.5 shrink-0 items-center justify-center">
                     <span
-                      className="h-5 w-5 rounded-full border-2 border-white/30"
+                      className="h-3.5 w-3.5 rounded-full border border-white/30"
                       style={{ background: `${HEATMAP_COLORS.high}99` }}
                     />
                     {showHeatmap && (
                       <span className="absolute inset-0 animate-ping rounded-full border border-[rgba(224,90,58,0.4)]" />
                     )}
                   </span>
-                  <div>
+                  <span>
                     <span className="font-medium text-white">High</span>
-                    <span className="ml-1.5 text-text-muted">15+ incidents</span>
-                    {showHeatmap && <span className="ml-1.5 text-danger">· pulsing</span>}
-                  </div>
+                    <span className="text-text-muted"> · 15+</span>
+                    {showHeatmap && <span className="text-danger"> · pulse</span>}
+                  </span>
                 </div>
-                <div className="flex items-center gap-2.5">
+                <div className="flex items-center gap-2">
                   <span
-                    className="h-5 w-5 rounded-full border-2 border-white/30"
+                    className="h-3.5 w-3.5 shrink-0 rounded-full border border-white/30"
                     style={{ background: `${HEATMAP_COLORS.medium}99` }}
                   />
-                  <div>
+                  <span>
                     <span className="font-medium text-white">Medium</span>
-                    <span className="ml-1.5 text-text-muted">8–14 incidents</span>
-                  </div>
+                    <span className="text-text-muted"> · 8–14</span>
+                  </span>
                 </div>
-                <div className="flex items-center gap-2.5">
+                <div className="flex items-center gap-2">
                   <span
-                    className="h-5 w-5 rounded-full border-2 border-white/30"
+                    className="h-3.5 w-3.5 shrink-0 rounded-full border border-white/30"
                     style={{ background: `${HEATMAP_COLORS.low}99` }}
                   />
-                  <div>
+                  <span>
                     <span className="font-medium text-white">Low</span>
-                    <span className="ml-1.5 text-text-muted">1–7 incidents</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {showSocioEconomic && (
-              <div className="rounded-xl border border-border bg-surface/95 p-4 shadow-lg shadow-black/30 backdrop-blur-sm">
-                <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-text-muted">
-                  Socio-Economic Layer
-                </p>
-                <p className="mb-3 text-[11px] leading-relaxed text-text-muted">
-                  Circle size = population density · Color intensity = urbanization level
-                </p>
-                <div className="space-y-2 text-xs">
-                  <div className="flex items-center gap-2">
-                    <span className="h-4 w-4 rounded-full bg-[#9b59b6]/60 ring-1 ring-[#9b59b6]" />
-                    <span className="text-text-muted">High urbanization (75%+)</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="h-3.5 w-3.5 rounded-full bg-[#4a90d9]/60 ring-1 ring-[#4a90d9]" />
-                    <span className="text-text-muted">Moderate urbanization</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="h-3 w-3 rounded-full bg-[#27ae60]/50 ring-1 ring-[#27ae60]" />
-                    <span className="text-text-muted">Rural / low urbanization</span>
-                  </div>
-                </div>
-                <div className="mt-3 flex items-start gap-2.5 rounded-lg bg-danger/10 px-2.5 py-2 ring-1 ring-danger/20">
-                  <span className="relative mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center">
-                    <span className="absolute inset-0 animate-ping rounded-full border border-danger/40" />
-                    <span className="relative flex h-5 w-5 items-center justify-center rounded-full border-2 border-danger bg-danger/20 text-[10px] font-bold text-danger">
-                      !
-                    </span>
+                    <span className="text-text-muted"> · 1–7</span>
                   </span>
-                  <p className="text-[11px] font-medium leading-snug text-danger">
-                    High crime + High density = Resource Priority Zone
-                    <span className="mt-0.5 block font-normal text-danger/80">
-                      Red border + pulsing badge on qualifying districts
-                    </span>
-                  </p>
                 </div>
               </div>
-            )}
+
+              {showSocioEconomic && (
+                <>
+                  <div className="my-2 border-t border-border/80" />
+                  <p className="mb-1 text-[10px] font-semibold uppercase tracking-wider text-text-muted">
+                    Socio-Economic Layer
+                  </p>
+                  <p className="mb-1.5 text-[10px] leading-snug text-text-muted">
+                    Size = density · Color = urbanization
+                  </p>
+                  <div className="space-y-1 text-[11px] leading-tight">
+                    <div className="flex items-center gap-1.5">
+                      <span className="h-3 w-3 shrink-0 rounded-full bg-[#9b59b6]/60 ring-1 ring-[#9b59b6]" />
+                      <span className="text-text-muted">High urbanization (75%+)</span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <span className="h-2.5 w-2.5 shrink-0 rounded-full bg-[#4a90d9]/60 ring-1 ring-[#4a90d9]" />
+                      <span className="text-text-muted">Moderate</span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <span className="h-2 w-2 shrink-0 rounded-full bg-[#27ae60]/50 ring-1 ring-[#27ae60]" />
+                      <span className="text-text-muted">Rural / low</span>
+                    </div>
+                  </div>
+                  <div className="mt-1.5 flex items-start gap-1.5 rounded-md bg-danger/10 px-2 py-1.5 ring-1 ring-danger/20">
+                    <span className="relative mt-px flex h-3.5 w-3.5 shrink-0 items-center justify-center">
+                      <span className="absolute inset-0 animate-ping rounded-full border border-danger/40" />
+                      <span className="relative flex h-3.5 w-3.5 items-center justify-center rounded-full border border-danger bg-danger/20 text-[8px] font-bold text-danger">
+                        !
+                      </span>
+                    </span>
+                    <p className="text-[10px] font-medium leading-snug text-danger">
+                      Resource Priority Zone
+                      <span className="font-normal text-danger/80"> · red border + pulse badge</span>
+                    </p>
+                  </div>
+                </>
+              )}
+            </div>
           </div>
 
-          <div className="pointer-events-auto absolute right-6 top-6 rounded-xl border border-border bg-surface/95 p-4 shadow-lg shadow-black/30 backdrop-blur-sm">
-            <p className="text-2xl font-bold text-white">{incidents.length}</p>
-            <p className="text-xs text-text-muted">Active incidents mapped</p>
-            <p className="mt-2 text-xs text-text-muted">{districts.length} districts covered</p>
-            {showHeatmap && (
-              <p className="mt-2 flex items-center gap-1.5 text-xs text-accent-light">
-                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-accent" />
-                Heatmap active
-              </p>
-            )}
-            {showSocioEconomic && (
-              <p className="mt-1 flex items-center gap-1.5 text-xs text-[#9b59b6]">
-                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#9b59b6]" />
-                Socio-economic layer active
-              </p>
+          <div className="pointer-events-auto absolute right-4 top-4 rounded-lg border border-border bg-surface/95 px-2.5 py-2 shadow-lg shadow-black/30 backdrop-blur-sm">
+            <p className="text-lg font-bold leading-none text-white tabular-nums">{incidents.length}</p>
+            <p className="mt-0.5 text-[10px] leading-tight text-text-muted">Active incidents mapped</p>
+            <p className="text-[10px] leading-tight text-text-muted">{districts.length} districts</p>
+            {(showHeatmap || showSocioEconomic) && (
+              <div className="mt-1 flex flex-wrap gap-x-2 gap-y-0.5 border-t border-border/60 pt-1">
+                {showHeatmap && (
+                  <span className="flex items-center gap-1 text-[10px] text-accent-light">
+                    <span className="h-1 w-1 animate-pulse rounded-full bg-accent" />
+                    Heatmap
+                  </span>
+                )}
+                {showSocioEconomic && (
+                  <span className="flex items-center gap-1 text-[10px] text-[#9b59b6]">
+                    <span className="h-1 w-1 animate-pulse rounded-full bg-[#9b59b6]" />
+                    Socio-economic
+                  </span>
+                )}
+              </div>
             )}
           </div>
         </div>
