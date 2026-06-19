@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 import type { CrimeIncident } from '../../types/crime'
 import { CrimeCategoryIcon } from '../../utils/crimeCategoryIcons'
-import { severityColor, statusBadge, riskLevel } from '../../utils/helpers'
+import { severityColor, statusBadge } from '../../utils/helpers'
 
 interface CrimeMapIncidentSidebarProps {
   incidents: CrimeIncident[]
@@ -23,7 +23,8 @@ function IncidentListCard({
   onSelect: (incident: CrimeIncident) => void
 }) {
   const severityBg = severityColor(incident.severity)
-  const districtRisk = districtRiskScore != null ? riskLevel(districtRiskScore) : null
+  const severityLabel =
+    districtRiskScore != null ? `${incident.severity} · ${districtRiskScore}` : incident.severity
 
   return (
     <button
@@ -51,28 +52,19 @@ function IncidentListCard({
           <span
             className="rounded px-1.5 py-0.5 text-[10px] font-medium text-white"
             style={{ backgroundColor: `${severityBg}33`, color: severityBg }}
+            title={
+              districtRiskScore != null
+                ? `${incident.districtName} district risk score: ${districtRiskScore}`
+                : undefined
+            }
           >
-            {incident.severity}
+            {severityLabel}
           </span>
           <span
             className={`rounded px-1.5 py-0.5 text-[10px] font-medium ring-1 ${statusBadge(incident.status)}`}
           >
             {incident.status}
           </span>
-          {districtRisk && districtRiskScore != null && (
-            <span
-              className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-medium ring-1"
-              style={{
-                color: districtRisk.color,
-                background: `${districtRisk.color}15`,
-                borderColor: `${districtRisk.color}40`,
-              }}
-              title={`${incident.districtName} district risk score`}
-            >
-              <span className="font-semibold">{districtRiskScore}</span>
-              <span className="uppercase tracking-wide opacity-90">{districtRisk.label} district risk</span>
-            </span>
-          )}
         </div>
       </div>
     </button>

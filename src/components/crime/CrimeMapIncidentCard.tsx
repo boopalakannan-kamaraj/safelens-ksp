@@ -4,7 +4,7 @@ import type { CrimeIncident, NetworkNode } from '../../types/crime'
 import { exportIncidentPDF } from '../../utils/exportHelpers'
 import { CrimeCategoryIcon } from '../../utils/crimeCategoryIcons'
 import { incidentHasNetworkLink } from '../../utils/networkNavigation'
-import { riskLevel, severityColor, statusBadge } from '../../utils/helpers'
+import { severityColor, statusBadge } from '../../utils/helpers'
 import { btnIcon, btnSecondary } from '../ui/formClasses'
 
 interface CrimeMapIncidentCardProps {
@@ -40,8 +40,9 @@ export default function CrimeMapIncidentCard({
   const currentIndex = incidents.findIndex((item) => item.id === incident.id)
   const hasPrev = currentIndex > 0
   const hasNext = currentIndex >= 0 && currentIndex < incidents.length - 1
-  const districtRisk = districtRiskScore != null ? riskLevel(districtRiskScore) : null
   const showNetworkLinks = incidentHasNetworkLink(incident, networkNodes)
+  const severityLabel =
+    districtRiskScore != null ? `${incident.severity} · ${districtRiskScore}` : incident.severity
 
   const handleViewNetwork = () => {
     navigate('/network', {
@@ -114,26 +115,15 @@ export default function CrimeMapIncidentCard({
               background: `${severityColor(incident.severity)}15`,
               borderColor: `${severityColor(incident.severity)}40`,
             }}
+            title={
+              districtRiskScore != null
+                ? `${incident.districtName} district risk score: ${districtRiskScore}`
+                : undefined
+            }
           >
-            {incident.severity}
+            {severityLabel}
           </span>
         </div>
-        {districtRisk && districtRiskScore != null && (
-          <div
-            className="mt-2 inline-flex w-full items-center gap-2 rounded-lg px-3 py-1.5 text-xs font-medium ring-1"
-            style={{
-              color: districtRisk.color,
-              background: `${districtRisk.color}12`,
-              borderColor: `${districtRisk.color}35`,
-            }}
-            title={`${incident.districtName} district risk score`}
-          >
-            <span className="text-base font-bold leading-none">{districtRiskScore}</span>
-            <span className="min-w-0 text-[10px] uppercase leading-snug tracking-wide opacity-90">
-              {districtRisk.label} district risk
-            </span>
-          </div>
-        )}
 
         <div className="mt-4 grid grid-cols-2 gap-2.5">
           <Field label="Date" value={incident.date} />
