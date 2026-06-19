@@ -144,7 +144,8 @@ export default function CrimeMap() {
   const mapRef = useRef<HTMLDivElement>(null)
   const mapInstance = useRef<L.Map | null>(null)
   const pendingFocusIncidentRef = useRef<CrimeIncident | null>(null)
-  const processedNavigationKeyRef = useRef<string | null>(null)
+  const navigationCapturedKeyRef = useRef<string | null>(null)
+  const navigationFocusedKeyRef = useRef<string | null>(null)
   const markersLayer = useRef<L.LayerGroup | null>(null)
   const heatmapLayer = useRef<L.LayerGroup | null>(null)
   const pulseLayer = useRef<L.LayerGroup | null>(null)
@@ -235,34 +236,39 @@ export default function CrimeMap() {
   useEffect(() => {
     const state = location.state as InvestigationContext | undefined
     if (!state?.category && !state?.district && !state?.incidentId) return
+    if (navigationCapturedKeyRef.current === location.key) return
 
+    navigationCapturedKeyRef.current = location.key
+    navigationFocusedKeyRef.current = null
     setInvestigationContext(state)
+
     if (state.category) setSelectedCategory(state.category)
-    if (state.district) {
-      setSearchParams({ district: state.district })
-      setViewMode('incidents')
-    }
     if (state.incidentId) {
       setHighlightedIncidentId(state.incidentId)
       setViewMode('incidents')
     }
-  }, [location.key, location.state, setSearchParams])
+    if (state.district) {
+      setViewMode('incidents')
+      if (districtFilter !== state.district) {
+        setSearchParams({ district: state.district }, { replace: true, state })
+      }
+    }
+  }, [location.key, location.state, districtFilter, setSearchParams])
 
   useEffect(() => {
     if (loading || !incidents.length) return
+    if (navigationCapturedKeyRef.current !== location.key) return
+    if (!investigationContext?.incidentId) return
+    if (navigationFocusedKeyRef.current === location.key) return
+    if (investigationContext.district && districtFilter !== investigationContext.district) return
 
-    const state = location.state as InvestigationContext | undefined
-    if (!state?.incidentId) return
-    if (processedNavigationKeyRef.current === location.key) return
-    if (state.district && districtFilter !== state.district) return
-
-    const incident = incidents.find((i) => i.id === state.incidentId)
+    const incident = incidents.find((i) => i.id === investigationContext.incidentId)
     if (!incident) return
 
-    processedNavigationKeyRef.current = location.key
+    navigationFocusedKeyRef.current = location.key
     setSidebarOpen(true)
     focusIncidentOnMap(incident)
-  }, [loading, incidents, districtFilter, location.key, location.state, focusIncidentOnMap])
+  }, [loading, incidents, districtFilter, investigationContext, location.key, focusIncidentOnMap])
 
   useEffect(() => {
     let cancelled = false
@@ -527,14 +533,16 @@ export default function CrimeMap() {
     if (!mapInstance.current || loading) return
 
     const state = investigationContext
-    if (state?.lat != null && state?.lng != null) {
+    if (!state || state.incidentId) return
+
+    if (state.lat != null && state.lng != null) {
       mapInstance.current.flyTo([state.lat, state.lng], 14, { duration: 1 })
       return
     }
 
     if (!districts.length) return
 
-    const targetDistrict = districtFilter ?? state?.district
+    const targetDistrict = districtFilter ?? state.district
     if (!targetDistrict) return
 
     const district = districts.find((d) => d.name === targetDistrict)
