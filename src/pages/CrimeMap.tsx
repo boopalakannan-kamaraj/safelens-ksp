@@ -734,6 +734,28 @@ export default function CrimeMap() {
     [drillIntoDistrict, resolveDistrictFromJump],
   )
 
+  const filtersActive =
+    selectedCategory !== 'All' ||
+    selectedStatus !== 'All' ||
+    districtJumpQuery.trim() !== '' ||
+    drilledDistrictId != null ||
+    districtFilter != null
+
+  const resetFilters = useCallback(() => {
+    setSelectedCategory('All')
+    setSelectedStatus('All')
+    setDistrictJumpQuery('')
+    if (districtFilter) {
+      setSearchParams({})
+    }
+    if (drilledDistrictId) {
+      pendingFocusIncidentRef.current = null
+      setDrilledDistrictId(null)
+      setSelectedIncident(null)
+      mapInstance.current?.flyTo(KARNATAKA_CENTER, 7, { duration: 1 })
+    }
+  }, [districtFilter, drilledDistrictId, setSearchParams])
+
   useEffect(() => {
     if (drilledDistrict) {
       setDistrictJumpQuery(drilledDistrict.name)
@@ -794,6 +816,22 @@ export default function CrimeMap() {
         />
         <span className="text-text-muted">Socio-Economic</span>
       </label>
+      <div className={`${btnSegmentGroup} shrink-0`}>
+        {(['districts', 'incidents'] as const).map((mode) => (
+          <button
+            key={mode}
+            onClick={() => setViewMode(mode)}
+            className={`${btnSegment} capitalize ${viewMode === mode ? btnSegmentActive : ''}`}
+          >
+            {mode}
+          </button>
+        ))}
+      </div>
+    </div>
+  )
+
+  const mapFilterBar = (
+    <>
       <input
         type="search"
         list="crime-map-district-jump"
@@ -806,7 +844,7 @@ export default function CrimeMap() {
           }
         }}
         placeholder="Jump to district…"
-        className={`${formInput} w-[160px]`}
+        className={`${formInput} w-[180px]`}
         aria-label="Jump to district"
       />
       <datalist id="crime-map-district-jump">
@@ -836,18 +874,15 @@ export default function CrimeMap() {
           </option>
         ))}
       </NativeSelect>
-      <div className={`${btnSegmentGroup} shrink-0`}>
-        {(['districts', 'incidents'] as const).map((mode) => (
-          <button
-            key={mode}
-            onClick={() => setViewMode(mode)}
-            className={`${btnSegment} capitalize ${viewMode === mode ? btnSegmentActive : ''}`}
-          >
-            {mode}
-          </button>
-        ))}
-      </div>
-    </div>
+      <button
+        type="button"
+        onClick={resetFilters}
+        disabled={!filtersActive}
+        className={`${btnSecondary} text-xs disabled:cursor-not-allowed disabled:opacity-40`}
+      >
+        Reset filters
+      </button>
+    </>
   )
 
   return (
@@ -856,6 +891,7 @@ export default function CrimeMap() {
         title="Crime Map"
         description="Interactive Karnataka district crime visualization"
         actions={mapToolbar}
+        filterBar={mapFilterBar}
       />
 
       <div className="flex min-h-0 flex-1">
