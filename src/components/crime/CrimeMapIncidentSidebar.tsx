@@ -6,6 +6,7 @@ import { severityColor, statusBadge } from '../../utils/helpers'
 interface CrimeMapIncidentSidebarProps {
   incidents: CrimeIncident[]
   selectedCategory: string
+  selectedStatus: string
   selectedIncidentId?: string | null
   districtRiskScores: Map<string, number>
   onIncidentSelect: (incident: CrimeIncident) => void
@@ -74,6 +75,7 @@ function IncidentListCard({
 export default function CrimeMapIncidentSidebar({
   incidents,
   selectedCategory,
+  selectedStatus,
   selectedIncidentId,
   districtRiskScores,
   onIncidentSelect,
@@ -96,13 +98,14 @@ export default function CrimeMapIncidentSidebar({
         <p className="mt-0.5 text-xs text-text-muted">
           {incidents.length} incident{incidents.length === 1 ? '' : 's'}
           {selectedCategory !== 'All' ? ` · ${selectedCategory}` : ''}
+          {selectedStatus !== 'All' ? ` · ${selectedStatus}` : ''}
         </p>
       </div>
 
       <div ref={listRef} className="flex-1 overflow-y-auto px-3 py-3">
         {incidents.length === 0 ? (
           <p className="px-1 py-6 text-center text-xs text-text-muted">
-            No incidents match the current category filter.
+            No incidents match the current filters.
           </p>
         ) : (
           <ul className="space-y-1.5">

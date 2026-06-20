@@ -13,6 +13,7 @@ import {
   btnSecondary,
   formCheckLabel,
   formCheckbox,
+  formInput,
   formToolbar,
 } from '../components/ui/formClasses'
 import { ErrorState } from '../components/ui/DataState'
@@ -35,6 +36,18 @@ import { severityColor } from '../utils/helpers'
 import { renderCrimeCategoryIconMarkup } from '../utils/crimeCategoryIcons'
 
 const KARNATAKA_CENTER: L.LatLngExpression = [15.3173, 75.7139]
+
+function incidentMatchesFilters(
+  inc: CrimeIncident,
+  category: string,
+  status: string,
+  districtFilter: string | null,
+): boolean {
+  if (category !== 'All' && inc.category !== category) return false
+  if (status !== 'All' && inc.status !== status) return false
+  if (districtFilter && inc.districtName !== districtFilter) return false
+  return true
+}
 
 const HEATMAP_COLORS = {
   high: '#e74c3c',
@@ -160,6 +173,8 @@ export default function CrimeMap() {
   const [incidents, setIncidents] = useState<CrimeIncident[]>([])
   const [viewMode, setViewMode] = useState<'districts' | 'incidents'>('districts')
   const [selectedCategory, setSelectedCategory] = useState<string>('All')
+  const [selectedStatus, setSelectedStatus] = useState<string>('All')
+  const [districtJumpQuery, setDistrictJumpQuery] = useState('')
   const [showHeatmap, setShowHeatmap] = useState(true)
   const [showSocioEconomic, setShowSocioEconomic] = useState(false)
   const [loading, setLoading] = useState(true)
@@ -205,6 +220,7 @@ export default function CrimeMap() {
     pendingFocusIncidentRef.current = null
     setDrilledDistrictId(null)
     setSelectedIncident(null)
+    setDistrictJumpQuery('')
     mapInstance.current?.flyTo(KARNATAKA_CENTER, 7, { duration: 1 })
   }, [])
 
@@ -350,11 +366,11 @@ export default function CrimeMap() {
     socioLayer.current.clearLayers()
     markersLayer.current.clearLayers()
 
-    const filtered = incidents.filter((inc) => {
-      if (selectedCategory !== 'All' && inc.category !== selectedCategory) return false
-      if (districtFilter && inc.districtName !== districtFilter) return false
-      return true
-    })
+    const filtered = incidents.filter((inc) =>
+      incidentMatchesFilters(inc, selectedCategory, selectedStatus, districtFilter),
+    )
+
+    const hasActiveIncidentFilter = selectedCategory !== 'All' || selectedStatus !== 'All'
 
     const incidentCounts = new Map<string, number>()
     for (const inc of filtered) {
@@ -389,7 +405,7 @@ export default function CrimeMap() {
       renderDistrictGeoJsonLayer(heatmapLayer.current, districts, {
         filterDistrict: (district) => {
           const count = incidentCounts.get(district.id) ?? 0
-          if (count === 0 && selectedCategory !== 'All') return false
+          if (count === 0 && hasActiveIncidentFilter) return false
           return getHeatmapTier(count) !== 'none'
         },
         styleForDistrict: (district) => {
@@ -413,7 +429,7 @@ export default function CrimeMap() {
 
       for (const district of districtsWithoutBoundaries) {
         const count = incidentCounts.get(district.id) ?? 0
-        if (count === 0 && selectedCategory !== 'All') continue
+        if (count === 0 && hasActiveIncidentFilter) continue
         const tier = getHeatmapTier(count)
         if (tier === 'none') continue
         const color = HEATMAP_COLORS[tier]
@@ -506,7 +522,7 @@ export default function CrimeMap() {
       renderDistrictGeoJsonLayer(districtBaseLayer.current, districts, {
         filterDistrict: (district) => {
           const count = incidentCounts.get(district.id) ?? 0
-          return !(count === 0 && selectedCategory !== 'All')
+          return !(count === 0 && hasActiveIncidentFilter)
         },
         styleForDistrict: () => ({
           fillColor: '#4a90d9',
@@ -528,7 +544,7 @@ export default function CrimeMap() {
 
       for (const district of districtsWithoutBoundaries) {
         const count = incidentCounts.get(district.id) ?? 0
-        if (count === 0 && selectedCategory !== 'All') continue
+        if (count === 0 && hasActiveIncidentFilter) continue
         renderDistrictFallbackCircle(
           districtBaseLayer.current,
           district,
@@ -553,12 +569,12 @@ export default function CrimeMap() {
     if (viewMode === 'districts' && !drilledDistrictId) {
       renderDistrictNameLabels(districtLabelsLayer.current, districts, (district) => {
         const count = incidentCounts.get(district.id) ?? 0
-        return !(count === 0 && selectedCategory !== 'All')
+        return !(count === 0 && hasActiveIncidentFilter)
       })
 
       for (const district of districts) {
         const count = incidentCounts.get(district.id) ?? 0
-        if (count === 0 && selectedCategory !== 'All') continue
+        if (count === 0 && hasActiveIncidentFilter) continue
 
         const marker = L.marker([district.lat, district.lng], {
           icon: createDistrictIcon(count),
@@ -622,6 +638,7 @@ export default function CrimeMap() {
     incidents,
     viewMode,
     selectedCategory,
+    selectedStatus,
     showHeatmap,
     showSocioEconomic,
     loading,
@@ -646,12 +663,11 @@ export default function CrimeMap() {
       return
     }
 
-    const districtIncidents = incidents.filter((inc) => {
-      if (inc.districtId !== drilledDistrictId) return false
-      if (selectedCategory !== 'All' && inc.category !== selectedCategory) return false
-      if (districtFilter && inc.districtName !== districtFilter) return false
-      return true
-    })
+    const districtIncidents = incidents.filter(
+      (inc) =>
+        inc.districtId === drilledDistrictId &&
+        incidentMatchesFilters(inc, selectedCategory, selectedStatus, districtFilter),
+    )
 
     if (districtIncidents.length > 0) {
       const bounds = L.latLngBounds(
@@ -662,7 +678,7 @@ export default function CrimeMap() {
     }
 
     mapInstance.current.flyTo([district.lat, district.lng], 11, { duration: 1 })
-  }, [drilledDistrictId, districts, incidents, selectedCategory, districtFilter, loading, selectIncidentOnMap])
+  }, [drilledDistrictId, districts, incidents, selectedCategory, selectedStatus, districtFilter, loading, selectIncidentOnMap])
 
   useEffect(() => {
     if (!mapInstance.current || loading) return
@@ -687,13 +703,48 @@ export default function CrimeMap() {
   }, [districtFilter, investigationContext, districts, loading])
 
   const categories = ['All', ...new Set(incidents.map((i) => i.category))]
+  const statuses = ['All', ...new Set(incidents.map((i) => i.status))]
+
+  const sortedDistricts = useMemo(
+    () => [...districts].sort((a, b) => a.name.localeCompare(b.name)),
+    [districts],
+  )
+
+  const resolveDistrictFromJump = useCallback(
+    (query: string) => {
+      const normalized = query.trim().toLowerCase()
+      if (!normalized) return null
+      return (
+        sortedDistricts.find((d) => d.name.toLowerCase() === normalized) ??
+        sortedDistricts.find((d) => d.name.toLowerCase().startsWith(normalized)) ??
+        null
+      )
+    },
+    [sortedDistricts],
+  )
+
+  const jumpToDistrict = useCallback(
+    (query: string) => {
+      const district = resolveDistrictFromJump(query)
+      if (!district) return false
+      setDistrictJumpQuery(district.name)
+      drillIntoDistrict(district)
+      return true
+    },
+    [drillIntoDistrict, resolveDistrictFromJump],
+  )
+
+  useEffect(() => {
+    if (drilledDistrict) {
+      setDistrictJumpQuery(drilledDistrict.name)
+    }
+  }, [drilledDistrict])
 
   const sidebarIncidents = useMemo(() => {
-    return incidents.filter((inc) => {
-      if (selectedCategory !== 'All' && inc.category !== selectedCategory) return false
-      return true
-    })
-  }, [incidents, selectedCategory])
+    return incidents.filter((inc) =>
+      incidentMatchesFilters(inc, selectedCategory, selectedStatus, districtFilter),
+    )
+  }, [incidents, selectedCategory, selectedStatus, districtFilter])
 
   const cardIncidents = useMemo(() => {
     if (!selectedIncident) return []
@@ -743,6 +794,26 @@ export default function CrimeMap() {
         />
         <span className="text-text-muted">Socio-Economic</span>
       </label>
+      <input
+        type="search"
+        list="crime-map-district-jump"
+        value={districtJumpQuery}
+        onChange={(e) => setDistrictJumpQuery(e.target.value)}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') {
+            e.preventDefault()
+            jumpToDistrict(districtJumpQuery)
+          }
+        }}
+        placeholder="Jump to district…"
+        className={`${formInput} w-[160px]`}
+        aria-label="Jump to district"
+      />
+      <datalist id="crime-map-district-jump">
+        {sortedDistricts.map((d) => (
+          <option key={d.id} value={d.name} />
+        ))}
+      </datalist>
       <NativeSelect
         selectWidth="fixed"
         value={selectedCategory}
@@ -750,7 +821,18 @@ export default function CrimeMap() {
       >
         {categories.map((cat) => (
           <option key={cat} value={cat}>
-            {cat}
+            {cat === 'All' ? 'All categories' : cat}
+          </option>
+        ))}
+      </NativeSelect>
+      <NativeSelect
+        selectWidth="medium"
+        value={selectedStatus}
+        onChange={(e) => setSelectedStatus(e.target.value)}
+      >
+        {statuses.map((status) => (
+          <option key={status} value={status}>
+            {status === 'All' ? 'All statuses' : status}
           </option>
         ))}
       </NativeSelect>
@@ -989,6 +1071,7 @@ export default function CrimeMap() {
             <CrimeMapIncidentSidebar
               incidents={sidebarIncidents}
               selectedCategory={selectedCategory}
+              selectedStatus={selectedStatus}
               selectedIncidentId={selectedIncident?.id}
               districtRiskScores={districtRiskScores}
               onIncidentSelect={focusIncidentOnMap}
