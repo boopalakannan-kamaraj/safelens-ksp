@@ -67,6 +67,12 @@ export interface NetworkEdge {
   weight: number
 }
 
+export interface RiskDriver {
+  label: string
+  percent: number
+  detail: string
+}
+
 export interface RiskPrediction {
   districtId: string
   districtName: string
@@ -75,6 +81,7 @@ export interface RiskPrediction {
   primaryThreat: CrimeCategory
   confidence: number
   factors: string[]
+  drivers: RiskDriver[]
   predictedIncidents: number
 }
 

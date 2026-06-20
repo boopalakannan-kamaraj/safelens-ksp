@@ -18,7 +18,7 @@ import {
 } from '../components/ui/formClasses'
 import { ErrorState, LoadingSpinner } from '../components/ui/DataState'
 import { fetchRiskPredictions } from '../services/crimeApi'
-import type { RiskPrediction } from '../types/crime'
+import type { RiskDriver, RiskPrediction } from '../types/crime'
 import { exportRiskPDF } from '../utils/exportHelpers'
 import { riskLevel, trendIcon } from '../utils/helpers'
 
@@ -49,6 +49,34 @@ function RiskGauge({ score }: { score: number }) {
         <p className="text-xs text-text-muted">Risk Score</p>
       </div>
     </div>
+  )
+}
+
+function RiskDriversBreakdown({ drivers }: { drivers: RiskDriver[] }) {
+  if (drivers.length === 0) {
+    return (
+      <p className="text-xs text-text-muted">Insufficient incident data to compute driver breakdown.</p>
+    )
+  }
+
+  return (
+    <ul className="space-y-2.5">
+      {drivers.map((driver) => (
+        <li key={driver.label}>
+          <div className="mb-1 flex items-center justify-between gap-2 text-xs">
+            <span className="font-medium text-white">{driver.label}</span>
+            <span className="shrink-0 text-text-muted">{driver.percent}%</span>
+          </div>
+          <div className="h-1.5 overflow-hidden rounded-full bg-navy-950">
+            <div
+              className="h-full rounded-full bg-accent transition-all"
+              style={{ width: `${driver.percent}%` }}
+            />
+          </div>
+          <p className="mt-1 text-[10px] leading-snug text-text-muted">{driver.detail}</p>
+        </li>
+      ))}
+    </ul>
   )
 }
 
@@ -185,7 +213,16 @@ export default function RiskScoring() {
                 </p>
               </div>
               <div className="mt-4 border-t border-border pt-4">
-                <p className="text-xs font-medium text-text-muted">Risk Factors</p>
+                <p className="text-xs font-medium text-text-muted">Risk Drivers</p>
+                <p className="mt-0.5 text-[10px] text-text-muted">
+                  Share of weighted model inputs (excludes 40-point baseline floor).
+                </p>
+                <div className="mt-3">
+                  <RiskDriversBreakdown drivers={selected.drivers} />
+                </div>
+              </div>
+              <div className="mt-4 border-t border-border pt-4">
+                <p className="text-xs font-medium text-text-muted">Supporting Evidence</p>
                 <ul className="mt-2 space-y-1.5">
                   {selected.factors.map((factor, i) => (
                     <li key={i} className="flex items-start gap-2 text-xs text-white">

@@ -1,4 +1,11 @@
-import type { CrimeCategory, CrimeIncident, CrimeSeverity, MonthlyTrend, RiskPrediction } from '../types/crime'
+import type {
+  CrimeCategory,
+  CrimeIncident,
+  CrimeSeverity,
+  MonthlyTrend,
+  RiskDriver,
+  RiskPrediction,
+} from '../types/crime'
 
 type TrendKey = Exclude<keyof MonthlyTrend, 'month' | 'total'>
 
@@ -223,8 +230,41 @@ function districtTrend(incidents: CrimeIncident[], districtId: string): 'rising'
   return 'stable'
 }
 
-function computeRawRiskScore(districtIncidents: CrimeIncident[], maxCount: number): number {
-  if (districtIncidents.length === 0) return 40
+const RISK_DRIVER_WEIGHTS = {
+  incidentVolume: 28,
+  severityMix: 18,
+  criticalHighShare: 12,
+  categoryDanger: 10,
+  violentCrimeShare: 7,
+} as const
+
+function buildRiskDrivers(components: Array<{ label: string; value: number; detail: string }>): RiskDriver[] {
+  const total = components.reduce((sum, item) => sum + item.value, 0)
+  if (total <= 0) return []
+
+  const drivers = components
+    .map((item) => ({
+      label: item.label,
+      percent: Math.round((item.value / total) * 100),
+      detail: item.detail,
+    }))
+    .sort((a, b) => b.percent - a.percent)
+
+  const percentSum = drivers.reduce((sum, driver) => sum + driver.percent, 0)
+  if (percentSum !== 100 && drivers.length > 0) {
+    drivers[0].percent += 100 - percentSum
+  }
+
+  return drivers
+}
+
+function computeRawRiskScore(
+  districtIncidents: CrimeIncident[],
+  maxCount: number,
+): { rawScore: number; drivers: RiskDriver[] } {
+  if (districtIncidents.length === 0) {
+    return { rawScore: 40, drivers: [] }
+  }
 
   const count = districtIncidents.length
   const countNorm = count / Math.max(maxCount, 1)
@@ -245,15 +285,46 @@ function computeRawRiskScore(districtIncidents: CrimeIncident[], maxCount: numbe
   ).length
   const violentNorm = violentCrimes / count
 
+  const components = [
+    {
+      label: 'Incident Volume',
+      value: countNorm * RISK_DRIVER_WEIGHTS.incidentVolume,
+      detail: `${count} mapped incidents (vs ${maxCount} state peak)`,
+    },
+    {
+      label: 'Severity Mix',
+      value: severityNorm * RISK_DRIVER_WEIGHTS.severityMix,
+      detail: `Average severity weight ${avgSeverity.toFixed(1)} / 5`,
+    },
+    {
+      label: 'Critical/High Cases',
+      value: criticalHighNorm * RISK_DRIVER_WEIGHTS.criticalHighShare,
+      detail: `${criticalHigh} of ${count} cases are Critical or High`,
+    },
+    {
+      label: 'Category Danger',
+      value: categoryNorm * RISK_DRIVER_WEIGHTS.categoryDanger,
+      detail: `Average category danger ${avgCategoryDanger.toFixed(1)} / 5`,
+    },
+    {
+      label: 'Violent Crime Share',
+      value: violentNorm * RISK_DRIVER_WEIGHTS.violentCrimeShare,
+      detail: `${violentCrimes} violent crimes (Murder, Kidnapping, Robbery, Assault)`,
+    },
+  ]
+
   const raw =
     40 +
-    countNorm * 28 +
-    severityNorm * 18 +
-    criticalHighNorm * 12 +
-    categoryNorm * 10 +
-    violentNorm * 7
+    countNorm * RISK_DRIVER_WEIGHTS.incidentVolume +
+    severityNorm * RISK_DRIVER_WEIGHTS.severityMix +
+    criticalHighNorm * RISK_DRIVER_WEIGHTS.criticalHighShare +
+    categoryNorm * RISK_DRIVER_WEIGHTS.categoryDanger +
+    violentNorm * RISK_DRIVER_WEIGHTS.violentCrimeShare
 
-  return Math.min(95, Math.max(40, raw))
+  return {
+    rawScore: Math.min(95, Math.max(40, raw)),
+    drivers: buildRiskDrivers(components),
+  }
 }
 
 function uniquifyScores(
@@ -306,7 +377,7 @@ export function computeRiskPredictions(incidents: CrimeIncident[]): RiskPredicti
       ['Murder', 'Kidnapping', 'Robbery'].includes(i.category),
     ).length
 
-    const rawScore = computeRawRiskScore(districtIncidents, maxCount)
+    const { rawScore, drivers } = computeRawRiskScore(districtIncidents, maxCount)
     const trend = districtTrend(incidents, d.districtId)
 
     return {
@@ -317,6 +388,7 @@ export function computeRiskPredictions(incidents: CrimeIncident[]): RiskPredicti
       trend,
       primaryThreat,
       confidence: +(0.68 + (d.count / maxCount) * 0.27 + (criticalCount > 0 ? 0.03 : 0)).toFixed(2),
+      drivers,
       factors: [
         `${d.count} incidents — ${criticalCount} critical, ${highCount} high severity`,
         `Primary threat: ${primaryThreat} (${categoryCounts.get(primaryThreat) ?? 0} cases)`,
