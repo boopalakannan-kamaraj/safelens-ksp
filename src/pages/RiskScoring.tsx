@@ -80,6 +80,54 @@ function RiskDriversBreakdown({ drivers }: { drivers: RiskDriver[] }) {
   )
 }
 
+function DistrictDetailPanel({ district }: { district: RiskPrediction }) {
+  const trend = trendIcon(district.trend)
+
+  return (
+    <div className="rounded-xl border border-accent/30 bg-surface p-5">
+      <h3 className="text-sm font-semibold text-white">{district.districtName}</h3>
+      <div className="mt-4 flex justify-center">
+        <RiskGauge score={district.riskScore} />
+      </div>
+      <div className="mt-4 space-y-2 text-center">
+        <p className={`text-sm font-medium ${trend.color}`}>
+          {trend.icon} {trend.label} Trend
+        </p>
+        <p className="text-xs text-text-muted">
+          Primary Threat: <span className="text-accent-light">{district.primaryThreat}</span>
+        </p>
+        <p className="text-xs text-text-muted">
+          Confidence: <span className="text-white">{(district.confidence * 100).toFixed(0)}%</span>
+        </p>
+        <p className="text-xs text-text-muted">
+          Predicted Incidents (30d):{' '}
+          <span className="font-semibold text-warning">{district.predictedIncidents}</span>
+        </p>
+      </div>
+      <div className="mt-4 border-t border-border pt-4">
+        <p className="text-xs font-medium text-text-muted">Risk Drivers</p>
+        <p className="mt-0.5 text-[10px] text-text-muted">
+          Share of weighted model inputs (excludes 40-point baseline floor).
+        </p>
+        <div className="mt-3">
+          <RiskDriversBreakdown drivers={district.drivers} />
+        </div>
+      </div>
+      <div className="mt-4 border-t border-border pt-4">
+        <p className="text-xs font-medium text-text-muted">Supporting Evidence</p>
+        <ul className="mt-2 space-y-1.5">
+          {district.factors.map((factor, i) => (
+            <li key={i} className="flex items-start gap-2 text-xs text-white">
+              <span className="mt-0.5 text-accent">•</span>
+              {factor}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  )
+}
+
 export default function RiskScoring() {
   const [predictions, setPredictions] = useState<RiskPrediction[]>([])
   const [selected, setSelected] = useState<RiskPrediction | null>(null)
@@ -171,72 +219,29 @@ export default function RiskScoring() {
       />
 
       <div className="space-y-6 p-8">
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
-          <div className="rounded-xl border border-border bg-surface p-5 lg:col-span-2">
-            <h3 className="mb-4 text-sm font-semibold text-white">District Risk Scores</h3>
-            <ResponsiveContainer width="100%" height={300}>
-              <BarChart data={chartData}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#2a4570" />
-                <XAxis dataKey="name" stroke="#8ba4c4" fontSize={11} />
-                <YAxis stroke="#8ba4c4" fontSize={12} domain={[0, 100]} />
-                <Tooltip
-                  contentStyle={{ background: '#132238', border: '1px solid #2a4570', borderRadius: 8 }}
-                  labelStyle={{ color: '#e8edf4' }}
-                />
-                <Bar dataKey="score" radius={[4, 4, 0, 0]} name="Risk Score">
-                  {chartData.map((entry, i) => (
-                    <Cell key={i} fill={riskLevel(entry.score).color} />
-                  ))}
-                </Bar>
-              </BarChart>
-            </ResponsiveContainer>
-          </div>
-
-          {selected && (
-            <div className="rounded-xl border border-accent/30 bg-surface p-5">
-              <h3 className="text-sm font-semibold text-white">{selected.districtName}</h3>
-              <div className="mt-4 flex justify-center">
-                <RiskGauge score={selected.riskScore} />
-              </div>
-              <div className="mt-4 space-y-2 text-center">
-                <p className={`text-sm font-medium ${trendIcon(selected.trend).color}`}>
-                  {trendIcon(selected.trend).icon} {trendIcon(selected.trend).label} Trend
-                </p>
-                <p className="text-xs text-text-muted">
-                  Primary Threat: <span className="text-accent-light">{selected.primaryThreat}</span>
-                </p>
-                <p className="text-xs text-text-muted">
-                  Confidence: <span className="text-white">{(selected.confidence * 100).toFixed(0)}%</span>
-                </p>
-                <p className="text-xs text-text-muted">
-                  Predicted Incidents (30d): <span className="font-semibold text-warning">{selected.predictedIncidents}</span>
-                </p>
-              </div>
-              <div className="mt-4 border-t border-border pt-4">
-                <p className="text-xs font-medium text-text-muted">Risk Drivers</p>
-                <p className="mt-0.5 text-[10px] text-text-muted">
-                  Share of weighted model inputs (excludes 40-point baseline floor).
-                </p>
-                <div className="mt-3">
-                  <RiskDriversBreakdown drivers={selected.drivers} />
-                </div>
-              </div>
-              <div className="mt-4 border-t border-border pt-4">
-                <p className="text-xs font-medium text-text-muted">Supporting Evidence</p>
-                <ul className="mt-2 space-y-1.5">
-                  {selected.factors.map((factor, i) => (
-                    <li key={i} className="flex items-start gap-2 text-xs text-white">
-                      <span className="mt-0.5 text-accent">•</span>
-                      {factor}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          )}
+        <div className="rounded-xl border border-border bg-surface p-5">
+          <h3 className="mb-4 text-sm font-semibold text-white">District Risk Scores</h3>
+          <ResponsiveContainer width="100%" height={300}>
+            <BarChart data={chartData}>
+              <CartesianGrid strokeDasharray="3 3" stroke="#2a4570" />
+              <XAxis dataKey="name" stroke="#8ba4c4" fontSize={11} />
+              <YAxis stroke="#8ba4c4" fontSize={12} domain={[0, 100]} />
+              <Tooltip
+                contentStyle={{ background: '#132238', border: '1px solid #2a4570', borderRadius: 8 }}
+                labelStyle={{ color: '#e8edf4' }}
+              />
+              <Bar dataKey="score" radius={[4, 4, 0, 0]} name="Risk Score">
+                {chartData.map((entry, i) => (
+                  <Cell key={i} fill={riskLevel(entry.score).color} />
+                ))}
+              </Bar>
+            </BarChart>
+          </ResponsiveContainer>
         </div>
 
-        <div className="rounded-xl border border-border bg-surface">
+        <div className="grid grid-cols-1 items-start gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(280px,320px)]">
+          <div className="order-2 min-w-0 space-y-6 lg:order-1">
+            <div className="rounded-xl border border-border bg-surface">
           <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border px-5 py-4">
             <div>
               <h3 className="text-sm font-semibold text-white">District Risk Rankings</h3>
@@ -350,30 +355,38 @@ export default function RiskScoring() {
               </tbody>
             </table>
           </div>
-        </div>
-
-        <div className="rounded-xl border border-border bg-surface p-5">
-          <div className="flex items-start gap-4">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-accent/10 ring-1 ring-accent/30">
-              <svg className="h-5 w-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.847-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.847.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456z" />
-              </svg>
             </div>
-            <div>
-              <h3 className="text-sm font-semibold text-white">AI Model Information</h3>
-              <p className="mt-1 text-sm text-text-muted">
-                Risk scores are generated using a gradient boosting model trained on historical crime data,
-                demographic indicators, seasonal patterns, and geographic clustering. Scores range from 0–100
-                with confidence intervals based on data completeness per district.
-              </p>
-              <div className="mt-3 flex flex-wrap gap-4 text-xs text-text-muted">
-                <span>Model: XGBoost v2.1</span>
-                <span>Last trained: May 2026</span>
-                <span>Features: 47</span>
-                <span>Accuracy: 84.3%</span>
+
+            <div className="rounded-xl border border-border bg-surface p-5">
+              <div className="flex items-start gap-4">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-accent/10 ring-1 ring-accent/30">
+                  <svg className="h-5 w-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.847-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.847.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="text-sm font-semibold text-white">AI Model Information</h3>
+                  <p className="mt-1 text-sm text-text-muted">
+                    Risk scores are generated using a gradient boosting model trained on historical crime data,
+                    demographic indicators, seasonal patterns, and geographic clustering. Scores range from 0–100
+                    with confidence intervals based on data completeness per district.
+                  </p>
+                  <div className="mt-3 flex flex-wrap gap-4 text-xs text-text-muted">
+                    <span>Model: XGBoost v2.1</span>
+                    <span>Last trained: May 2026</span>
+                    <span>Features: 47</span>
+                    <span>Accuracy: 84.3%</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
+
+          {selected && (
+            <aside className="order-1 lg:order-2 lg:sticky lg:top-6 lg:max-h-[calc(100vh-3rem)] lg:overflow-y-auto">
+              <DistrictDetailPanel district={selected} />
+            </aside>
+          )}
         </div>
       </div>
     </div>
