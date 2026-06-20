@@ -22,10 +22,15 @@ import type { InvestigationContext } from '../types/navigation'
 import { getHeatmapTier, getHeatmapTierLabel } from '../utils/crimeAnalytics'
 import {
   buildSocioEconomicProfile,
-  densityToRadius,
   getCorrelationZone,
   urbanizationColor,
 } from '../utils/socioEconomic'
+import {
+  getDistrictsWithoutBoundaries,
+  renderDistrictFallbackCircle,
+  renderDistrictGeoJsonLayer,
+  renderDistrictNameLabels,
+} from '../utils/districtChoropleth'
 import { severityColor } from '../utils/helpers'
 import { renderCrimeCategoryIconMarkup } from '../utils/crimeCategoryIcons'
 
@@ -37,8 +42,6 @@ const HEATMAP_COLORS = {
   low: '#4a90d9',
   none: '#2a4570',
 }
-
-const HEATMAP_RADIUS = 32000
 
 function createDistrictIcon(count: number) {
   const tier = getHeatmapTier(count)
@@ -147,6 +150,8 @@ export default function CrimeMap() {
   const navigationCapturedKeyRef = useRef<string | null>(null)
   const navigationFocusedKeyRef = useRef<string | null>(null)
   const markersLayer = useRef<L.LayerGroup | null>(null)
+  const districtBaseLayer = useRef<L.LayerGroup | null>(null)
+  const districtLabelsLayer = useRef<L.LayerGroup | null>(null)
   const heatmapLayer = useRef<L.LayerGroup | null>(null)
   const pulseLayer = useRef<L.LayerGroup | null>(null)
   const socioLayer = useRef<L.LayerGroup | null>(null)
@@ -312,9 +317,11 @@ export default function CrimeMap() {
       maxZoom: 18,
     }).addTo(mapInstance.current)
 
+    districtBaseLayer.current = L.layerGroup().addTo(mapInstance.current)
     heatmapLayer.current = L.layerGroup().addTo(mapInstance.current)
     pulseLayer.current = L.layerGroup().addTo(mapInstance.current)
     socioLayer.current = L.layerGroup().addTo(mapInstance.current)
+    districtLabelsLayer.current = L.layerGroup().addTo(mapInstance.current)
     markersLayer.current = L.layerGroup().addTo(mapInstance.current)
 
     return () => {
@@ -324,9 +331,21 @@ export default function CrimeMap() {
   }, [])
 
   useEffect(() => {
-    if (!heatmapLayer.current || !markersLayer.current || !pulseLayer.current || !socioLayer.current || loading) return
+    if (
+      !heatmapLayer.current ||
+      !districtBaseLayer.current ||
+      !districtLabelsLayer.current ||
+      !markersLayer.current ||
+      !pulseLayer.current ||
+      !socioLayer.current ||
+      loading
+    ) {
+      return
+    }
 
     heatmapLayer.current.clearLayers()
+    districtBaseLayer.current.clearLayers()
+    districtLabelsLayer.current.clearLayers()
     pulseLayer.current.clearLayers()
     socioLayer.current.clearLayers()
     markersLayer.current.clearLayers()
@@ -342,85 +361,201 @@ export default function CrimeMap() {
       incidentCounts.set(inc.districtId, (incidentCounts.get(inc.districtId) ?? 0) + 1)
     }
 
-    if (showHeatmap) {
-      for (const district of districts) {
-        const count = incidentCounts.get(district.id) ?? 0
-        if (count === 0 && selectedCategory !== 'All') continue
+    const showDistrictPolygons = !drilledDistrictId
+    const districtsWithoutBoundaries = getDistrictsWithoutBoundaries(districts)
 
-        const tier = getHeatmapTier(count)
-        if (tier === 'none') continue
-
-        const color = HEATMAP_COLORS[tier]
-
-        const circle = L.circle([district.lat, district.lng], {
-          radius: HEATMAP_RADIUS,
-          fillColor: color,
-          fillOpacity: 0.42,
-          color,
-          weight: 2,
-          opacity: 0.75,
-          interactive: true,
-        }).bindPopup(
-          `<div style="min-width:180px">
+    const heatmapPopup = (district: District, count: number, tier: ReturnType<typeof getHeatmapTier>) => {
+      const color = HEATMAP_COLORS[tier]
+      return `<div style="min-width:180px">
             <strong>${district.name}</strong><br/>
             <span style="color:${color};font-weight:600">${getHeatmapTierLabel(tier)}</span><br/>
             <span style="color:#8ba4c4">Mapped incidents: ${count}</span>
-          </div>`,
-        )
-
-        circle.addTo(heatmapLayer.current!)
-
-        if (tier === 'high') {
-          L.marker([district.lat, district.lng], {
-            icon: createRedZonePulseIcon(),
-            interactive: false,
-            zIndexOffset: 500,
-          }).addTo(pulseLayer.current!)
-        }
-      }
+          </div>`
     }
 
-    if (showSocioEconomic) {
-      for (const district of districts) {
-        const count = incidentCounts.get(district.id) ?? 0
-        const profile = buildSocioEconomicProfile(district)
-        const correlation = getCorrelationZone(count, profile)
-        const color = urbanizationColor(profile.urbanizationLevel)
-        const radius = densityToRadius(profile.populationDensity)
-        const opacity = 0.12 + (profile.urbanizationLevel / 100) * 0.22
-        const isPriorityZone = correlation.zone === 'priority'
-
-        L.circle([district.lat, district.lng], {
-          radius,
-          fillColor: color,
-          fillOpacity: isPriorityZone ? Math.min(0.38, opacity + 0.12) : opacity,
-          color: isPriorityZone ? '#e74c3c' : color,
-          weight: isPriorityZone ? 3 : 1.5,
-          opacity: isPriorityZone ? 0.9 : 0.45,
-          interactive: true,
-        })
-          .bindPopup(
-            `<div style="min-width:200px">
+    const socioPopup = (district: District, count: number) => {
+      const profile = buildSocioEconomicProfile(district)
+      const correlation = getCorrelationZone(count, profile)
+      return `<div style="min-width:200px">
               <strong>${district.name}</strong><br/>
               <span style="color:#8ba4c4">Population density: ${profile.populationDensity.toLocaleString('en-IN')}/km²</span><br/>
               <span style="color:#8ba4c4">Urbanization: ${profile.urbanizationLevel}%</span><br/>
               <span style="color:#8ba4c4">Incidents mapped: ${count}</span><br/>
               <span style="color:${correlation.zone === 'priority' ? '#e74c3c' : correlation.zone === 'elevated' ? '#f39c12' : '#4a90d9'};font-weight:600;margin-top:6px;display:inline-block">${correlation.label}</span>
-            </div>`,
-          )
-          .addTo(socioLayer.current!)
+            </div>`
+    }
+
+    if (showDistrictPolygons && showHeatmap) {
+      renderDistrictGeoJsonLayer(heatmapLayer.current, districts, {
+        filterDistrict: (district) => {
+          const count = incidentCounts.get(district.id) ?? 0
+          if (count === 0 && selectedCategory !== 'All') return false
+          return getHeatmapTier(count) !== 'none'
+        },
+        styleForDistrict: (district) => {
+          const count = incidentCounts.get(district.id) ?? 0
+          const tier = getHeatmapTier(count)
+          const color = HEATMAP_COLORS[tier]
+          return {
+            fillColor: color,
+            fillOpacity: 0.42,
+            color,
+            weight: 2,
+            opacity: 0.75,
+          }
+        },
+        popupForDistrict: (district) => {
+          const count = incidentCounts.get(district.id) ?? 0
+          return heatmapPopup(district, count, getHeatmapTier(count))
+        },
+        onDistrictClick: drillIntoDistrict,
+      })
+
+      for (const district of districtsWithoutBoundaries) {
+        const count = incidentCounts.get(district.id) ?? 0
+        if (count === 0 && selectedCategory !== 'All') continue
+        const tier = getHeatmapTier(count)
+        if (tier === 'none') continue
+        const color = HEATMAP_COLORS[tier]
+        renderDistrictFallbackCircle(
+          heatmapLayer.current,
+          district,
+          { fillColor: color, fillOpacity: 0.42, color, weight: 2, opacity: 0.75 },
+          heatmapPopup(district, count, tier),
+          drillIntoDistrict,
+        )
+      }
+
+      for (const district of districts) {
+        const count = incidentCounts.get(district.id) ?? 0
+        if (getHeatmapTier(count) !== 'high') continue
+        L.marker([district.lat, district.lng], {
+          icon: createRedZonePulseIcon(),
+          interactive: false,
+          zIndexOffset: 500,
+        }).addTo(pulseLayer.current!)
+      }
+    }
+
+    if (showDistrictPolygons && showSocioEconomic) {
+      renderDistrictGeoJsonLayer(socioLayer.current, districts, {
+        styleForDistrict: (district) => {
+          const count = incidentCounts.get(district.id) ?? 0
+          const profile = buildSocioEconomicProfile(district)
+          const correlation = getCorrelationZone(count, profile)
+          const color = urbanizationColor(profile.urbanizationLevel)
+          const opacity = 0.12 + (profile.urbanizationLevel / 100) * 0.22
+          const isPriorityZone = correlation.zone === 'priority'
+          return {
+            fillColor: color,
+            fillOpacity: isPriorityZone ? Math.min(0.38, opacity + 0.12) : opacity,
+            color: isPriorityZone ? '#e74c3c' : color,
+            weight: isPriorityZone ? 3 : 1.5,
+            opacity: isPriorityZone ? 0.9 : 0.45,
+          }
+        },
+        popupForDistrict: (district) => socioPopup(district, incidentCounts.get(district.id) ?? 0),
+        onDistrictClick: drillIntoDistrict,
+      })
+
+      for (const district of districtsWithoutBoundaries) {
+        const count = incidentCounts.get(district.id) ?? 0
+        const profile = buildSocioEconomicProfile(district)
+        const correlation = getCorrelationZone(count, profile)
+        const color = urbanizationColor(profile.urbanizationLevel)
+        const opacity = 0.12 + (profile.urbanizationLevel / 100) * 0.22
+        const isPriorityZone = correlation.zone === 'priority'
+        renderDistrictFallbackCircle(
+          socioLayer.current,
+          district,
+          {
+            fillColor: color,
+            fillOpacity: isPriorityZone ? Math.min(0.38, opacity + 0.12) : opacity,
+            color: isPriorityZone ? '#e74c3c' : color,
+            weight: isPriorityZone ? 3 : 1.5,
+            opacity: isPriorityZone ? 0.9 : 0.45,
+          },
+          socioPopup(district, count),
+          drillIntoDistrict,
+        )
 
         if (isPriorityZone) {
           L.marker([district.lat, district.lng], {
             icon: createPriorityZonePulseIcon(),
             interactive: false,
             zIndexOffset: 600,
-          }).addTo(socioLayer.current!)
+          }).addTo(pulseLayer.current!)
         }
+      }
+
+      for (const district of districts) {
+        const count = incidentCounts.get(district.id) ?? 0
+        const profile = buildSocioEconomicProfile(district)
+        const correlation = getCorrelationZone(count, profile)
+        if (correlation.zone !== 'priority') continue
+        if (districtsWithoutBoundaries.some((d) => d.id === district.id)) continue
+        L.marker([district.lat, district.lng], {
+          icon: createPriorityZonePulseIcon(),
+          interactive: false,
+          zIndexOffset: 600,
+        }).addTo(pulseLayer.current!)
+      }
+    }
+
+    if (showDistrictPolygons && !showHeatmap && !showSocioEconomic && viewMode === 'districts') {
+      renderDistrictGeoJsonLayer(districtBaseLayer.current, districts, {
+        filterDistrict: (district) => {
+          const count = incidentCounts.get(district.id) ?? 0
+          return !(count === 0 && selectedCategory !== 'All')
+        },
+        styleForDistrict: () => ({
+          fillColor: '#4a90d9',
+          fillOpacity: 0.1,
+          color: '#4a90d980',
+          weight: 1.5,
+          opacity: 0.75,
+        }),
+        popupForDistrict: (district) => {
+          const count = incidentCounts.get(district.id) ?? 0
+          return `<div style="min-width:160px">
+              <strong>${district.name}</strong><br/>
+              <span style="color:#8ba4c4">Mapped Incidents: ${count}</span><br/>
+              <span style="color:#8ba4c4">Population: ${district.population.toLocaleString('en-IN')}</span>
+            </div>`
+        },
+        onDistrictClick: drillIntoDistrict,
+      })
+
+      for (const district of districtsWithoutBoundaries) {
+        const count = incidentCounts.get(district.id) ?? 0
+        if (count === 0 && selectedCategory !== 'All') continue
+        renderDistrictFallbackCircle(
+          districtBaseLayer.current,
+          district,
+          {
+            fillColor: '#4a90d9',
+            fillOpacity: 0.1,
+            color: '#4a90d980',
+            weight: 1.5,
+            opacity: 0.75,
+          },
+          `<div style="min-width:160px">
+              <strong>${district.name}</strong><br/>
+              <span style="color:#8ba4c4">Mapped Incidents: ${count}</span><br/>
+              <span style="color:#8ba4c4">Population: ${district.population.toLocaleString('en-IN')}</span><br/>
+              <span style="color:#f39c12;font-size:11px">Approximate boundary (not in 2011 dataset)</span>
+            </div>`,
+          drillIntoDistrict,
+        )
       }
     }
 
     if (viewMode === 'districts' && !drilledDistrictId) {
+      renderDistrictNameLabels(districtLabelsLayer.current, districts, (district) => {
+        const count = incidentCounts.get(district.id) ?? 0
+        return !(count === 0 && selectedCategory !== 'All')
+      })
+
       for (const district of districts) {
         const count = incidentCounts.get(district.id) ?? 0
         if (count === 0 && selectedCategory !== 'All') continue

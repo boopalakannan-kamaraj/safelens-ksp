@@ -82,6 +82,38 @@ body {
   border-right-color: var(--color-surface);
 }
 
+/* District name labels over choropleth fills */
+.safelens-district-label-marker {
+  background: transparent !important;
+  border: none !important;
+}
+
+.safelens-district-label {
+  display: block;
+  width: 140px;
+  margin-left: -70px;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.25;
+  color: #f0f6ff;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  pointer-events: none;
+  -webkit-font-smoothing: antialiased;
+  paint-order: stroke fill;
+  -webkit-text-stroke: 0.35px rgba(6, 12, 24, 0.95);
+  text-shadow:
+    0 0 3px rgba(6, 12, 24, 1),
+    0 0 8px rgba(6, 12, 24, 0.92),
+    1px 1px 0 rgba(6, 12, 24, 0.95),
+    -1px -1px 0 rgba(6, 12, 24, 0.95),
+    1px -1px 0 rgba(6, 12, 24, 0.95),
+    -1px 1px 0 rgba(6, 12, 24, 0.95);
+}
+
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
