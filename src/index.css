@@ -185,7 +185,8 @@ body {
   vertical-align: middle;
 }
 
-select.form-control.form-select {
+select.form-control.form-select,
+button.form-control.form-select {
   display: inline-block;
   width: auto;
   min-width: 0;
@@ -202,6 +203,11 @@ select.form-control.form-select {
   background-repeat: no-repeat;
   background-position: right 10px center;
   background-size: 16px 16px;
+  text-align: left;
+}
+
+button.form-control.form-select {
+  font: inherit;
 }
 
 select.form-control.form-select::-ms-expand {
@@ -304,15 +310,18 @@ select.form-control.form-select::-ms-expand {
   flex-shrink: 0;
 }
 
-select.form-control.form-select.form-select-fixed {
+select.form-control.form-select.form-select-fixed,
+button.form-control.form-select.form-select-fixed {
   width: 160px;
 }
 
-select.form-control.form-select.form-select-wide {
+select.form-control.form-select.form-select-wide,
+button.form-control.form-select.form-select-wide {
   min-width: 180px;
 }
 
-select.form-control.form-select.form-select-medium {
+select.form-control.form-select.form-select-medium,
+button.form-control.form-select.form-select-medium {
   min-width: 130px;
 }
 
